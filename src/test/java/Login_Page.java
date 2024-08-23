@@ -12,13 +12,8 @@ import java.time.Duration;
 public class Login_Page {
     @Test
     public void UI() throws InterruptedException {
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
-
-        // Membuka URL yang diinginkan
-        driver.get("https://www.demoblaze.com/index.html");
-
-        // Mengatur browser menjadi fullscreen
+        WebDriver driver = WebDriverManager.edgedriver().create();
+        driver.get("https://www.demoblaze.com/");
         driver.manage().window().maximize();
 
         // Melakukan tindakan-tindakan pada halaman web

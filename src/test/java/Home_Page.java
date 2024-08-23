@@ -13,6 +13,7 @@ public class Home_Page {
     public void title(){
         WebDriver driver = WebDriverManager.edgedriver().create();
         driver.get("https://www.demoblaze.com/");
+        driver.manage().window().fullscreen();
 
         String title = driver.getTitle();
         String currenturl = driver.getCurrentUrl();
