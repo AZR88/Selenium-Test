@@ -7,16 +7,12 @@ import org.openqa.selenium.WebDriver;
 
 public class Home_Page {
 
-    @BeforeAll
-    public static void openweb(){
 
-        WebDriver driver = WebDriverManager.edgedriver().create();
-        driver.get("https://www.demoblaze.com/");
-
-    }
 
     @Test
     public void title(){
+        WebDriver driver = WebDriverManager.edgedriver().create();
+        driver.get("https://www.demoblaze.com/");
 
         String title = driver.getTitle();
         String currenturl = driver.getCurrentUrl();
