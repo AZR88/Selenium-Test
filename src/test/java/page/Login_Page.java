@@ -1,4 +1,4 @@
-package Page;
+package page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,20 +10,42 @@ import java.time.Duration;
 
 public class Login_Page {
 
-    public void login(WebDriver driver, String username, String password) throws InterruptedException {
+    private WebDriver driver;
+
+    //locators
+    private By loginButton = By.id("login2");
+    private By usernameInputText = By.cssSelector("#loginusername");
+    private By passwordInputText = By.xpath("//*[@id='loginpassword']");
+    private By submitButton = By.cssSelector("button[onclick='logIn()']");
+
+    // Constructor that will be called in the test class
+    public Login_Page(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    //open the login page
+    public void openLoginPage() {
         driver.get("https://www.demoblaze.com/");
         driver.manage().window().maximize();
+        driver.findElement(loginButton).click();
+    }
 
-        driver.findElement(By.id("login2")).click();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#loginusername")));
+    //  input username
+    public void inputUsername(String username) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(usernameInputText));
         usernameField.sendKeys(username);
+    }
 
-        WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='loginpassword']")));
+    // input password
+    public void inputPassword(String password) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(passwordInputText));
         passwordField.sendKeys(password);
+    }
 
-        driver.findElement(By.cssSelector("button[onclick='logIn()']")).click();
-
-        Thread.sleep(5000);
+    // click the login button
+    public void clickSubmitButton() {
+        driver.findElement(submitButton).click();
     }
 }
