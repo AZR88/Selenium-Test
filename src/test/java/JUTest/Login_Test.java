@@ -1,25 +1,54 @@
 package JUTest;
 
-import Page.Login_Page;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import page.Login_Page;
+
+import java.time.Duration;
 
 public class Login_Test {
 
-    @Test
-    public void data_test() throws InterruptedException {
-        WebDriver driver = WebDriverManager.edgedriver().create();
+        private WebDriver driver;
+        private Login_Page loginPage;
 
-        // Tentukan username dan password langsung di sini
-        String username = "yourUsername";
-        String password = "yourPassword";
+        @BeforeEach
+        public void setUp() {
 
-        // Panggil metode login dari Login_Page
-        Login_Page loginPage = new Login_Page();
-        loginPage.login(driver, username, password);
+            WebDriverManager.edgedriver().setup();
+            driver = new EdgeDriver();
 
-        // Tutup browser setelah selesai
-        driver.quit();
+            driver.manage().window().maximize();
+            loginPage = new Login_Page(driver);
+
+
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+
+
+            driver.get("https://www.demoblaze.com/");
+        }
+
+        @Test
+        public void testLogin()  {
+
+            loginPage.openLoginPage();
+            loginPage.inputUsername("Beta123");
+            loginPage.inputPassword("123");
+            loginPage.clickSubmitButton();
+
+
+
+        }
+
+        @AfterEach
+        public void tearDown() {
+            // Quit the browser
+            if (driver != null) {
+                driver.quit();
+            }
+        }
     }
-}
+
