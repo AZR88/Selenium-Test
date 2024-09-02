@@ -10,7 +10,7 @@ import page.Login_Page;
 
 import java.time.Duration;
 
-public class Login_Test {
+public class LoginTest {
 
         private WebDriver driver;
         private Login_Page loginPage;
@@ -33,14 +33,10 @@ public class Login_Test {
 
         @Test
         public void testLogin()  {
-
             loginPage.openLoginPage();
             loginPage.inputUsername("Beta123");
             loginPage.inputPassword("123");
             loginPage.clickSubmitButton();
-
-
-
         }
 
         @AfterEach
