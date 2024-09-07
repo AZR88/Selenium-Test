@@ -14,6 +14,7 @@ public class Login_Page {
     public static By usernameInputText = By.cssSelector("#loginusername");
     public static By passwordInputText = By.xpath("//*[@id='loginpassword']");
     public static By submitButton = By.cssSelector("button[onclick='logIn()']");
+    public static By UserID =By.xpath("//a[@id='nameofuser']");
 
     //open the login page
     public static void openLoginPage(WebDriver driver) {
@@ -37,5 +38,16 @@ public class Login_Page {
     // click the login button
     public static void clickSubmitButton(WebDriver driver) {
         driver.findElement(submitButton).click();
+    }
+
+    public static boolean verifyUserID(WebDriver driver, String username) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement userIDElement = wait.until(ExpectedConditions.visibilityOfElementLocated(UserID));
+
+        // Get the text of the UserID element and compare it with the username
+        String actualUserID = userIDElement.getText();
+
+        // Assuming the UserID includes something like "Welcome, <username>", we can compare this:
+        return actualUserID.contains(username);
     }
 }

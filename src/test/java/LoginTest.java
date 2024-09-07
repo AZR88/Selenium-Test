@@ -8,6 +8,8 @@ import page.Login_Page;
 
 import java.time.Duration;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class LoginTest {
 
     public static WebDriver driver;
@@ -32,6 +34,8 @@ public class LoginTest {
         Login_Page.inputUsername(driver,"Beta123");
         Login_Page.inputPassword(driver, "123");
         Login_Page.clickSubmitButton(driver);
+        boolean isUserIDCorrect = Login_Page.verifyUserID(driver, "Beta123");
+        assertTrue(isUserIDCorrect, "The displayed UserID does not match the expected username.");
     }
 
     @AfterEach
