@@ -8,6 +8,12 @@ public class SignUp_Page {
     public static  By SignUpusernameInput = By.id("sign-username");
     public static  By SignUppasswordInput = By.id("sign-password");
     public static  By SubmitButton = By.xpath("button[onclick='register()']");
+
+    public static void openSignupPage(WebDriver driver){
+        driver.findElement(SignUpButton).click();
+    }
+
+
 }
 
 
