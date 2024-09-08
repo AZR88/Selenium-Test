@@ -22,4 +22,6 @@ public class SignUpTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         driver.get("https://www.demoblaze.com/");
     }
+
+    public void TestSignup(){}
 }
