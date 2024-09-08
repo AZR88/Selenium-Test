@@ -27,5 +27,6 @@ public class SignUpTest {
     public void TestSignup(){
         SignUp_Page.openSignupPage(driver);
         SignUp_Page.SignUpusernameInput(driver, "ssssss");
+        SignUp_Page.SignUppasswordInput(driver,"PP123");
     }
 }
