@@ -2,6 +2,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import page.SignUp_Page;
 
 import java.time.Duration;
 
@@ -23,5 +24,7 @@ public class SignUpTest {
         driver.get("https://www.demoblaze.com/");
     }
 
-    public void TestSignup(){}
+    public void TestSignup(){
+        SignUp_Page.openSignupPage(driver);
+    }
 }
