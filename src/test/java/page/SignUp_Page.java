@@ -29,6 +29,10 @@ public class SignUp_Page {
         WebElement passwordField =  wait.until(ExpectedConditions.visibilityOfElementLocated(SignUppasswordInput));
         passwordField.sendKeys(password);
     }
+
+    public static void ClikSubmit (WebDriver driver){
+
+    }
 }
 
 
