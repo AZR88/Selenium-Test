@@ -24,7 +24,11 @@ public class SignUp_Page {
         usernameField.sendKeys(username);
     }
 
-
+    public static void SignUppasswordInput(WebDriver driver, String password){
+        WebDriverWait wait =  new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement passwordField =  wait.until(ExpectedConditions.visibilityOfElementLocated(SignUppasswordInput));
+        passwordField.sendKeys(password);
+    }
 }
 
 
