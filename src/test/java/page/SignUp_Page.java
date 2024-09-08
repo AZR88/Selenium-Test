@@ -31,7 +31,7 @@ public class SignUp_Page {
     }
 
     public static void ClikSubmit (WebDriver driver){
-
+        driver.findElement(SubmitButton);
     }
 }
 
