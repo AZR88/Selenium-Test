@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -24,6 +25,7 @@ public class SignUpTest {
         driver.get("https://www.demoblaze.com/");
     }
 
+    @Test
     public void TestSignup(){
         SignUp_Page.openSignupPage(driver);
         SignUp_Page.SignUpusernameInput(driver, "ssssss");
