@@ -33,5 +33,5 @@ public class SignUpTest {
         SignUp_Page.ClikSubmit(driver);
     }
 
-    public void tearDown(){}
+    public void tearDown(){driver.quit();}
 }
