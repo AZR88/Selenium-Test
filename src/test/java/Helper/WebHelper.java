@@ -10,7 +10,7 @@ public class WebHelper {
 
     public static WebDriver driver;
 
-    public void setUp() {
+    public static void startDriver(){
         ChromeOptions options = new ChromeOptions();
 //        options.addArguments("--headless");
         options.addArguments("--no-sandbox");
@@ -21,7 +21,10 @@ public class WebHelper {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         driver.get("https://www.demoblaze.com/");
+
     }
 
-    public void tearDown(){driver.quit();}
+    public static void tearDown(){
+        driver.quit();
+    }
 }
