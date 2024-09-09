@@ -32,4 +32,6 @@ public class SignUpTest {
         SignUp_Page.SignUppasswordInput(driver,"PP123");
         SignUp_Page.ClikSubmit(driver);
     }
+
+    public void tearDown(){}
 }
