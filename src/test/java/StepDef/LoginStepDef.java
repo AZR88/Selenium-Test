@@ -2,6 +2,7 @@ package StepDef;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
+import page.Login_Page;
 
 public class LoginStepDef {
     @Given("user is on homepage")
@@ -11,5 +12,6 @@ public class LoginStepDef {
 
     @When("user click Login button")
     public void userClickLoginButton() {
+        Login_Page.openLoginPage();
     }
 }
