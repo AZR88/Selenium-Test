@@ -1,5 +1,6 @@
 package StepDef;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -29,5 +30,10 @@ public class LoginStepDef {
     @When("user click Login button")
     public void userClickLoginButton() {
         Login_Page.openLoginPage(driver);
+    }
+
+    @And("user input username with  {string}")
+    public void userInputUsernameWith(String usr) {
+        Login_Page.inputUsername(driver,usr);
     }
 }
