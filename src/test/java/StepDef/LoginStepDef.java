@@ -42,4 +42,9 @@ public class LoginStepDef {
     public void userInputPasswordWith(String arg0) {
         Login_Page.inputPassword(driver,arg0);
     }
+
+    @And("user click submit")
+    public void userClickSubmit() {
+        Login_Page.clickSubmitButton(driver);
+    }
 }
