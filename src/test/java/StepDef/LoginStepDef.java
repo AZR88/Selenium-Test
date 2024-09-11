@@ -32,8 +32,14 @@ public class LoginStepDef {
         Login_Page.openLoginPage(driver);
     }
 
-    @And("user input username with  {string}")
-    public void userInputUsernameWith(String usr) {
-        Login_Page.inputUsername(driver,usr);
+
+    @And("user input username with {string}")
+    public void userInputUsernameWith(String arg0) {
+        Login_Page.inputUsername(driver,arg0);
+    }
+
+    @And("user input password with {string}")
+    public void userInputPasswordWith(String arg0) {
+        Login_Page.inputPassword(driver,arg0);
     }
 }
