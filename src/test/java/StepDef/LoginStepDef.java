@@ -2,6 +2,7 @@ package StepDef;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -46,5 +47,10 @@ public class LoginStepDef {
     @And("user click submit")
     public void userClickSubmit() {
         Login_Page.clickSubmitButton(driver);
+    }
+
+    @Then("user redirect to home page with {string} username displayed")
+    public void userRedirectToHomePageWithUsernameDisplayed(String arg0) {
+        Login_Page.verifyUserID(driver,arg0);
     }
 }
