@@ -1,5 +1,6 @@
 Feature: Automation Login
 
+  @web
   Scenario: Login with valid username and password
     Given user is on homepage
     When user click Login button
@@ -15,3 +16,4 @@ Feature: Automation Login
     And user input password with "222"
     And user click submit
     Then show invalid login notification
+
