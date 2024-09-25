@@ -1,6 +1,5 @@
 Feature: Automation Login
 
-  @web
   Scenario: Login with valid username and password
     Given user is on homepage
     When user click Login button

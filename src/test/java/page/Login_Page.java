@@ -13,7 +13,7 @@ public class Login_Page {
     public static By loginButton = By.id("login2");
     public static By usernameInputText = By.cssSelector("#loginusername");
     public static By passwordInputText = By.xpath("//*[@id='loginpassword']");
-    public static By submitButton = By.cssSelector("button[onclick='logIn()']");
+    public static By submitButton = By.xpath("//button[text()='Log in']");
     public static By UserID =By.xpath("//a[@id='nameofuser']");
 
     //open the login page

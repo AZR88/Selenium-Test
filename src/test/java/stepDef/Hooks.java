@@ -1,9 +1,6 @@
-package StepDef;
+package stepDef;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import io.cucumber.java.*;
 
 import static Helper.WebHelper.startDriver;
 import static Helper.WebHelper.tearDown;
@@ -23,11 +20,13 @@ public class Hooks {
 
     @Before
     public void beforeTest (){
+        System.out.println("BEFORE TEST");
         startDriver();
     }
 
     @After
     public  void afterTest (){
+        System.out.println("AFTER TEST");
         tearDown();
     }
 }
