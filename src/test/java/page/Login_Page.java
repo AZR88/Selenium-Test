@@ -1,11 +1,11 @@
 package page;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
+
+import static Helper.WebHelper.driver;
 
 public class Login_Page {
 
@@ -49,5 +49,35 @@ public class Login_Page {
 
         // Assuming the UserID includes something like "Welcome, <username>", we can compare this:
         return actualUserID.contains(username);
+    }
+
+    public static boolean verifyLoginAlert(WebDriver driver) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+
+            // Mengambil teks dari alert
+            String alertText = alert.getText();
+            System.out.println("Teks notifikasi login invalid: " + alertText);
+
+            // Memverifikasi teks alert sesuai yang diharapkan
+            if (alertText.equals("User does not exist.")) {
+                System.out.println("Alert menunjukkan: 'User does not exist.'");
+                alert.accept(); // Menutup alert
+                return false; // Mengembalikan false jika username salah
+            } else if (alertText.equals("Wrong password.")) {
+                System.out.println("Alert menunjukkan: 'Wrong password.'");
+                alert.accept(); // Menutup alert
+                return false; // Mengembalikan false jika password salah
+            } else {
+                System.out.println("Notifikasi login invalid tidak sesuai.");
+                alert.accept(); // Menutup alert
+                return false; // Mengembalikan false jika teks tidak sesuai
+            }
+        } catch (TimeoutException e) {
+            System.out.println("Alert tidak muncul dalam waktu yang ditentukan.");
+            return false; // Mengembalikan false jika alert tidak muncul
+        }
+
     }
 }
