@@ -16,3 +16,10 @@ Feature: Automation Login
     And user click submit
     Then show invalid login notification
 
+  Scenario: Login with empty username and password
+    Given user is on homepage
+    When user click Login button
+    And user input username with ""
+    And user input password with ""
+    And user click submit
+    Then show invalid login notification
