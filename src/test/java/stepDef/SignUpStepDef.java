@@ -15,6 +15,6 @@ public class SignUpStepDef {
 
     @And("user input username with \\{sosososo}")
     public void userInputUsernameWithSosososo(String arg0) {
-        SignUp_Page.SignUpusernameInput(dri);
+        SignUp_Page.SignUpusernameInput(driver, arg0);
     }
 }
