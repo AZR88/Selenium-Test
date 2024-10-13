@@ -53,7 +53,7 @@ public class Login_Page {
 
     public static boolean verifyLoginAlert(WebDriver driver) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             Alert alert = wait.until(ExpectedConditions.alertIsPresent());
 
             // Mengambil teks dari alert
