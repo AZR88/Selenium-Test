@@ -44,25 +44,25 @@ public class SignUp_Page {
             // Memverifikasi teks alert sesuai yang diharapkan
             if(alertText.equals("Sign up successful.")) {
                 System.out.println("Alert menunjukkan: 'Sign up successful.'");
-                alert.accept(); // Menutup alert
-                return false; // Mengembalikan false jika username salah
+                alert.accept();
+                return true;
             }
             else if (alertText.equals("This user already exist.")) {
                 System.out.println("Alert menunjukkan: 'This user already exist.'");
-                alert.accept(); // Menutup alert
-                return true; // Mengembalikan false jika username salah
+                alert.accept();
+                return false;
             } else if (alertText.equals("Please fill out Username and Password.")) {
                 System.out.println("Alert menunjukkan: 'Please fill out Username and Password.'");
-                alert.accept(); // Menutup alert
-                return false; // Mengembalikan false jika password salah
+                alert.accept();
+                return false;
             } else {
                 System.out.println("Notifikasi login invalid tidak sesuai.");
-                alert.accept(); // Menutup alert
-                return false; // Mengembalikan false jika teks tidak sesuai
+                alert.accept();
+                return false;
             }
         } catch (TimeoutException e) {
             System.out.println("Alert tidak muncul dalam waktu yang ditentukan.");
-            return false; // Mengembalikan false jika alert tidak muncul
+            return false;
         }
 
     }
