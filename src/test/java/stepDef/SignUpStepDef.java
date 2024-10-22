@@ -7,6 +7,7 @@ import page.SignUp_Page;
 
 import static Helper.WebHelper.driver;
 import static page.SignUp_Page.SignUpButton;
+import static page.SignUp_Page.verifySignupAlert;
 
 public class SignUpStepDef {
     @When("user click Signup button")
@@ -32,5 +33,12 @@ public class SignUpStepDef {
 
     @Then("show account succes created alert")
     public void showAccountSuccesCreatedAlert() {
+        SignUp_Page.verifySignupAlert(driver);
+
+    }
+
+    @Then("show invalid SignUP notification")
+    public void showInvalidSignUPNotification() {
+        SignUp_Page.verifySignupAlert(driver);
     }
 }
