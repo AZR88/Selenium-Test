@@ -27,6 +27,13 @@ test {
     useJUnitPlatform()
     systemProperty "cucumber.filter.tags", System.getProperty("cucumber.filter.tags")
 }
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11) // atau 11 jika menggunakan JDK 11
+    }
+}
+
 configurations {
     cucumberRuntime {
         extendsFrom testImplementation
@@ -35,20 +42,22 @@ configurations {
 
 def tags = (findProperty('tags')==null)? 'not @exclude': findProperty('tags')+ 'and not @exclude'
 
-task cucumber(){
-    description("Running Cucumber Test")
+task cucumber(type: JavaExec) {
+    description = "Running Cucumber Test"
+    group = "verification" // optional, for better task grouping
+
     dependsOn assemble, compileTestJava
-    doLast {
-        javaexec {
-            main = "io.cucumber.core.cli.Main"
-            classpath = configurations.cucumberRuntime +sourceSets.main.output +sourceSets.test.output
-            args = [
-                    '--plugin', 'html:reports/test-report.html',
-                    '--plugin', 'pretty',
-                    '--glue', 'stepDef',
-                    '--tags', "${tags}",
-                    'src/test/resources/features'
-            ]
-        }
-    }
+    main = "io.cucumber.core.cli.Main"
+
+    classpath = sourceSets.test.runtimeClasspath + sourceSets.main.output
+
+    args = [
+            '--plugin', 'html:reports/test-report.html',
+            '--plugin', 'pretty',
+            '--glue', 'stepDef',          // adjust this based on your step definitions package
+            '--tags', "${tags}",           // pass the tags dynamically
+            'src/test/resources/features'  // location of your feature files
+    ]
 }
+
+

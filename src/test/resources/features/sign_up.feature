@@ -1,3 +1,4 @@
+@SignUp
 Feature: automation Sign Up
 
   @valid-SignUp

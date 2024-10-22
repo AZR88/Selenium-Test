@@ -1,3 +1,4 @@
+@Login
 Feature: Automation Login
   @valid-Login
   Scenario: Login with valid username and password
