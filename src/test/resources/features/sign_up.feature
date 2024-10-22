@@ -16,4 +16,12 @@ Feature: automation Sign Up
     And user click submit button
     Then show invalid SignUP notification
 
+  Scenario: Sign Up with registered username and password
+    Given user is on homepage
+    When user click Signup button
+    And user input username  with "Beta123"
+    And user input password  with "123"
+    And user click submit button
+    Then show invalid SignUP notification
+
 
