@@ -28,11 +28,7 @@ test {
     systemProperty "cucumber.filter.tags", System.getProperty("cucumber.filter.tags")
 }
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(11) // atau 11 jika menggunakan JDK 11
-    }
-}
+
 
 configurations {
     cucumberRuntime {
@@ -40,7 +36,8 @@ configurations {
     }
 }
 
-def tags = (findProperty('tags')==null)? 'not @exclude': findProperty('tags')+ 'and not @exclude'
+def tags = (findProperty('tags') == null) ? 'not @exclude' : "${findProperty('tags')} and not @exclude"
+
 
 task cucumber(type: JavaExec) {
     description = "Running Cucumber Test"
