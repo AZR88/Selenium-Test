@@ -1,5 +1,6 @@
 package page;
 
+import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -18,7 +19,10 @@ public class Login_Page {
 
     //open the login page
     public static void openLoginPage(WebDriver driver) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement Logbut = wait.until(ExpectedConditions.visibilityOfElementLocated(loginButton));
         driver.findElement(loginButton).click();
+        Assert.assertTrue(Logbut.isDisplayed());
     }
 
     //  input username
@@ -26,6 +30,7 @@ public class Login_Page {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(usernameInputText));
         usernameField.sendKeys(username);
+        Assert.assertTrue(usernameField.isDisplayed());
     }
 
     // input password
@@ -33,6 +38,7 @@ public class Login_Page {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(passwordInputText));
         passwordField.sendKeys(password);
+        Assert.assertTrue(passwordField.isDisplayed());
     }
 
     // click the login button
@@ -44,14 +50,12 @@ public class Login_Page {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement userIDElement = wait.until(ExpectedConditions.visibilityOfElementLocated(UserID));
 
-        // Get the text of the UserID element and compare it with the username
-        String actualUserID = userIDElement.getText();
 
-        // Assuming the UserID includes something like "Welcome, <username>", we can compare this:
+        String actualUserID = userIDElement.getText();
         return actualUserID.contains(username);
     }
 
-    public static boolean verifyLoginAlert(WebDriver driver) {
+    public static void verifyLoginAlert(WebDriver driver) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             Alert alert = wait.until(ExpectedConditions.alertIsPresent());
@@ -61,23 +65,26 @@ public class Login_Page {
             System.out.println("Teks notifikasi login invalid: " + alertText);
 
             // Memverifikasi teks alert sesuai yang diharapkan
+            boolean isAlertValid = false;
+
             if (alertText.equals("User does not exist.")) {
                 System.out.println("Alert menunjukkan: 'User does not exist.'");
-                alert.accept(); // Menutup alert
-                return false; // Mengembalikan false jika username salah
+                isAlertValid = true; // Menandai alert valid
             } else if (alertText.equals("Wrong password.")) {
                 System.out.println("Alert menunjukkan: 'Wrong password.'");
-                alert.accept(); // Menutup alert
-                return false; // Mengembalikan false jika password salah
+                isAlertValid = true; // Menandai alert valid
             } else {
-                System.out.println("Notifikasi login invalid tidak sesuai.");
-                alert.accept(); // Menutup alert
-                return false; // Mengembalikan false jika teks tidak sesuai
+                System.out.println("Notifikasi login invalid tidak sesuai: " + alertText);
             }
+
+            alert.accept(); // Menutup alert
+
+            // Memverifikasi hasil menggunakan assertTrue
+            Assert.assertTrue("Notifikasi login tidak sesuai.", isAlertValid);
+
         } catch (TimeoutException e) {
             System.out.println("Alert tidak muncul dalam waktu yang ditentukan.");
-            return false; // Mengembalikan false jika alert tidak muncul
+            Assert.fail("Alert tidak muncul dalam waktu yang ditentukan."); // Menghasilkan kegagalan assertion
         }
-
     }
 }

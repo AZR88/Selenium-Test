@@ -12,6 +12,7 @@ import page.Login_Page;
 import java.time.Duration;
 
 import static Helper.WebHelper.driver;
+import static org.junit.Assert.assertTrue;
 
 
 public class LoginStepDef {
@@ -44,7 +45,8 @@ public class LoginStepDef {
 
     @Then("user redirect to home page with {string} username displayed")
     public void userRedirectToHomePageWithUsernameDisplayed(String arg0) {
-        Login_Page.verifyUserID(driver,arg0);
+       boolean isTitleCorrect = Login_Page.verifyUserID(driver,arg0);
+        assertTrue("Title tidak sesuai dengan yang diharapkan!", isTitleCorrect);
     }
 
     @Then("show invalid login notification")
