@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.time.Instant;
 
 public class SignUp_Page {
     public static By SignUpButton = By.id("signin2");
@@ -14,14 +15,16 @@ public class SignUp_Page {
     public static By SubmitButton = By.cssSelector("button[onclick='register()']");
 
     public static void openSignupPage(WebDriver driver) {
-        driver.findElement(SignUpButton).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement SignBut = wait.until(ExpectedConditions.visibilityOfElementLocated(SignUpButton));
+        Assert.assertTrue(SignBut.isEnabled() && SignBut.isDisplayed());
     }
 
     public static void SignUpusernameInput(WebDriver driver, String username) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(SignUpusernameInput));
         usernameField.sendKeys(username);
-        Assert.assertTrue(usernameField.isDisplayed());
+        Assert.assertTrue(usernameField.isDisplayed() && usernameField.isEnabled());
     }
 
     public static void SignUppasswordInput(WebDriver driver, String password) {
