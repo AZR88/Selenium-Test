@@ -32,7 +32,8 @@ public class SignUp_Page {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(SignUppasswordInput));
         passwordField.sendKeys(password);
-        Assert.assertTrue(passwordField.isDisplayed());
+        Assert.assertTrue(passwordField.isDisplayed() && passwordField.isEnabled());
+        Assert.assertEquals(passwordField.getAttribute("value"), password);
     }
 
     public static void ClikSubmit(WebDriver driver) {
