@@ -25,6 +25,7 @@ public class SignUp_Page {
         WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(SignUpusernameInput));
         usernameField.sendKeys(username);
         Assert.assertTrue(usernameField.isDisplayed() && usernameField.isEnabled());
+        Assert.assertEquals(usernameField.getAttribute("value"), username);
     }
 
     public static void SignUppasswordInput(WebDriver driver, String password) {
