@@ -18,6 +18,8 @@ public class SignUp_Page {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement SignBut = wait.until(ExpectedConditions.visibilityOfElementLocated(SignUpButton));
         Assert.assertTrue(SignBut.isEnabled() && SignBut.isDisplayed());
+        SignBut.click();
+
     }
 
     public static void SignUpusernameInput(WebDriver driver, String username) {
@@ -37,7 +39,12 @@ public class SignUp_Page {
     }
 
     public static void ClikSubmit(WebDriver driver) {
-        driver.findElement(SubmitButton);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement SubmitBut = wait.until(ExpectedConditions.visibilityOfElementLocated(SubmitButton));
+
+        Assert.assertTrue(SubmitBut.isEnabled() && SubmitBut.isDisplayed());
+        SubmitBut.click();
+
     }
 
     public static void verifySignupAlert(WebDriver driver) {
