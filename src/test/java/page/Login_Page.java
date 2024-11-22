@@ -22,7 +22,7 @@ public class Login_Page {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement Logbut = wait.until(ExpectedConditions.visibilityOfElementLocated(loginButton));
         driver.findElement(loginButton).click();
-        Assert.assertTrue(Logbut.isDisplayed());
+        Assert.assertTrue(Logbut.isEnabled() && Logbut.isDisplayed());
     }
 
     //  input username
@@ -30,7 +30,8 @@ public class Login_Page {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(usernameInputText));
         usernameField.sendKeys(username);
-        Assert.assertTrue(usernameField.isDisplayed());
+        Assert.assertTrue(usernameField.isDisplayed() && usernameField.isEnabled());
+        Assert.assertEquals(usernameField.getAttribute("value"), username);
     }
 
     // input password
@@ -38,7 +39,8 @@ public class Login_Page {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(passwordInputText));
         passwordField.sendKeys(password);
-        Assert.assertTrue(passwordField.isDisplayed());
+        Assert.assertTrue(passwordField.isDisplayed() && passwordField.isEnabled());
+        Assert.assertEquals(passwordField.getAttribute("value"),password);
     }
 
     // click the login button
@@ -60,26 +62,24 @@ public class Login_Page {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             Alert alert = wait.until(ExpectedConditions.alertIsPresent());
 
-            // Mengambil teks dari alert
             String alertText = alert.getText();
             System.out.println("Teks notifikasi login invalid: " + alertText);
 
-            // Memverifikasi teks alert sesuai yang diharapkan
             boolean isAlertValid = false;
 
             if (alertText.equals("User does not exist.")) {
                 System.out.println("Alert menunjukkan: 'User does not exist.'");
-                isAlertValid = true; // Menandai alert valid
+                isAlertValid = true;
             } else if (alertText.equals("Wrong password.")) {
                 System.out.println("Alert menunjukkan: 'Wrong password.'");
-                isAlertValid = true; // Menandai alert valid
+                isAlertValid = true;
             } else {
                 System.out.println("Notifikasi login invalid tidak sesuai: " + alertText);
             }
 
-            alert.accept(); // Menutup alert
+            alert.accept();
 
-            // Memverifikasi hasil menggunakan assertTrue
+
             Assert.assertTrue("Notifikasi login tidak sesuai.", isAlertValid);
 
         } catch (TimeoutException e) {
