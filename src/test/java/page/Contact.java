@@ -29,12 +29,14 @@ public class Contact {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement namefield = wait.until(ExpectedConditions.visibilityOfElementLocated(SenderName));
         namefield.sendKeys(name);
-        Assert.assertTrue(namefield.isEnabled());
+        Assert.assertEquals(namefield, name);
     }
 
     public static void inputmassage(WebDriver driver, String message) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement massagefield = wait.until(ExpectedConditions.visibilityOfElementLocated(Message));
+        massagefield.sendKeys(message);
+        Assert.assertEquals(massagefield, message);
     }
 }
 
