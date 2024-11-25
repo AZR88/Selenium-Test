@@ -16,13 +16,14 @@ import static org.junit.Assert.assertTrue;
 
 
 public class LoginStepDef {
-    @Given("user is on homepage")
-    public void userIsOnHomepage() {
-        driver.get("https://www.demoblaze.com/");
+    @Given("user is on homepage {string}")
+    public void userIsOnHomepage(String arg0) {
+        Login_Page.UrlCheck(driver, arg0);
     }
 
     @When("user click Login button")
     public void userClickLoginButton() {
+
         Login_Page.openLoginPage(driver);
     }
 
@@ -53,6 +54,7 @@ public class LoginStepDef {
     public void showInvalidLoginNotification() {
         Login_Page.verifyLoginAlert(driver);
     }
+
 
 
 }
