@@ -14,6 +14,16 @@ public class SignUp_Page {
     public static By SignUppasswordInput = By.id("sign-password");
     public static By SubmitButton = By.cssSelector("button[onclick='register()']");
 
+
+
+    //check page url
+    public static void UrlCheck(WebDriver driver, String expectedUrl) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.urlToBe(expectedUrl));
+
+        Assert.assertEquals(expectedUrl, driver.getCurrentUrl());
+    }
+
     public static void openSignupPage(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement SignBut = wait.until(ExpectedConditions.visibilityOfElementLocated(SignUpButton));
