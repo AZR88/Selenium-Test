@@ -3,7 +3,7 @@ Feature: automation Sign Up
 
   @valid-SignUp
   Scenario: Sign UP with valid username and password
-    Given user is on homepage
+    Given user is on homepage "https://www.demoblaze.com/"
     When user click Signup button
     And user input username  with "sosososo"
     And user input password  with "123123"
@@ -12,7 +12,7 @@ Feature: automation Sign Up
 
   @invalid-SignUp
   Scenario: Sign Up with empty username and password
-    Given user is on homepage
+    Given user is on homepage "https://www.demoblaze.com/"
     When user click Signup button
     And user input username  with ""
     And user input password  with ""
@@ -21,7 +21,7 @@ Feature: automation Sign Up
 
   @invalid-SignUp
   Scenario: Sign Up with registered username and password
-    Given user is on homepage
+    Given user is on homepage "https://www.demoblaze.com/"
     When user click Signup button
     And user input username  with "Beta123"
     And user input password  with "123"
