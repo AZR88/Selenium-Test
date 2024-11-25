@@ -4,15 +4,12 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import page.SignUp_Page;
-
 import static Helper.WebHelper.driver;
-import static page.SignUp_Page.SignUpButton;
-import static page.SignUp_Page.verifySignupAlert;
 
 public class SignUpStepDef {
     @When("user click Signup button")
     public void userClickSignupButton() {
-        driver.findElement(SignUpButton).click();
+        SignUp_Page.openSignupPage(driver);
     }
 
     @And("user input username  with {string}")
