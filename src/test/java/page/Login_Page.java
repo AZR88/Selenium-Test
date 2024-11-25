@@ -17,12 +17,24 @@ public class Login_Page {
     public static By submitButton = By.xpath("//button[text()='Log in']");
     public static By UserID =By.xpath("//a[@id='nameofuser']");
 
+
+
+
+    //check page url
+    public static void UrlCheck(WebDriver driver, String expectedUrl) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.urlToBe(expectedUrl));
+
+        Assert.assertEquals(expectedUrl, driver.getCurrentUrl());
+    }
+
+
     //open the login page
     public static void openLoginPage(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement Logbut = wait.until(ExpectedConditions.visibilityOfElementLocated(loginButton));
-        driver.findElement(loginButton).click();
         Assert.assertTrue(Logbut.isEnabled() && Logbut.isDisplayed());
+        Logbut.click();
     }
 
     //  input username
