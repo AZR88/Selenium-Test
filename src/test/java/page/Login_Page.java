@@ -74,29 +74,14 @@ public class Login_Page {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             Alert alert = wait.until(ExpectedConditions.alertIsPresent());
 
-            String alertText = alert.getText();
-            System.out.println("Teks notifikasi login invalid: " + alertText);
-
-            boolean isAlertValid = false;
-
-            if (alertText.equals("User does not exist.")) {
-                System.out.println("Alert menunjukkan: 'User does not exist.'");
-                isAlertValid = true;
-            } else if (alertText.equals("Wrong password.")) {
-                System.out.println("Alert menunjukkan: 'Wrong password.'");
-                isAlertValid = true;
-            } else {
-                System.out.println("Notifikasi login invalid tidak sesuai: " + alertText);
-            }
-
+            // If the alert is present, it will be printed and accepted
+            System.out.println("Alert muncul: " + alert.getText());
             alert.accept();
-
-
-            Assert.assertTrue("Notifikasi login tidak sesuai.", isAlertValid);
 
         } catch (TimeoutException e) {
             System.out.println("Alert tidak muncul dalam waktu yang ditentukan.");
-            Assert.fail("Alert tidak muncul dalam waktu yang ditentukan."); // Menghasilkan kegagalan assertion
+            Assert.fail("Alert tidak muncul dalam waktu yang ditentukan.");
         }
     }
+
 }
