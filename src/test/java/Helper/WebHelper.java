@@ -45,6 +45,16 @@ public class WebHelper {
                     driver = new FirefoxDriver(firefoxOptions);
                     break;
 
+                case "edge":
+                    WebDriverManager.edgedriver().setup();
+                    EdgeOptions edgeOptions = new EdgeOptions();
+                    edgeOptions.addArguments("--no-sandbox");
+                    edgeOptions.addArguments("--disable-dev-shm-usage");
+                    edgeOptions.addArguments("--remote-allow-origins=*");
+                    edgeOptions.addArguments("--window-size=1920,1080");
+                    driver = new EdgeDriver(edgeOptions);
+                    break;
+
                 default:
                     throw new IllegalArgumentException("Unsupported browser: " + browser);
             }
