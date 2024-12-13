@@ -34,7 +34,16 @@ public class WebHelper {
                     driver = new ChromeDriver(chromeOptions);
                     break;
 
-
+                case "firefox":
+                    WebDriverManager.firefoxdriver().setup();
+                    FirefoxOptions firefoxOptions = new FirefoxOptions();
+                    firefoxOptions.addArguments("--no-sandbox");
+                    firefoxOptions.addArguments("--disable-dev-shm-usage");
+                    firefoxOptions.addArguments("--disable-gpu"); // Tambahan untuk stabilitas
+                    firefoxOptions.addArguments("--window-size=1920,1080");
+                    firefoxOptions.addArguments("--headless");
+                    driver = new FirefoxDriver(firefoxOptions);
+                    break;
 
                 default:
                     throw new IllegalArgumentException("Unsupported browser: " + browser);
