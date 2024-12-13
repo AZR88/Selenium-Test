@@ -29,8 +29,6 @@ test {
     systemProperty "cucumber.filter.tags", System.getProperty("cucumber.filter.tags")
 }
 
-
-
 configurations {
     cucumberRuntime {
         extendsFrom testImplementation
@@ -39,23 +37,67 @@ configurations {
 
 def tags = (findProperty('tags') == null) ? 'not @exclude' : "${findProperty('tags')} and not @exclude"
 
-
-task cucumber(type: JavaExec) {
-    description = "Running Cucumber Test"
-    group = "verification" // optional, for better task grouping
-
-    dependsOn assemble, compileTestJava
-    main = "io.cucumber.core.cli.Main"
-
-    classpath = sourceSets.test.runtimeClasspath + sourceSets.main.output
+task cucumberChrome(type: JavaExec) {
+    group = "verification"
+    description = "Run Cucumber tests on Chrome"
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "io.cucumber.core.cli.Main"
 
     args = [
-            '--plugin', 'html:reports/test-report.html',
             '--plugin', 'pretty',
-            '--glue', 'stepDef',          // adjust this based on your step definitions package
-            '--tags', "${tags}",           // pass the tags dynamically
-            'src/test/resources/features'  // location of your feature files
+            '--plugin', 'json:target/cucumber-report-chrome.json',
+            '--plugin', 'html:target/cucumber-report-chrome.html',
+            '--glue', 'stepDef',
+            '--tags', "${tags}",
+            'src/test/resources/features'
     ]
+
+    doFirst {
+        systemProperty 'browser', 'chrome'
+    }
 }
 
+task cucumberFirefox(type: JavaExec) {
+    group = "verification"
+    description = "Run Cucumber tests on Firefox"
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "io.cucumber.core.cli.Main"
 
+    args = [
+            '--plugin', 'pretty',
+            '--plugin', 'json:target/cucumber-report-firefox.json',
+            '--plugin', 'html:target/cucumber-report-firefox.html',
+            '--glue', 'stepDef',
+            '--tags', "${tags}",
+            'src/test/resources/features'
+    ]
+
+    doFirst {
+        systemProperty 'browser', 'firefox'
+        systemProperty 'webdriver.gecko.driver', 'src/test/driver/geckodriver.exe'
+    }
+}
+
+task cucumberEdge(type: JavaExec) {
+    group = "verification"
+    description = "Run Cucumber tests on Edge"
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = "io.cucumber.core.cli.Main"
+
+    args = [
+            '--plugin', 'pretty',
+            '--plugin', 'json:target/cucumber-report-edge.json',
+            '--plugin', 'html:target/cucumber-report-edge.html',
+            '--glue', 'stepDef',
+            '--tags', "${tags}",
+            'src/test/resources/features'
+    ]
+
+    doFirst {
+        systemProperty 'browser', 'edge'
+    }
+}
+
+task runAllBrowsers {
+    dependsOn cucumberChrome, cucumberFirefox, cucumberEdge
+}
