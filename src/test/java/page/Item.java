@@ -16,5 +16,10 @@ public class Item {
     private  static By LaptopCat = By.xpath("//a[@onclick=\"byCat('notebook')\"]");
     private  static By MonitorCat = By.xpath("//a[@onclick=\"byCat('monitor')\"]");
 
-
+    public static By getProductTitleLocatorById(String productId, String expectedTitle) {
+        return By.xpath("//a[contains(@href, 'prod.html?idp_=" + productId + "') and contains(text(), '" + expectedTitle + "')]");
+    }
+    private static By getProductPriceLocator(String expectedPrice, String productId) {
+        return By.xpath("//a[contains(@href, 'prod.html?idp_=" + productId + "')]/following::h5[contains(text(), '" + expectedPrice + "')]");
+    }
 }
