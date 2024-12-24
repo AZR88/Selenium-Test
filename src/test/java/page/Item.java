@@ -91,4 +91,22 @@ public class Item {
         Assert.assertTrue(MonCat.isEnabled() && MonCat.isDisplayed());
         MonCat.click();
     }
+
+    public static void CheckHomebutton(WebDriver driver, String Text){
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement Home = wait.until(ExpectedConditions.visibilityOfElementLocated(HomeButton));
+
+
+        Assert.assertTrue(Home.isEnabled());
+    }
+
+    public static void CheckSignupbutton(WebDriver driver, String Text){
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement Sign = wait.until(ExpectedConditions.visibilityOfElementLocated(SignUpButton));
+
+        Assert.assertEquals(Sign.getText(),Text);
+        Assert.assertTrue(Sign.isEnabled());
+    }
 }
