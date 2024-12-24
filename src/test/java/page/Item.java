@@ -109,4 +109,22 @@ public class Item {
         Assert.assertEquals(Sign.getText(),Text);
         Assert.assertTrue(Sign.isEnabled());
     }
+
+    public static void CheckAboutbutton(WebDriver driver, String Text){
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement About = wait.until(ExpectedConditions.visibilityOfElementLocated(AboutUsButton));
+
+        Assert.assertEquals(About.getText(),Text);
+        Assert.assertTrue(About.isEnabled());
+    }
+
+    public static void CheckCartbutton(WebDriver driver, String Text){
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement Cart = wait.until(ExpectedConditions.visibilityOfElementLocated(CartButton));
+
+        Assert.assertEquals(Cart.getText(),Text);
+        Assert.assertTrue(Cart.isEnabled());
+    }
 }
