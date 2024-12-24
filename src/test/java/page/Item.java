@@ -53,4 +53,17 @@ public class Item {
 
         return actualTitle.equals(expectedTitle) && actualPrice.equals(expectedPrice);
     }
+
+    public static void ClickNext(WebDriver driver, String nextProductID, String nextProductTitle) throws InterruptedException {
+
+        driver.findElement(nextbutton).click();
+        Thread.sleep(5000);
+        By productTitleLocator = getProductTitleLocatorById(nextProductID, nextProductTitle);
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement productTitleElement = wait.until(ExpectedConditions.visibilityOfElementLocated(productTitleLocator));
+
+
+        Assert.assertEquals("Expected product title did not match", productTitleElement.getText(), nextProductTitle);
+    }
 }
