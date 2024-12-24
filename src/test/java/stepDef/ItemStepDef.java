@@ -11,6 +11,7 @@ import java.util.Map;
 import static Helper.WebHelper.driver;
 import static org.junit.Assert.assertTrue;
 import static page.Item.*;
+import static page.Item.CheckHomebutton;
 
 public class ItemStepDef {
 
@@ -109,6 +110,23 @@ public class ItemStepDef {
             assertTrue("Title atau Price tidak sesuai untuk produk dengan ID " + productId, isTitleAndPriceCorrect);
         }
     }
+
+    @When("user clik Category phone button")
+    public void userClikCategoryPhoneButton() {
+        page.Item.clickPhoneCategory(driver);
+    }
+
+    @When("user clik Category laptop button")
+    public void userClikCategoryLaptopButton() {
+        page.Item.clickLaptopCategory(driver);
+    }
+
+    @When("user clik Category Monitor button")
+    public void userClikCategoryMonitorButton() {
+        page.Item.clickMonitorCategory(driver);
+    }
+
+
 
 
 }
