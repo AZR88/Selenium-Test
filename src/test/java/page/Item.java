@@ -75,4 +75,20 @@ public class Item {
         Assert.assertTrue(PhonCat.isEnabled() && PhonCat.isDisplayed());
         PhonCat.click();
     }
+    public static void clickLaptopCategory(WebDriver driver)
+    {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement LapCat = wait.until(ExpectedConditions.visibilityOfElementLocated(LaptopCat));
+
+        Assert.assertTrue(LapCat.isEnabled() && LapCat.isDisplayed());
+        LapCat.click();
+    }
+    public static void clickMonitorCategory(WebDriver driver)
+    {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement MonCat = wait.until(ExpectedConditions.visibilityOfElementLocated(MonitorCat));
+
+        Assert.assertTrue(MonCat.isEnabled() && MonCat.isDisplayed());
+        MonCat.click();
+    }
 }
