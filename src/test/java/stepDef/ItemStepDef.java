@@ -83,4 +83,32 @@ public class ItemStepDef {
         page.Item.ClickNext(driver, arg0, arg1);
     }
 
+    @Then("check multiple titles and ids on next page")
+    public void checkMultipleTitlesAndIdsOnNextPage(DataTable dataTable) {
+        List<Map<String, String>> data = dataTable.asMaps(String.class, String.class);
+
+        for (Map<String, String> row : data) {
+            String productId = row.get("id");
+            String expectedTitle = row.get("title");
+            String expectedPrice = row.get("price");
+
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            boolean isTitleAndPriceCorrect = page.Item.isTitleAndPriceTextEqual(driver, productId, expectedTitle, expectedPrice);
+
+
+            System.out.println("ID Produk: " + productId);
+            System.out.println("Expected Title: " + expectedTitle);
+            System.out.println("Expected Price: " + expectedPrice);
+            System.out.println("Actual Title and Price: " + (isTitleAndPriceCorrect ? "Sesuai" : "Tidak Sesuai"));
+
+            assertTrue("Title atau Price tidak sesuai untuk produk dengan ID " + productId, isTitleAndPriceCorrect);
+        }
+    }
+
+
 }
