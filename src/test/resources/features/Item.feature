@@ -1,7 +1,7 @@
 Feature: Validate HomepageText
 
   Scenario: Validate navbar Text
-    Given  user is on homepage
+    Given  user is on homepage "https://www.demoblaze.com/"
     When check Navbar "Home" button
     Then Check "About us" button
     Then Chek "Contact" button
