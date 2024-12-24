@@ -127,4 +127,22 @@ public class Item {
         Assert.assertEquals(Cart.getText(),Text);
         Assert.assertTrue(Cart.isEnabled());
     }
+
+    public static void CheckLoginbutton(WebDriver driver, String Text){
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement Log = wait.until(ExpectedConditions.visibilityOfElementLocated(LoginButton));
+
+        Assert.assertEquals(Log.getText(),Text);
+        Assert.assertTrue(Log.isEnabled());
+    }
+
+    public static void Checkcontactbutton(WebDriver driver, String Text){
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement Cont = wait.until(ExpectedConditions.visibilityOfElementLocated(ContactButton));
+
+        Assert.assertEquals(Cont.getText(),Text);
+        Assert.assertTrue(Cont.isEnabled());
+    }
 }
