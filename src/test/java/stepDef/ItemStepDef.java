@@ -1,6 +1,7 @@
 package stepDef;
 
 import io.cucumber.datatable.DataTable;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
@@ -12,6 +13,13 @@ import static org.junit.Assert.assertTrue;
 import static page.Item.*;
 
 public class ItemStepDef {
+
+    @Given("user is on homepage")
+    public void userIsOnHomepage() {
+        page.Item.UrlCheck(driver,"https://www.demoblaze.com/");
+    }
+
+
     @When("check Navbar {string} button")
     public void checkNavbarButton(String arg0) {
         CheckHomebutton(driver,arg0);
@@ -68,6 +76,11 @@ public class ItemStepDef {
 
             assertTrue("Title atau Price tidak sesuai untuk produk dengan ID " + productId, isTitleAndPriceCorrect);
         }
+    }
+
+    @Then("click next to show next product where id = {string} and title = {string}")
+    public void clickNextToShowNextProductWhereTitleAndPrice(String arg0, String arg1) throws InterruptedException {
+        page.Item.ClickNext(driver, arg0, arg1);
     }
 
 }
