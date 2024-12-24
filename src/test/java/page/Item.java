@@ -66,4 +66,13 @@ public class Item {
 
         Assert.assertEquals("Expected product title did not match", productTitleElement.getText(), nextProductTitle);
     }
+
+    public static void clickPhoneCategory(WebDriver driver)
+    {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement PhonCat = wait.until(ExpectedConditions.visibilityOfElementLocated(PhoneCat));
+
+        Assert.assertTrue(PhonCat.isEnabled() && PhonCat.isDisplayed());
+        PhonCat.click();
+    }
 }
