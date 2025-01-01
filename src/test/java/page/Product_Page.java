@@ -44,4 +44,11 @@ public class Product_Page {
         Assert.assertTrue(ItemPic.isDisplayed());
     }
 
+    public static void clickAdd (WebDriver driver){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement Add = wait.until(ExpectedConditions.visibilityOfElementLocated(AddToCart));
+
+        Assert.assertTrue(Add.isDisplayed() && Add.isDisplayed());
+        Add.click();
+    }
 }
