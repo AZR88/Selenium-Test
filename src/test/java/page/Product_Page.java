@@ -23,10 +23,18 @@ public class Product_Page {
 
     public static void checkTitle(WebDriver driver, String Title) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement ItemTitle = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//your/xpath/here")));
+        WebElement ItemTitle = wait.until(ExpectedConditions.visibilityOfElementLocated(ProductTitle));
 
         Assert.assertTrue(ItemTitle.isEnabled());
         Assert.assertEquals(Title, ItemTitle.getText());
+    }
+
+    public static void checkPrice(WebDriver driver, String Price) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement ItemPrice = wait.until(ExpectedConditions.visibilityOfElementLocated(ProductPrice));
+
+        Assert.assertTrue(ItemPrice.isEnabled());
+        Assert.assertEquals(Price, ItemPrice.getText());
     }
 
 }
