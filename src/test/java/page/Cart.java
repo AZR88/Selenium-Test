@@ -7,6 +7,10 @@ public class Cart {
     public static By cartItemPrice = By.xpath("//tbody[@id='tbodyid']/tr[1]/td[3]");
     public static By DeleteItem = By.xpath("//tbody[@id='tbodyid']//tr[@class='success']//a[contains(text(),'Delete')]");
     public static By TotalPrice = By.id("totalp");
+    public static By OrderButton =  By.xpath("//button[text()='Place Order']");
+    public static By OrderDetail(String input) {
+        return By.id(input);
+    }
 
 }
 
