@@ -16,6 +16,7 @@ public class Cart {
     public static By TotalPrice = By.id("totalp");
     public static By OrderButton =  By.xpath("//button[text()='Place Order']");
     public static By Purchasebutton = By.xpath("//button[text()='Purchase']");
+
     public static By cartItemPrice (String ItemName) {
         return By.xpath("//tbody[@id='tbodyid']//tr[td[2][text()='"+ ItemName+"']]/td[3]");
     }

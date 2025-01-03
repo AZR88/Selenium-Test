@@ -1,5 +1,7 @@
+@Item
 Feature: Validate HomepageText
 
+  @Valid-navbar
   Scenario: Validate navbar Text
     Given  user is on homepage "https://www.demoblaze.com/"
     When check Navbar "Home" button
@@ -8,7 +10,7 @@ Feature: Validate HomepageText
     Then Check the "Cart" button
     Then Check a "Log in" button
     Then check "Sign up" buton
-
+  @Valid-Item
   Scenario: Validate multiple product titles in all category
     Given user is on homepage
     When check multiple titles and ids
@@ -26,6 +28,7 @@ Feature: Validate HomepageText
       | 12  | Dell i7 8gb         | $700    |
 
 
+  @Valid-Item-Phone
   Scenario: Validate multiple product titles in phone category
       Given user is on homepage
       When user clik Category phone button
@@ -36,6 +39,7 @@ Feature: Validate HomepageText
         | 4   | Samsung galaxy s7   | $800     |
         | 5   | Iphone 6 32gb       | $790     |
 
+  @Valid-Item-Laptop
   Scenario: Validate multiple product titles in Laptops category
     Given user is on homepage
     When user clik Category laptop button
@@ -46,6 +50,7 @@ Feature: Validate HomepageText
       | 11  | MacBook air         | $700     |
       | 13  | 2017 Dell 15.6 Inch | $700     |
 
+  @Valid-Item-Monitor
   Scenario: Validate multiple product titles in Monitors category
     Given user is on homepage
     When user clik Category Monitor button
