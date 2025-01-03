@@ -145,4 +145,18 @@ public class Item {
         Assert.assertEquals(Cont.getText(),Text);
         Assert.assertTrue(Cont.isEnabled());
     }
+
+    public static void selectItemByName(WebDriver driver, String itemName) {
+        // XPath untuk item berdasarkan nama
+        By itemLocator = By.xpath("//a[contains(text(), '" + itemName + "')]");
+
+        // Tunggu hingga elemen terlihat
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement itemElement = wait.until(ExpectedConditions.visibilityOfElementLocated(itemLocator));
+
+        // Verifikasi bahwa elemen tersedia dan klik elemen tersebut
+        Assert.assertTrue(itemElement.isDisplayed() && itemElement.isEnabled());
+        itemElement.click();
+    }
+
 }

@@ -65,6 +65,15 @@ public class Cart {
 
     }
 
+    public static void OrderData (WebDriver driver, String id, String input){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement Data = wait.until(ExpectedConditions.visibilityOfElementLocated(OrderDetail(id)));
+        Assert.assertTrue( Data.isDisplayed() && Data.isEnabled());
+        Data.sendKeys(input);
+        Assert.assertEquals(Data.getAttribute("value"), input);
+
+    }
+
     public static void CalculateTotalPrice(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
