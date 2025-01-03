@@ -16,6 +16,7 @@ public class Cart {
     public static By TotalPrice = By.id("totalp");
     public static By OrderButton =  By.xpath("//button[text()='Place Order']");
     public static By Purchasebutton = By.xpath("//button[text()='Purchase']");
+    public static By AllPrice = By.xpath("//tbody[@id='tbodyid']//tr/td[3]");
 
     public static By cartItemPrice (String ItemName) {
         return By.xpath("//tbody[@id='tbodyid']//tr[td[2][text()='"+ ItemName+"']]/td[3]");
@@ -48,32 +49,52 @@ public class Cart {
 
     }
 
+    public static void purchase (WebDriver driver){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement buy = wait.until(ExpectedConditions.visibilityOfElementLocated(Purchasebutton));
+        Assert.assertTrue(buy.isDisplayed() && buy.isEnabled());
+        buy.click();
+
+    }
+
+    public static void Order (WebDriver driver){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement order = wait.until(ExpectedConditions.visibilityOfElementLocated(OrderButton));
+        Assert.assertTrue(order.isDisplayed() && order.isEnabled());
+        order.click();
+
+    }
+
     public static void CalculateTotalPrice(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
-        // XPath untuk semua elemen harga di kolom ketiga (Price)
-        List<WebElement> prices = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(cartItemPrice));
+        try {
+            List<WebElement> prices = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(AllPrice));
+            int totalPriceCalculated = 0;
 
-        // Variabel untuk menyimpan total harga
-        int totalPriceCalculated = 0;
 
-        // Iterasi melalui setiap elemen harga dan jumlahkan
-        for (WebElement priceElement : prices) {
-            String priceText = priceElement.getText(); // Ambil teks harga
-            int price = Integer.parseInt(priceText.replaceAll("[^0-9]", "")); // Hapus karakter non-angka
-            totalPriceCalculated += price; // Tambahkan harga ke total
+            for (WebElement priceElement : prices) {
+                String priceText = priceElement.getText().trim();
+                if (!priceText.isEmpty()) {
+                    int price = Integer.parseInt(priceText.replaceAll("[^0-9]", ""));
+                    totalPriceCalculated += price;
+                }
+            }
+
+            WebElement totalPriceElement = wait.until(ExpectedConditions.visibilityOfElementLocated(TotalPrice));
+            String totalPriceText = totalPriceElement.getText().trim();
+            int totalPriceDisplayed = Integer.parseInt(totalPriceText.replaceAll("[^0-9]", ""));
+
+            Assert.assertEquals("Total price mismatch!", totalPriceCalculated, totalPriceDisplayed);
+
+            System.out.println("Total price calculated: " + totalPriceCalculated);
+            System.out.println("Total price displayed: " + totalPriceDisplayed);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Assert.fail("Error calculating total price: " + e.getMessage());
         }
-
-        // Verifikasi dengan elemen total harga di halaman
-        WebElement totalPriceElement = driver.findElement(TotalPrice); // Ambil elemen Total Price
-        String totalPriceText = totalPriceElement.getText();
-        int totalPriceDisplayed = Integer.parseInt(totalPriceText.replaceAll("[^0-9]", ""));
-
-        // Assert bahwa total yang dihitung sama dengan total yang ditampilkan
-        Assert.assertEquals(totalPriceCalculated, totalPriceDisplayed);
-        System.out.println("Total price calculated: " + totalPriceCalculated);
-        System.out.println("Total price displayed: " + totalPriceDisplayed);
     }
+
 
 }
 
