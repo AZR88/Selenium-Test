@@ -1,14 +1,9 @@
 Feature: Product Page Functionality
 
   Scenario: Verify the product title of a specific item
-    Given I select the product "Samsung Galaxy S6"
-    When I check the product title
-    Then the product title should be "Samsung Galaxy S6"
-
-  Scenario: Verify the product price of a specific item
-    Given I select the product "Samsung Galaxy S6"
-    When I check the product price
-    Then the product price should be "$360"
+    Given I select the product "Samsung galaxy s6"
+    Then Check The product title and it should be "Samsung galaxy s6"
+    Then Check The price and it should be "$360"
 
   Scenario: Verify the product image is displayed for a specific item
     Given I select the product "Samsung galaxy s6"

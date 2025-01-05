@@ -11,10 +11,9 @@ import java.time.Duration;
 
 public class Product_Page {
 
-
     public static By ProductPic = By.xpath("//div[@id='imgp']//img");
-    public static By ProductTitle = By.xpath("//h2[@class='name'");
-    public static By ProductPrice = By.xpath("//h3[@class='price-container']");
+    public static By ProductTitle = By.xpath("//h2[@class='name']");
+    public static By ProductPrice = By.xpath("//div[@id='tbodyid']/h3[@class='price-container']");
     public static By AddToCart= By.xpath("//a[@class='btn btn-success btn-lg' and text()='Add to cart']");
 
     public static By ProductDesc(String productdesc) {
@@ -29,13 +28,24 @@ public class Product_Page {
         Assert.assertEquals(Title, ItemTitle.getText());
     }
 
-    public static void checkPrice(WebDriver driver, String Price) {
+    public static void checkPrice(WebDriver driver, String expectedPrice) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement ItemPrice = wait.until(ExpectedConditions.visibilityOfElementLocated(ProductPrice));
+        WebElement itemPrice = wait.until(ExpectedConditions.visibilityOfElementLocated(ProductPrice));
 
-        Assert.assertTrue(ItemPrice.isDisplayed());
-        Assert.assertEquals(Price, ItemPrice.getText());
+        // Ambil teks penuh dari elemen
+        String fullText = itemPrice.getText();
+
+        // Ambil hanya bagian harga dari teks penuh
+        String actualPrice = fullText.split("\n")[0].replaceAll("[^\\d$.]", "").trim();
+
+        // Validasi bahwa elemen terlihat di halaman
+        Assert.assertTrue(itemPrice.isDisplayed());
+
+        // Validasi kesesuaian harga
+        Assert.assertEquals("Price mismatch! Expected: " + expectedPrice + ", but Actual: " + actualPrice, expectedPrice, actualPrice);
     }
+
+
 
     public static void checkPic(WebDriver driver){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
