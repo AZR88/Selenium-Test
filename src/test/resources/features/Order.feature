@@ -11,7 +11,7 @@ Feature: Product Page Functionality
     Then the product price should be "$360"
 
   Scenario: Verify the product image is displayed for a specific item
-    Given I select the product "Samsung Galaxy S6"
+    Given I select the product "Samsung galaxy s6"
     When I check the product image
     Then the product image should be visible
 
