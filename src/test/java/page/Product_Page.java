@@ -32,16 +32,10 @@ public class Product_Page {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement itemPrice = wait.until(ExpectedConditions.visibilityOfElementLocated(ProductPrice));
 
-        // Ambil teks penuh dari elemen
         String fullText = itemPrice.getText();
-
-        // Ambil hanya bagian harga dari teks penuh
         String actualPrice = fullText.split("\n")[0].replaceAll("[^\\d$.]", "").trim();
 
-        // Validasi bahwa elemen terlihat di halaman
         Assert.assertTrue(itemPrice.isDisplayed());
-
-        // Validasi kesesuaian harga
         Assert.assertEquals("Price mismatch! Expected: " + expectedPrice + ", but Actual: " + actualPrice, expectedPrice, actualPrice);
     }
 
