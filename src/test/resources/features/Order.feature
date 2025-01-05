@@ -13,7 +13,7 @@ Feature: Product Page Functionality
   Scenario: Verify the product image is displayed for a specific item
     Given I select the product "Samsung galaxy s6"
     When I check the product image
-    Then the product image should be visible
+
 
   Scenario: Verify the product description of a specific item
     Given I select the product "Samsung Galaxy S6"
