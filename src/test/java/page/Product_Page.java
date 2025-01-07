@@ -16,7 +16,7 @@ public class Product_Page {
     public static By ProductPrice = By.xpath("//div[@id='tbodyid']/h3[@class='price-container']");
     public static By AddToCart= By.xpath("//a[@class='btn btn-success btn-lg' and text()='Add to cart']");
 
-    public static By ProductDesc(String productdesc) {
+    public static By ProductDesc(WebDriver driver, String productdesc) {
         return By.xpath("//p[contains(text(),'"+ productdesc +"')]");
     }
 

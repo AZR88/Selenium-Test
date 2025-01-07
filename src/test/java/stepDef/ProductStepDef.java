@@ -21,4 +21,15 @@ public class ProductStepDef {
     public void theProductPriceShouldBe(String arg0) {
         Product_Page.checkPrice(driver, arg0);
     }
+
+    @Then("the product image should be displayed")
+    public void theProductImageShouldBeDisplayed() {
+        Product_Page.checkPic(driver);
+
+    }
+
+    @Then("the product description should contain {string}")
+    public void theProductDescriptionShouldContain(String arg0) {
+        Product_Page.ProductDesc(driver, arg0);
+    }
 }
