@@ -19,6 +19,6 @@ public class ProductStepDef {
 
     @Then("the product price should be {string}")
     public void theProductPriceShouldBe(String arg0) {
-        Product_Page.checkPrice();
+        Product_Page.checkPrice(driver, arg0);
     }
 }
