@@ -2,6 +2,7 @@ package stepDef;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import page.Cart;
 import page.Item;
 import page.Product_Page;
 
@@ -33,8 +34,10 @@ public class ProductStepDef {
         Product_Page.ProductDesc(driver, arg0);
     }
 
-    @When("the user clicks the {string} button")
-    public void theUserClicksTheButton(String arg0) {
-        Product_Page.clickAdd(driver);
+
+
+    @Then("the product {string} should be added to the cart successfully")
+    public void theProductShouldBeAddedToTheCartSuccessfully(String arg0) {
+        Cart.CheckTitle(driver, arg0);
     }
 }
