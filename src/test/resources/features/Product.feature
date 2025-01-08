@@ -12,4 +12,4 @@ Feature: Product Page Functionality
   Scenario: Add a specific product to the cart
     Given user is on homepage "https://www.demoblaze.com/"
     When the user clicks the "Add to cart" button
-    Then the product should be added to the cart successfully
+    Then the product "Samsung galaxy s6" should be added to the cart successfully
