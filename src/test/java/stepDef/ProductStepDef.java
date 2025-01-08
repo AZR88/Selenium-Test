@@ -32,4 +32,9 @@ public class ProductStepDef {
     public void theProductDescriptionShouldContain(String arg0) {
         Product_Page.ProductDesc(driver, arg0);
     }
+
+    @When("the user clicks the {string} button")
+    public void theUserClicksTheButton(String arg0) {
+        Product_Page.clickAdd(driver);
+    }
 }
