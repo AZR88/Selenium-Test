@@ -46,4 +46,9 @@ public class ProductStepDef {
     public void theUserClicksTheAddToCartButton() {
         Product_Page.clickAdd(driver);
     }
+
+    @Then("Show Alert Product Added")
+    public void showAlertProductAdded() {
+        Product_Page.AlertDetect(driver);
+    }
 }
