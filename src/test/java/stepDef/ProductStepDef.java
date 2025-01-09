@@ -40,4 +40,10 @@ public class ProductStepDef {
     public void theProductShouldBeAddedToTheCartSuccessfully(String arg0) {
         Cart.CheckTitle(driver, arg0);
     }
+
+
+    @Then("the user clicks the Add to cart button")
+    public void theUserClicksTheAddToCartButton() {
+        Product_Page.clickAdd(driver);
+    }
 }
