@@ -1,9 +1,7 @@
 package page;
 
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -55,4 +53,18 @@ public class Product_Page {
         Assert.assertTrue(Add.isDisplayed() && Add.isDisplayed());
         Add.click();
     }
+
+    public static  void AlertDetect (WebDriver driver) {
+            try {
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+                wait.until(ExpectedConditions.alertIsPresent());
+                Alert alert = driver.switchTo().alert();
+                System.out.println("Alert detected: " + alert.getText());
+                alert.accept();  // You can use alert.dismiss() if you want to dismiss the alert
+            } catch (WebDriverException e) {
+                System.out.println("No alert detected.");
+            }
+        }
+
+
 }
