@@ -33,4 +33,14 @@ public class OrderStepdefs {
     }
 
 
+    @Given("the user has added the item {string} to the cart")
+    public void theUserHasAddedTheItemToTheCart(String arg0) {
+        Item.selectItemByName(driver, arg0);
+        Product_Page.clickAdd(driver);
+    }
+
+    @When("Click Cart button")
+    public void clickCartButton() {
+        Item.ClickCartbutton(driver);
+    }
 }
