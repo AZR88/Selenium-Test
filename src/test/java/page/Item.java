@@ -145,6 +145,15 @@ public class Item {
         Assert.assertEquals(Cont.getText(),Text);
         Assert.assertTrue(Cont.isEnabled());
     }
+    public static void ClickCartbutton(WebDriver driver){
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement Cart = wait.until(ExpectedConditions.visibilityOfElementLocated(CartButton));
+
+        Assert.assertTrue(Cart.isEnabled());
+        Cart.click();
+    }
+
 
     public static void selectItemByName(WebDriver driver, String itemName) {
         // XPath untuk item berdasarkan nama
