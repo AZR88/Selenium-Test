@@ -1,15 +1,11 @@
 Feature: Shopping Cart Functionality
 
-  Scenario: Verify the price of a specific item in the cart
+  Scenario: Verify the price and title of a specific item in the cart
     Given the user has added the item "Samsung galaxy s6" to the cart
     When Click Cart button
-    Then the user checks the price of the item "Samsung Galaxy S6"
-    Then the displayed price should be "$360"
+    Then user checks the title of the item and it should be "Samsung galaxy s6"
+    Then the displayed price should be "360"
 
-  Scenario: Verify the title of a specific item in the cart
-    Given the user has added the item "Samsung Galaxy S6" to the cart
-    When the user checks the title of the item
-    Then the displayed title should be "Samsung Galaxy S6"
 
   Scenario: Delete an item from the cart
     Given the user has added the item "Samsung Galaxy S6" to the cart
