@@ -26,9 +26,9 @@ public class Cart {
         return By.id(input);
     }
 
-    public static void CheckPrice(WebDriver driver, String expectedPrice, String Itemname){
+    public static void CheckPrice(WebDriver driver, String expectedPrice){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-       WebElement price = wait.until(ExpectedConditions.visibilityOfElementLocated(cartItemPrice(Itemname)));
+       WebElement price = wait.until(ExpectedConditions.visibilityOfElementLocated(AllPrice));
         Assert.assertTrue(price.isDisplayed());
 
         Assert.assertEquals(expectedPrice, price.getText());
