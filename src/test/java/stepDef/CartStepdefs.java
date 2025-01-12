@@ -7,11 +7,9 @@ import page.Cart;
 import page.Item;
 import page.Product_Page;
 
-import java.sql.Driver;
-
 import static Helper.WebHelper.driver;
 
-public class OrderStepdefs {
+public class CartStepdefs {
     @Given("I select the product {string}")
     public void iSelectTheProduct(String arg0) {
         Item.selectItemByName(driver,arg0);
@@ -42,5 +40,15 @@ public class OrderStepdefs {
     @When("Click Cart button")
     public void clickCartButton() {
         Item.ClickCartbutton(driver);
+    }
+
+    @Then("user checks the title of the item and it should be {string}")
+    public void userChecksTheTitleOfTheItemAndItShouldBe(String arg0) {
+        Cart.CheckTitle(driver, arg0);
+    }
+
+    @Then("the displayed price should be {string}")
+    public void theDisplayedPriceShouldBe(String arg0) {
+        Cart.CheckPrice(driver, arg0);
     }
 }
