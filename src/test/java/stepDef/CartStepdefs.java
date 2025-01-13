@@ -51,4 +51,9 @@ public class CartStepdefs {
     public void theDisplayedPriceShouldBe(String arg0) {
         Cart.CheckPrice(driver, arg0);
     }
+
+    @When("the user deletes the item from the cart")
+    public void theUserDeletesTheItemFromTheCart() {
+        Cart.Delete(driver);
+    }
 }
