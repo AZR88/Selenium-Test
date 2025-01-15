@@ -102,11 +102,15 @@ public class CartStepdefs {
     @Then("the user fills in the following order details:")
         public void theUserFillsInTheFollowingOrderDetails(DataTable dataTable) {
             for (Map<String, String> row : dataTable.asMaps(String.class, String.class)) {
-                String fieldId = row.get("Field");  // ID field
-                String value = row.get("Value");    // Nilai yang akan dimasukkan ke dalam field
+                String fieldId = row.get("Field");
+                String value = row.get("Value");
 
-                // Panggil metode fillField dari FormHelper untuk mengisi field
-                Cart.fillField(driver, fieldId, value);
+                if (value != null && !value.trim().isEmpty()) {
+                    Cart.fillField(driver, fieldId, value);
+                } else {
+                    // Misalnya, jika kosong, kita abaikan atau bisa memberikan peringatan
+                    System.out.println("Field " + fieldId + " is left empty, skipping...");
+                }
             }
         }
 
