@@ -1,40 +1,60 @@
+@Cart
 Feature: Shopping Cart Functionality
 
+  @Valid-Cart
   Scenario: Verify the price and title of a specific item in the cart
     Given the user has added the item "Samsung galaxy s6" to the cart
     When Click Cart button
     Then user checks the title of the item and it should be "Samsung galaxy s6"
     Then the displayed price should be "360"
 
-
+  @Valid-Cart
   Scenario: Delete an item from the cart
-    Given the user has added the item "Samsung Galaxy S6" to the cart
-    When the user deletes the item from the cart
-    Then the item "Samsung Galaxy S6" should no longer be displayed in the cart
+    Given the user has added the item "Samsung galaxy s6" to the cart
+    When Click Cart button
+    Then the user deletes the item from the cart
+    Then the item "Samsung galaxy s6" should no longer be displayed in the cart
+    And total price should be "0"
 
+
+  @Valid-Cart
   Scenario: Verify the total price in the cart
     Given the user has added the following items to the cart:
       | Item Name          | Price  |
-      | Samsung Galaxy S6  | $360   |
-      | iPhone 6           | $500   |
-    When the user calculates the total price
+      | Samsung galaxy s6  | $360   |
+      | Nexus 6            | $650   |
+    When Click Cart button
     Then the total price displayed should match "$860"
 
-  Scenario: Place an order for items in the cart
-    Given the user has added items to the cart
-    When the user clicks the "Place Order" button
-    Then the order form should be displayed
 
+  @Valid-Cart
   Scenario: Complete a purchase
-    Given the user has opened the order form
-    When the user fills in the following order details:
+    Given  the user has added the item "Samsung galaxy s6" to the cart
+    When Click Cart button
+    Then the user clicks the "Place Order" button
+    Then the user fills in the following order details:
       | Field      | Value           |
-      | Name       | John Doe        |
-      | Country    | USA             |
-      | City       | New York        |
-      | Card       | 1234567890123456|
-      | Month      | December        |
-      | Year       | 2025            |
-    And the user clicks the "Purchase" button
-    Then the purchase should be completed successfully
-    And a confirmation message should be displayed
+      | name       | Agus            |
+      | country    | USA             |
+      | city       | New York        |
+      | card       | 1234567890123456|
+      | month      | December        |
+      | year       | 2025            |
+    And the user clicks the Purchase
+    Then the user click ok button to complete the purchase
+
+  @inValid-Cart
+  Scenario: Complete a purchase
+    Given  the user has added the item "Samsung galaxy s6" to the cart
+    When Click Cart button
+    Then the user clicks the "Place Order" button
+    Then the user fills in the following order details:
+      | Field      | Value           |
+      | name       |                 |
+      | country    | USA             |
+      | city       |                 |
+      | card       | 1234567890123456|
+      | month      | December        |
+      | year       | 2025            |
+    And the user clicks the Purchase
+    Then An alert Should be show up
