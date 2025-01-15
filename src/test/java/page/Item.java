@@ -101,6 +101,8 @@ public class Item {
         Assert.assertTrue(Home.isEnabled());
     }
 
+
+
     public static void CheckSignupbutton(WebDriver driver, String Text){
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -152,6 +154,15 @@ public class Item {
 
         Assert.assertTrue(Cart.isEnabled());
         Cart.click();
+    }
+
+    public static void ClickHomebutton(WebDriver driver){
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement Home = wait.until(ExpectedConditions.visibilityOfElementLocated(HomeButton));
+
+        Assert.assertTrue(Home.isEnabled());
+        Home.click();
     }
 
 
