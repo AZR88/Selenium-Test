@@ -121,7 +121,7 @@ public class CartStepdefs {
 
     @Then("the user click ok button to complete the purchase")
     public void theUserClickOkButtonToCompleteThePurchase() {
-        Cart.purchase(driver);
+        Cart.Confirmation(driver);
     }
 
     @Then("An alert Should be show up")
