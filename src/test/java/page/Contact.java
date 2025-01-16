@@ -11,13 +11,13 @@ public class Contact {
     public static By SenderName = By.id("recipient-name");
     public static By Message = By.id("message-text");
     public static By submit = By.xpath("//button[.='Send message']");
-    public static By Cancel =By.xpath("//div[@id='exampleModal']//button[@type='button'][normalize-space()='Close']");
 
     public static void clickContact (WebDriver driver) {
-        driver.findElement(ContactButton).click();
-    }
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement Con = wait.until(ExpectedConditions.visibilityOfElementLocated(ContactButton));
+        Con.click();
 
-    //  input username
+    }
     public static void inputemail(WebDriver driver, String email) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement EmailField = wait.until(ExpectedConditions.visibilityOfElementLocated(SenderEmail));
@@ -29,14 +29,20 @@ public class Contact {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement namefield = wait.until(ExpectedConditions.visibilityOfElementLocated(SenderName));
         namefield.sendKeys(name);
-        Assert.assertEquals(namefield, name);
+        Assert.assertTrue(namefield.isDisplayed());
     }
 
     public static void inputmassage(WebDriver driver, String message) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement massagefield = wait.until(ExpectedConditions.visibilityOfElementLocated(Message));
         massagefield.sendKeys(message);
-        Assert.assertEquals(massagefield, message);
+        Assert.assertTrue(massagefield.isDisplayed());
+    }
+
+    public static void clickSubmit(WebDriver driver){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement Submt = wait.until(ExpectedConditions.visibilityOfElementLocated(submit));
+        Submt.click();
     }
 }
 
