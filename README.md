@@ -53,7 +53,6 @@ To run on multiple browser :
 ```
 To run on selected browser :
 ```bash
-./gradlew cucumberFirefox
 ./gradlew cucumberChrome
 ./gradlew cucumberEdge
 ```
