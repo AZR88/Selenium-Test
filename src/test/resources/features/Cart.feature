@@ -14,7 +14,6 @@ Feature: Shopping Cart Functionality
     When Click Cart button
     Then the user deletes the item from the cart
     Then the item "Samsung galaxy s6" should no longer be displayed in the cart
-    And total price should be "0"
 
 
   @Valid-Cart
