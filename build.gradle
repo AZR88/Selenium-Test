@@ -1,5 +1,5 @@
 plugins {
-    id 'java'
+        id 'java'
 }
 
 repositories {
@@ -11,7 +11,7 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
     testImplementation 'org.junit.vintage:junit-vintage-engine:5.7.2'
 
-    implementation 'io.github.bonigarcia:webdrivermanager:5.5.3'
+    implementation 'io.github.bonigarcia:webdrivermanager:5.5.3' // WebDriverManager
     implementation 'io.cucumber:cucumber-java:7.12.0'
     testImplementation 'io.cucumber:cucumber-junit:7.12.0'
 
@@ -21,7 +21,7 @@ dependencies {
     testImplementation 'io.rest-assured:json-schema-validator:5.3.0'
     testImplementation 'org.assertj:assertj-core:3.24.0'
 
-    implementation 'org.seleniumhq.selenium:selenium-java:4.17.0'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.17.0' // Selenium
 }
 
 test {
@@ -40,7 +40,7 @@ def tags = (findProperty('tags') == null) ? 'not @exclude' : "${findProperty('ta
 task cucumberChrome(type: JavaExec) {
     group = "verification"
     description = "Run Cucumber tests on Chrome"
-    classpath = sourceSets.test.runtimeClasspath
+    classpath = sourceSets.test.runtimeClasspath + configurations.cucumberRuntime
     mainClass = "io.cucumber.core.cli.Main"
 
     args = [
@@ -57,26 +57,8 @@ task cucumberChrome(type: JavaExec) {
     }
 }
 
-task cucumberFirefox(type: JavaExec) {
-    group = "verification"
-    description = "Run Cucumber tests on Firefox"
-    classpath = sourceSets.test.runtimeClasspath
-    mainClass = "io.cucumber.core.cli.Main"
 
-    args = [
-            '--plugin', 'pretty',
-            '--plugin', 'json:target/cucumber-report-firefox.json',
-            '--plugin', 'html:target/cucumber-report-firefox.html',
-            '--glue', 'stepDef',
-            '--tags', "${tags}",
-            'src/test/resources/features'
-    ]
 
-    doFirst {
-        systemProperty 'browser', 'firefox'
-        systemProperty 'webdriver.gecko.driver', 'src/test/driver/geckodriver.exe'
-    }
-}
 
 task cucumberEdge(type: JavaExec) {
     group = "verification"
@@ -99,5 +81,5 @@ task cucumberEdge(type: JavaExec) {
 }
 
 task runAllBrowsers {
-    dependsOn cucumberChrome, cucumberFirefox, cucumberEdge
+    dependsOn cucumberChrome,  cucumberEdge
 }
