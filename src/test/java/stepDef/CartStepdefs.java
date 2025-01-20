@@ -5,6 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.datatable.DataTable;
+import org.junit.Assert;
 import page.Cart;
 import page.Item;
 import page.Product_Page;
@@ -17,6 +18,7 @@ public class CartStepdefs {
     @Given("I select the product {string}")
     public void iSelectTheProduct(String arg0) {
         Item.selectItemByName(driver,arg0);
+
     }
 
     @When("I check the product image")

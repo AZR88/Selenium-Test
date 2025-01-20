@@ -4,15 +4,15 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
+
+import org.junit.Assert;
+import org.openqa.selenium.WebElement;
+
 import page.Login_Page;
-
-import java.time.Duration;
-
 import static Helper.WebHelper.driver;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 
 public class LoginStepDef {
@@ -24,24 +24,35 @@ public class LoginStepDef {
     @When("user click Login button")
     public void userClickLoginButton() {
 
-        Login_Page.openLoginPage(driver);
+        WebElement loginbutton = Login_Page.openLoginPage(driver);
+        assertTrue(loginbutton.isDisplayed() && loginbutton.isEnabled());
+        loginbutton.click();
     }
 
 
     @And("user input username with {string}")
     public void userInputUsernameWith(String arg0) {
-        Login_Page.inputUsername(driver,arg0);
+           WebElement Inputuser = Login_Page.inputUsername(driver);
+           Inputuser.sendKeys(arg0);
+           String inputText = Inputuser.getAttribute("value");
+        assertTrue(Inputuser.isDisplayed()&& Inputuser.isEnabled());
+        assertEquals(arg0, inputText);
     }
 
     @And("user input password with {string}")
     public void userInputPasswordWith(String arg0) {
-        Login_Page.inputPassword(driver,arg0);
+        WebElement Inputpass = Login_Page.inputPassword(driver);
+        Inputpass.sendKeys(arg0);
+        String inputText = Inputpass.getAttribute("value");
+        assertTrue(Inputpass.isDisplayed()&& Inputpass.isEnabled());
+        assertEquals(inputText,arg0);
     }
 
     @And("user click submit")
-    public void userClickSubmit() throws InterruptedException {
-        Thread.sleep(1000);
-        Login_Page.clickSubmitButton(driver);
+    public void userClickSubmit() {
+        WebElement Submit = Login_Page.clickSubmitButton(driver);
+        assertTrue(Submit.isDisplayed() && Submit.isEnabled());
+        Submit.click();
     }
 
     @Then("user redirect to home page with {string} username displayed")
