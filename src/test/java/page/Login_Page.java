@@ -61,19 +61,17 @@ public class Login_Page {
         return actualUserID.contains(username);
     }
 
-    public static WebElement verifyLoginAlert(WebDriver driver) {
-            try {
-                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-                WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("yourElementId")));
-
-                System.out.println("Element found: " + element.getText());
-                return element;
-
-            } catch (TimeoutException e) {
-                System.out.println("Element tidak muncul dalam waktu yang ditentukan.");
-                return null; // Return null or handle it as per your requirement
-            }
-
+    public static boolean verifyLoginAlert(WebDriver driver) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.alertIsPresent());
+            return true;
+        } catch (TimeoutException e) {
+            System.out.println("No alert detected within the timeout.");
+            return false;
+        }
     }
 
+
 }
+
