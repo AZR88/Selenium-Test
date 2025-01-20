@@ -54,17 +54,21 @@ public class Product_Page {
         Add.click();
     }
 
-    public static  void AlertDetect (WebDriver driver) {
+    public static boolean isAlertPresent(WebDriver driver) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(ExpectedConditions.alertIsPresent());
-            Alert alert = driver.switchTo().alert();
-            System.out.println("Alert detected: " + alert.getText());
-            alert.accept();  // You can use alert.dismiss() if you want to dismiss the alert
-        } catch (WebDriverException e) {
-            System.out.println("No alert detected.");
+            return true;
+        } catch (TimeoutException e) {
+            System.out.println("No alert detected within the timeout.");
+            return false;
         }
     }
-
-
 }
+
+
+
+
+
+
+
