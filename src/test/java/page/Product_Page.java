@@ -55,16 +55,16 @@ public class Product_Page {
     }
 
     public static  void AlertDetect (WebDriver driver) {
-            try {
-                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-                wait.until(ExpectedConditions.alertIsPresent());
-                Alert alert = driver.switchTo().alert();
-                System.out.println("Alert detected: " + alert.getText());
-                alert.accept();  // You can use alert.dismiss() if you want to dismiss the alert
-            } catch (WebDriverException e) {
-                System.out.println("No alert detected.");
-            }
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.alertIsPresent());
+            Alert alert = driver.switchTo().alert();
+            System.out.println("Alert detected: " + alert.getText());
+            alert.accept();  // You can use alert.dismiss() if you want to dismiss the alert
+        } catch (WebDriverException e) {
+            System.out.println("No alert detected.");
         }
+    }
 
 
 }
