@@ -53,7 +53,6 @@ To run on multiple browser :
 ```
 To run on selected browser :
 ```bash
-./gradlew cucumberFirefox
 ./gradlew cucumberChrome
 ./gradlew cucumberEdge
 ```
@@ -62,7 +61,8 @@ To run specific tests (e.g., LoginTest):
 with Gradle:
 
 ```bash
-./gradlew test --tests "LoginTest"
+./gradlew cucumberChrome -Ptags="@Login"
+
 ```
 Test Reporting
 Test results are generated in the target (Maven) or build (Gradle) directories. You can view detailed reports in the following format:
