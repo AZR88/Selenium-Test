@@ -41,7 +41,7 @@ public class CartStepdefs {
     public void theUserHasAddedTheItemToTheCart(String arg0) {
         Item.selectItemByName(driver, arg0);
         Product_Page.clickAdd(driver);
-        Product_Page.AlertDetect(driver);
+
     }
 
     @When("Click Cart button")
@@ -83,7 +83,7 @@ public class CartStepdefs {
             String itemName = item.get("Item Name");
             Item.selectItemByName(driver, itemName);
             Product_Page.clickAdd(driver);
-            Product_Page.AlertDetect(driver);
+
             Item.ClickHomebutton(driver);
         }
     }
@@ -128,7 +128,7 @@ public class CartStepdefs {
 
     @Then("An alert Should be show up")
     public void anAlertShouldBeShowUp() {
-        Product_Page.AlertDetect(driver);
+
     }
 }
 

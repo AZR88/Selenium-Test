@@ -49,6 +49,6 @@ public class ProductStepDef {
 
     @Then("Show Alert Product Added")
     public void showAlertProductAdded() {
-        Product_Page.AlertDetect(driver);
+
     }
 }

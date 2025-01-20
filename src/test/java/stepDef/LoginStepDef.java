@@ -7,6 +7,7 @@ import io.cucumber.java.en.When;
 
 
 import org.junit.Assert;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebElement;
 
 import page.Login_Page;
@@ -63,8 +64,16 @@ public class LoginStepDef {
 
     @Then("show invalid login notification")
     public void showInvalidLoginNotification() {
-        Login_Page.verifyLoginAlert(driver);
+        boolean isAlertPresent = Login_Page.verifyLoginAlert(driver);
+        Assert.assertTrue("No alert detected.", isAlertPresent);
+
+
     }
+
+
+
+
+
 
 
 

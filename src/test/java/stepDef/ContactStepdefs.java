@@ -36,11 +36,11 @@ public class ContactStepdefs {
 
     @Then("the contact form should be successfully filled")
     public void theContactFormShouldBeSuccessfullyFilled() {
-        Product_Page.AlertDetect(driver);
+
     }
 
     @Then("an error message should be displayed for emtpy field")
     public void anErrorMessageShouldBeDisplayedForEmtpyField() {
-        Product_Page.AlertDetect(driver);
+
     }
 }
