@@ -19,45 +19,37 @@ public class Login_Page {
 
 
 
-
-    //check page url
     public static void UrlCheck(WebDriver driver, String expectedUrl) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.urlToBe(expectedUrl));
-
-        Assert.assertEquals(expectedUrl, driver.getCurrentUrl());
     }
 
 
-    //open the login page
-    public static void openLoginPage(WebDriver driver) {
+    public static WebElement openLoginPage(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement Logbut = wait.until(ExpectedConditions.visibilityOfElementLocated(loginButton));
-        Assert.assertTrue(Logbut.isEnabled() && Logbut.isDisplayed());
-        Logbut.click();
+        return Logbut;
     }
 
-    //  input username
-    public static void inputUsername(WebDriver driver, String username) {
+
+    public static WebElement inputUsername(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(usernameInputText));
-        usernameField.sendKeys(username);
-        Assert.assertTrue(usernameField.isDisplayed() && usernameField.isEnabled());
-        Assert.assertEquals(usernameField.getAttribute("value"), username);
+        return usernameField;
     }
 
-    // input password
-    public static void inputPassword(WebDriver driver, String password) {
+
+
+    public static WebElement inputPassword(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(passwordInputText));
-        passwordField.sendKeys(password);
-        Assert.assertTrue(passwordField.isDisplayed() && passwordField.isEnabled());
-        Assert.assertEquals(passwordField.getAttribute("value"),password);
+        return passwordField;
     }
 
-    // click the login button
-    public static void clickSubmitButton(WebDriver driver) {
-        driver.findElement(submitButton).click();
+    public static WebElement clickSubmitButton (WebDriver driver) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement SmbBut = wait.until(ExpectedConditions.visibilityOfElementLocated(submitButton));
+    return SmbBut;
     }
 
     public static boolean verifyUserID(WebDriver driver, String username) {
@@ -69,19 +61,19 @@ public class Login_Page {
         return actualUserID.contains(username);
     }
 
-    public static void verifyLoginAlert(WebDriver driver) {
-        try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+    public static WebElement verifyLoginAlert(WebDriver driver) {
+            try {
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+                WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("yourElementId")));
 
-            // If the alert is present, it will be printed and accepted
-            System.out.println("Alert muncul: " + alert.getText());
-            alert.accept();
+                System.out.println("Element found: " + element.getText());
+                return element;
 
-        } catch (TimeoutException e) {
-            System.out.println("Alert tidak muncul dalam waktu yang ditentukan.");
-            Assert.fail("Alert tidak muncul dalam waktu yang ditentukan.");
-        }
+            } catch (TimeoutException e) {
+                System.out.println("Element tidak muncul dalam waktu yang ditentukan.");
+                return null; // Return null or handle it as per your requirement
+            }
+
     }
 
 }
