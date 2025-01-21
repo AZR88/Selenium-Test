@@ -46,22 +46,20 @@ public class Product_Page {
         Assert.assertTrue(ItemPic.isDisplayed());
     }
 
-    public static void clickAdd (WebDriver driver){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement Add = wait.until(ExpectedConditions.visibilityOfElementLocated(AddToCart));
+    public static WebElement clickAdd (WebDriver driver){
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+                WebElement Add = wait.until(ExpectedConditions.visibilityOfElementLocated(AddToCart));
+                return Add;
+            }
 
-        Assert.assertTrue(Add.isDisplayed() && Add.isDisplayed());
-        Add.click();
-    }
-
-    public static boolean isAlertPresent(WebDriver driver) {
-        try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            wait.until(ExpectedConditions.alertIsPresent());
-            return true;
-        } catch (TimeoutException e) {
-            System.out.println("No alert detected within the timeout.");
-            return false;
+            public static boolean isAlertPresent(WebDriver driver) {
+                try {
+                    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+                    wait.until(ExpectedConditions.alertIsPresent());
+                    return true;
+                } catch (TimeoutException e) {
+                    System.out.println("No alert detected within the timeout.");
+                    return false;
         }
     }
 }
