@@ -45,7 +45,7 @@ public class LoginStepDef {
         Inputpass.sendKeys(arg0);
         String inputText = Inputpass.getAttribute("value");
         assertTrue(Inputpass.isDisplayed()&& Inputpass.isEnabled());
-        assertEquals(inputText,arg0);
+        assertEquals(arg0, inputText);
     }
 
     @And("user click submit")
