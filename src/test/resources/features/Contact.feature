@@ -7,8 +7,8 @@ Feature: Contact
     Then the user enters their email "Agus@example.com"
     And the user enters their name "Agus"
     And the user enters their message " this is Test message"
-    And the user click Submit
-    Then the contact form should be successfully filled
+    Then the user click Submit
+
 
   Scenario: User submits the form with invalid email
     Given user is on homepage "https://www.demoblaze.com/"

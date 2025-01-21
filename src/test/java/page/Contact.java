@@ -12,37 +12,44 @@ public class Contact {
     public static By Message = By.id("message-text");
     public static By submit = By.xpath("//button[.='Send message']");
 
-    public static void clickContact (WebDriver driver) {
+    public static WebElement clickContact (WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement Con = wait.until(ExpectedConditions.visibilityOfElementLocated(ContactButton));
-        Con.click();
-
+        return Con;
     }
-    public static void inputemail(WebDriver driver, String email) {
+    public static WebElement inputemail(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement EmailField = wait.until(ExpectedConditions.visibilityOfElementLocated(SenderEmail));
-        EmailField.sendKeys(email);
-        Assert.assertTrue(EmailField.isDisplayed());
+        return EmailField;
     }
 
-    public static void inputname(WebDriver driver, String name) {
+    public static WebElement inputname(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement namefield = wait.until(ExpectedConditions.visibilityOfElementLocated(SenderName));
-        namefield.sendKeys(name);
-        Assert.assertTrue(namefield.isDisplayed());
+        return namefield;
     }
 
-    public static void inputmassage(WebDriver driver, String message) {
+    public static WebElement inputmassage(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement massagefield = wait.until(ExpectedConditions.visibilityOfElementLocated(Message));
-        massagefield.sendKeys(message);
-        Assert.assertTrue(massagefield.isDisplayed());
+        return massagefield;
     }
 
-    public static void clickSubmit(WebDriver driver){
+    public static WebElement clickSubmit(WebDriver driver){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement Submt = wait.until(ExpectedConditions.visibilityOfElementLocated(submit));
-        Submt.click();
+        return Submt;
+    }
+
+    public static boolean verifyAlert(WebDriver driver) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.alertIsPresent());
+            return true;
+        } catch (TimeoutException e) {
+            System.out.println("No alert detected within the timeout.");
+            return false;
+        }
     }
 }
 
