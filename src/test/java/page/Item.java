@@ -147,36 +147,29 @@ public class Item {
         Assert.assertEquals(Cont.getText(),Text);
         Assert.assertTrue(Cont.isEnabled());
     }
-    public static void ClickCartbutton(WebDriver driver){
+    public static WebElement ClickCartbutton(WebDriver driver){
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement Cart = wait.until(ExpectedConditions.visibilityOfElementLocated(CartButton));
 
-        Assert.assertTrue(Cart.isEnabled());
-        Cart.click();
+        return  Cart;
     }
 
-    public static void ClickHomebutton(WebDriver driver){
+    public static WebElement ClickHomebutton(WebDriver driver){
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement Home = wait.until(ExpectedConditions.visibilityOfElementLocated(HomeButton));
-
-        Assert.assertTrue(Home.isEnabled());
-        Home.click();
+        return Home;
     }
 
 
-    public static void selectItemByName(WebDriver driver, String itemName) {
-        // XPath untuk item berdasarkan nama
+    public static WebElement selectItemByName(WebDriver driver, String itemName) {
         By itemLocator = By.xpath("//a[contains(text(), '" + itemName + "')]");
-
-        // Tunggu hingga elemen terlihat
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement itemElement = wait.until(ExpectedConditions.visibilityOfElementLocated(itemLocator));
-
-        // Verifikasi bahwa elemen tersedia dan klik elemen tersebut
-        Assert.assertTrue(itemElement.isDisplayed() && itemElement.isEnabled());
-        itemElement.click();
+        return itemElement;
     }
+
+
 
 }
