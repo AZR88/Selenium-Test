@@ -17,52 +17,39 @@ public class SignUp_Page {
 
 
 
-    public static void openSignupPage(WebDriver driver) {
+    public static WebElement openSignupPage(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement SignBut = wait.until(ExpectedConditions.visibilityOfElementLocated(SignUpButton));
-        Assert.assertTrue(SignBut.isEnabled() && SignBut.isDisplayed());
-        SignBut.click();
-
+        return SignBut;
     }
 
-    public static void SignUpusernameInput(WebDriver driver, String username) {
+    public static WebElement SignUpusernameInput(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(SignUpusernameInput));
-        usernameField.sendKeys(username);
-        Assert.assertTrue(usernameField.isDisplayed() && usernameField.isEnabled());
-        Assert.assertEquals(usernameField.getAttribute("value"), username);
+        return usernameField;
     }
 
-    public static void SignUppasswordInput(WebDriver driver, String password) {
+    public static WebElement SignUppasswordInput(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(SignUppasswordInput));
-        passwordField.sendKeys(password);
-        Assert.assertTrue(passwordField.isDisplayed() && passwordField.isEnabled());
-        Assert.assertEquals(passwordField.getAttribute("value"), password);
+        return passwordField;
     }
 
-    public static void ClikSubmit(WebDriver driver) {
+    public static WebElement ClikSubmit(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement SubmitBut = wait.until(ExpectedConditions.visibilityOfElementLocated(SubmitButton));
-
-        Assert.assertTrue(SubmitBut.isEnabled() && SubmitBut.isDisplayed());
-        SubmitBut.click();
-
+        return SubmitBut;
     }
 
-    public static void verifySignupAlert(WebDriver driver) {
-            try {
-                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-                Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-
-                // If the alert is present, it will be printed and accepted
-                System.out.println("Alert muncul: " + alert.getText());
-                alert.accept();
-
-            } catch (TimeoutException e) {
-                System.out.println("Alert tidak muncul dalam waktu yang ditentukan.");
-                Assert.fail("Alert tidak muncul dalam waktu yang ditentukan.");
-            }
+    public static boolean verifySignupAlert(WebDriver driver) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.alertIsPresent());
+            return true;
+        } catch (TimeoutException e) {
+            System.out.println("No alert detected within the timeout.");
+            return false;
+        }
         }
 
     }
