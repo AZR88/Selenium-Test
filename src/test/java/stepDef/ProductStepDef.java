@@ -38,7 +38,7 @@ public class ProductStepDef {
 
     @Then("the product {string} should be added to the cart successfully")
     public void theProductShouldBeAddedToTheCartSuccessfully(String arg0) {
-        Cart.CheckTitle(driver, arg0);
+        Cart.CheckTitle(driver);
     }
 
 
