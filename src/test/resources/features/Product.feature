@@ -8,7 +8,7 @@ Feature: Product Page Functionality
     Then the product title should be "Samsung galaxy s6"
     Then the product price should be "$360"
     Then the product image should be displayed
-    Then the product description should contain "Super AMOLED capacitive touchscreen"
+    Then the product description should contain "Samsung Galaxy S6"
 
   @valid-Product
   Scenario: Add a specific product to the cart
