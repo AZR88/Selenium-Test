@@ -20,7 +20,7 @@ Feature: Validate HomepageText
       | 5   | Iphone 6 32gb       | $790     |
       | 7   | HTC One M9          | $700     |
 
-    Then click next to show next product where id = "10" and title = "Apple monitor 24"
+    Then click next to show next product where id = "10" and title = "Apple monitor 24" and price = "$400"
     Then check multiple titles and ids on next page
       | id  | title               | price   |
       | 10  | Apple monitor 24    | $400    |
