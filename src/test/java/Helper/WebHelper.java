@@ -21,7 +21,7 @@ public class WebHelper {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
                     ChromeOptions chromeOptions = new ChromeOptions();
-                    chromeOptions.addArguments("--headless");
+
                     chromeOptions.addArguments("--headless");
                     chromeOptions.addArguments("--no-sandbox");
                     chromeOptions.addArguments("--disable-dev-shm-usage");
@@ -39,7 +39,7 @@ public class WebHelper {
                     FirefoxOptions firefoxOptions = new FirefoxOptions();
                     firefoxOptions.addArguments("--no-sandbox");
                     firefoxOptions.addArguments("--disable-dev-shm-usage");
-                    firefoxOptions.addArguments("--disable-gpu"); // Tambahan untuk stabilitas
+                    firefoxOptions.addArguments("--disable-gpu");
                     firefoxOptions.addArguments("--window-size=1920,1080");
                     firefoxOptions.addArguments("--headless");
                     driver = new FirefoxDriver(firefoxOptions);
@@ -48,6 +48,7 @@ public class WebHelper {
                 case "edge":
                     WebDriverManager.edgedriver().setup();
                     EdgeOptions edgeOptions = new EdgeOptions();
+                    edgeOptions.addArguments("--headless");
                     edgeOptions.addArguments("--no-sandbox");
                     edgeOptions.addArguments("--disable-dev-shm-usage");
                     edgeOptions.addArguments("--remote-allow-origins=*");
