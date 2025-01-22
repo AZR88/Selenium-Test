@@ -14,36 +14,31 @@ public class Product_Page {
     public static By ProductPrice = By.xpath("//div[@id='tbodyid']/h3[@class='price-container']");
     public static By AddToCart= By.xpath("//a[@class='btn btn-success btn-lg' and text()='Add to cart']");
 
-    public static By ProductDesc(WebDriver driver, String productdesc) {
-        return By.xpath("//p[contains(text(),'"+ productdesc +"')]");
+    public static WebElement ProductDesc(WebDriver driver, String productdesc) {
+        By descLocator = By.xpath("//p[contains(text(),'" + productdesc + "')]");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(descLocator));
     }
 
-    public static void checkTitle(WebDriver driver, String Title) {
+
+    public static WebElement checkTitle(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement ItemTitle = wait.until(ExpectedConditions.visibilityOfElementLocated(ProductTitle));
-
-        Assert.assertTrue(ItemTitle.isDisplayed());
-        Assert.assertEquals(Title, ItemTitle.getText());
+        return ItemTitle;
     }
 
-    public static void checkPrice(WebDriver driver, String expectedPrice) {
+    public static WebElement checkPrice(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement itemPrice = wait.until(ExpectedConditions.visibilityOfElementLocated(ProductPrice));
-
-        String fullText = itemPrice.getText();
-        String actualPrice = fullText.split("\n")[0].replaceAll("[^\\d$.]", "").trim();
-
-        Assert.assertTrue(itemPrice.isDisplayed());
-        Assert.assertEquals("Price mismatch! Expected: " + expectedPrice + ", but Actual: " + actualPrice, expectedPrice, actualPrice);
+        return  itemPrice;
     }
 
 
 
-    public static void checkPic(WebDriver driver){
+    public static WebElement checkPic(WebDriver driver){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement ItemPic = wait.until(ExpectedConditions.visibilityOfElementLocated(ProductPic));
-
-        Assert.assertTrue(ItemPic.isDisplayed());
+        return ItemPic;
     }
 
     public static WebElement clickAdd (WebDriver driver){
