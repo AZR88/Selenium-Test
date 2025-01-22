@@ -1,5 +1,6 @@
 package page;
 
+import org.checkerframework.checker.units.qual.C;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -30,15 +31,10 @@ public class Item {
         return By.xpath("//a[contains(@href, 'prod.html?idp_=" + productId + "')]/following::h5[contains(text(), '" + expectedPrice + "')]");
     }
 
-    public static void UrlCheck(WebDriver driver, String expectedUrl) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        wait.until(ExpectedConditions.urlToBe(expectedUrl));
 
-        Assert.assertEquals(expectedUrl, driver.getCurrentUrl());
-    }
+
 
     public static boolean isTitleAndPriceTextEqual(WebDriver driver, String productId, String expectedTitle, String expectedPrice) {
-
         By productTitleLocator = getProductTitleLocatorById(productId, expectedTitle);
         By productPriceLocator = getProductPriceLocator(expectedPrice, productId);
 
@@ -46,106 +42,83 @@ public class Item {
         WebElement titleElement = wait.until(ExpectedConditions.visibilityOfElementLocated(productTitleLocator));
         String actualTitle = titleElement.getText();
 
-
         WebElement priceElement = wait.until(ExpectedConditions.visibilityOfElementLocated(productPriceLocator));
         String actualPrice = priceElement.getText();
-
 
         return actualTitle.equals(expectedTitle) && actualPrice.equals(expectedPrice);
     }
 
-    public static void ClickNext(WebDriver driver, String nextProductID, String nextProductTitle) throws InterruptedException {
 
-        driver.findElement(nextbutton).click();
-        Thread.sleep(5000);
-        By productTitleLocator = getProductTitleLocatorById(nextProductID, nextProductTitle);
-
+    public static WebElement ClickNext(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement productTitleElement = wait.until(ExpectedConditions.visibilityOfElementLocated(productTitleLocator));
-
-
-        Assert.assertEquals("Expected product title did not match", productTitleElement.getText(), nextProductTitle);
+        WebElement Next = wait.until(ExpectedConditions.visibilityOfElementLocated(nextbutton));
+        return Next;
     }
 
-    public static void clickPhoneCategory(WebDriver driver)
+    public static WebElement clickPhoneCategory(WebDriver driver)
     {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement PhonCat = wait.until(ExpectedConditions.visibilityOfElementLocated(PhoneCat));
-
-        Assert.assertTrue(PhonCat.isEnabled() && PhonCat.isDisplayed());
-        PhonCat.click();
+        return PhonCat;
     }
-    public static void clickLaptopCategory(WebDriver driver)
+    public static WebElement clickLaptopCategory(WebDriver driver)
     {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement LapCat = wait.until(ExpectedConditions.visibilityOfElementLocated(LaptopCat));
 
-        Assert.assertTrue(LapCat.isEnabled() && LapCat.isDisplayed());
-        LapCat.click();
+        return LapCat;
     }
-    public static void clickMonitorCategory(WebDriver driver)
+
+    public static WebElement clickMonitorCategory(WebDriver driver)
     {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement MonCat = wait.until(ExpectedConditions.visibilityOfElementLocated(MonitorCat));
-
-        Assert.assertTrue(MonCat.isEnabled() && MonCat.isDisplayed());
-        MonCat.click();
+        return MonCat;
     }
 
-    public static void CheckHomebutton(WebDriver driver, String Text){
+    public static WebElement CheckHomebutton(WebDriver driver){
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement Home = wait.until(ExpectedConditions.visibilityOfElementLocated(HomeButton));
-
-
-        Assert.assertTrue(Home.isEnabled());
+        return Home;
     }
 
 
 
-    public static void CheckSignupbutton(WebDriver driver, String Text){
+    public static WebElement CheckSignupbutton(WebDriver driver){
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement Sign = wait.until(ExpectedConditions.visibilityOfElementLocated(SignUpButton));
-
-        Assert.assertEquals(Sign.getText(),Text);
-        Assert.assertTrue(Sign.isEnabled());
+        return  Sign;
     }
 
-    public static void CheckAboutbutton(WebDriver driver, String Text){
+    public static WebElement CheckAboutbutton(WebDriver driver){
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement About = wait.until(ExpectedConditions.visibilityOfElementLocated(AboutUsButton));
-
-        Assert.assertEquals(About.getText(),Text);
-        Assert.assertTrue(About.isEnabled());
+        return About;
     }
 
-    public static void CheckCartbutton(WebDriver driver, String Text){
+    public static WebElement CheckCartbutton(WebDriver driver){
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement Cart = wait.until(ExpectedConditions.visibilityOfElementLocated(CartButton));
 
-        Assert.assertEquals(Cart.getText(),Text);
-        Assert.assertTrue(Cart.isEnabled());
+        return Cart;
     }
 
-    public static void CheckLoginbutton(WebDriver driver, String Text){
+    public static WebElement CheckLoginbutton(WebDriver driver){
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement Log = wait.until(ExpectedConditions.visibilityOfElementLocated(LoginButton));
-
-        Assert.assertEquals(Log.getText(),Text);
-        Assert.assertTrue(Log.isEnabled());
+        return Log;
     }
 
-    public static void Checkcontactbutton(WebDriver driver, String Text){
+    public static WebElement Checkcontactbutton(WebDriver driver){
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement Cont = wait.until(ExpectedConditions.visibilityOfElementLocated(ContactButton));
-
-        Assert.assertEquals(Cont.getText(),Text);
-        Assert.assertTrue(Cont.isEnabled());
+        return Cont;
     }
     public static WebElement ClickCartbutton(WebDriver driver){
 
