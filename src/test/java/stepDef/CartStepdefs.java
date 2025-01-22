@@ -91,17 +91,21 @@ public class CartStepdefs {
         List<Map<String, String>> items = dataTable.asMaps(String.class, String.class);
 
         for (Map<String, String> item : items) {
+
             String itemName = item.get("Item Name");
             WebElement name = Item.selectItemByName(driver, itemName);
             assertTrue(name.isDisplayed() && name.isEnabled());
             name.click();
+
             WebElement add = Product_Page.clickAdd(driver);
             assertTrue(add.isDisplayed() && add.isEnabled());
             add.click();
+
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             Alert alert = wait.until(ExpectedConditions.alertIsPresent());
             assertTrue("No alert detected.", alert != null);
             alert.accept();
+
             WebElement button = Item.ClickHomebutton(driver);
             assertTrue(button.isDisplayed() && button.isEnabled());
             button.click();
