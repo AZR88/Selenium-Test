@@ -22,9 +22,9 @@ public class SignUpStepDef {
     @And("user input username  with {string}")
     public void userInputUsernameWith(String arg0) {
         WebElement inputUsername = SignUp_Page.SignUpusernameInput(driver);
-        String data = inputUsername.getAttribute("value");
         assertTrue(inputUsername.isDisplayed() && inputUsername.isEnabled());
         inputUsername.sendKeys(arg0);
+        String data = inputUsername.getAttribute("value");
         assertEquals(arg0,data);
 
     }
@@ -32,9 +32,9 @@ public class SignUpStepDef {
     @And("user input password  with {string}")
     public void userInputPasswordWith(String arg0) {
         WebElement inputpass = SignUp_Page.SignUppasswordInput(driver);
-        String data = inputpass.getAttribute("value");
         assertTrue(inputpass.isDisplayed() && inputpass.isEnabled());
         inputpass.sendKeys(arg0);
+        String data = inputpass.getAttribute("value");
         assertEquals(arg0,data);
     }
 
