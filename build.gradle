@@ -46,7 +46,7 @@ task cucumberChrome(type: JavaExec) {
     args = [
             '--plugin', 'pretty',
             '--plugin', 'json:reports/cucumber-report-chrome.json',
-            '--plugin', 'html:reports/cucumber-report-chrome.html',
+            '--plugin', 'html:reports/index.html',
             '--glue', 'stepDef',
             '--tags', "${tags}",
             'src/test/resources/features'
@@ -69,7 +69,7 @@ task cucumberEdge(type: JavaExec) {
     args = [
             '--plugin', 'pretty',
             '--plugin', 'json:reports/cucumber-report-edge.json',
-            '--plugin', 'html:reports/cucumber-report-edge.html',
+            '--plugin', 'html:reports/index.html',
             '--glue', 'stepDef',
             '--tags', "${tags}",
             'src/test/resources/features'
