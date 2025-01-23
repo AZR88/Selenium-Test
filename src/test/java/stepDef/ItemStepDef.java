@@ -84,12 +84,6 @@ public class ItemStepDef {
 
             boolean isTitleAndPriceCorrect = page.Item.isTitleAndPriceTextEqual(driver, productId, expectedTitle, expectedPrice);
 
-
-            System.out.println("ID Produk: " + productId);
-            System.out.println("Expected Title: " + expectedTitle);
-            System.out.println("Expected Price: " + expectedPrice);
-            System.out.println("Actual Title and Price: " + (isTitleAndPriceCorrect ? "Sesuai" : "Tidak Sesuai"));
-
             assertTrue("Title atau Price tidak sesuai untuk produk dengan ID " + productId, isTitleAndPriceCorrect);
         }
     }
@@ -113,11 +107,6 @@ public class ItemStepDef {
 
             boolean isTitleAndPriceCorrect = page.Item.isTitleAndPriceTextEqual(driver, productId, expectedTitle, expectedPrice);
 
-
-            System.out.println("ID Produk: " + productId);
-            System.out.println("Expected Title: " + expectedTitle);
-            System.out.println("Expected Price: " + expectedPrice);
-            System.out.println("Actual Title and Price: " + (isTitleAndPriceCorrect ? "Sesuai" : "Tidak Sesuai"));
 
             assertTrue("Title atau Price tidak sesuai untuk produk dengan ID " + productId, isTitleAndPriceCorrect);
         }
