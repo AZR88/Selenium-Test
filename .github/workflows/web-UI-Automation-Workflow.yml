@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  RunTest:
 
     runs-on: ubuntu-latest
     permissions:
@@ -37,4 +37,13 @@ jobs:
     - name : Execute test
       run: ./gradlew cucumberChrome
           
+    # Archive Test Result
+    - name : Archive Test Result
+      uses: actions/upload-artifact@v4.6.0
+      if: always()
+      with:
+        name: cucumber Report
+        # A file, directory or wildcard pattern that describes what to upload
+        path: 
   
+          
