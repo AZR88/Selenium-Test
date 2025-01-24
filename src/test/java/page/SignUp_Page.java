@@ -25,17 +25,17 @@ public class SignUp_Page {
         }
     }
 
-    public static String SignUpusernameInput(WebDriver driver) {
+    public static String SignUpusernameInput(WebDriver driver, String name) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(SignUpusernameInput));
-        usernameField.sendKeys();
+        usernameField.sendKeys(name);
         return usernameField.getAttribute("value");
     }
 
-    public static String SignUppasswordInput(WebDriver driver) {
+    public static String SignUppasswordInput(WebDriver driver, String password) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(SignUppasswordInput));
-        passwordField.sendKeys();
+        passwordField.sendKeys(password);
         return passwordField.getAttribute("value");
     }
 
