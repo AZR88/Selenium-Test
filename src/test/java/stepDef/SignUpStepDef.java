@@ -18,13 +18,13 @@ public class SignUpStepDef {
 
     @And("user input username  with {string}")
     public void userInputUsernameWith(String username) {
-        String Value = SignUp_Page.SignUpusernameInput(driver);
+        String Value = SignUp_Page.SignUpusernameInput(driver,username);
         assertEquals(username, Value);
     }
 
     @And("user input password  with {string}")
     public void userInputPasswordWith(String password) {
-        String inputpass = SignUp_Page.SignUppasswordInput(driver);
+        String inputpass = SignUp_Page.SignUppasswordInput(driver, password);
         assertEquals(inputpass, password);
         }
 
