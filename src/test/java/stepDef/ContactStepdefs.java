@@ -1,5 +1,6 @@
 package stepDef;
 
+import io.cucumber.core.cli.Main;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -17,43 +18,33 @@ import static Helper.WebHelper.driver;
 public class ContactStepdefs {
     @When("Click Contact")
     public void clickContact() {
-        WebElement button = Contact.clickContact(driver);
-        assertTrue(button.isDisplayed()&& button.isEnabled());
-        button.click();
+        boolean ButtonCliked = Contact.clickContact(driver);
+        assertTrue("Button not Cliked",ButtonCliked);
+
     }
 
     @Then("the user enters their email {string}")
-    public void theUserEntersTheirEmail(String arg0) {
-       WebElement input =  Contact.inputemail(driver);
-       input.sendKeys(arg0);
-       String data = input.getAttribute("value");
-       assertTrue(input.isDisplayed() && input.isEnabled());
-       assertEquals(arg0, data);
+    public void theUserEntersTheirEmail(String email) {
+       String input =  Contact.inputemail(driver, email);
+       assertEquals("invalid input",input,email);
     }
 
     @And("the user enters their name {string}")
-    public void theUserEntersTheirName(String arg0) {
-        WebElement input =  Contact.inputname(driver);
-        input.sendKeys(arg0);
-        String data = input.getAttribute("value");
-        assertTrue(input.isDisplayed() && input.isEnabled());
-        assertEquals(arg0, data);
+    public void theUserEntersTheirName(String name) {
+       String input =  Contact.inputname(driver, name);
+        assertEquals("invalid input",name, input);
     }
 
     @And("the user enters their message {string}")
-    public void theUserEntersTheirMessage(String arg0) {
-        WebElement input =  Contact.inputmassage(driver);
-        input.sendKeys(arg0);
-        String data = input.getAttribute("value");
-        assertTrue(input.isDisplayed() && input.isEnabled());
-        assertEquals(arg0, data);
+    public void theUserEntersTheirMessage(String message) {
+        String input =  Contact.inputmassage(driver,message);
+        assertEquals("invalid input",message,input);
     }
 
     @And("the user click Submit")
     public void theUserClickSubmit() {
-        WebElement button = Contact.clickSubmit(driver);
-        assertTrue(button.isDisplayed() && button.isEnabled());
-        button.click();
+        boolean button = Contact.clickSubmit(driver);
+        assertTrue("Button dont displayed",button);
     }
 
 
