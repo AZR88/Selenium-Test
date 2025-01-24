@@ -60,7 +60,7 @@ public class ContactStepdefs {
 
     @Then("an error message should be displayed for emtpy field")
     public void anErrorMessageShouldBeDisplayedForEmtpyField() {
-        boolean isAlertPresent = Login_Page.verifyLoginAlert(driver);
-        Assert.assertTrue("No alert detected.", isAlertPresent);
+        boolean isAlertPresent = Login_Page.isLoginAlertPresent(driver);
+        Assert.assertTrue("Notifikasi login tidak valid tidak terdeteksi!", isAlertPresent);
     }
 }
