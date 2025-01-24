@@ -1,12 +1,10 @@
 package page;
 
-import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.time.Instant;
 
 public class SignUp_Page {
     public static By SignUpButton = By.id("signin2");
@@ -16,29 +14,40 @@ public class SignUp_Page {
 
 
 
-
-    public static WebElement openSignupPage(WebDriver driver) {
+    public static boolean openSignupPage(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        WebElement SignBut = wait.until(ExpectedConditions.visibilityOfElementLocated(SignUpButton));
-        return SignBut;
+        try {
+            WebElement SignBut = wait.until(ExpectedConditions.visibilityOfElementLocated(SignUpButton));
+            SignBut.click();
+            return true ;
+        }catch ( TimeoutException | NoSuchElementException e) {
+            return false ;
+        }
     }
 
-    public static WebElement SignUpusernameInput(WebDriver driver) {
+    public static String SignUpusernameInput(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(SignUpusernameInput));
-        return usernameField;
+        usernameField.sendKeys();
+        return usernameField.getAttribute("value");
     }
 
-    public static WebElement SignUppasswordInput(WebDriver driver) {
+    public static String SignUppasswordInput(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(SignUppasswordInput));
-        return passwordField;
+        passwordField.sendKeys();
+        return passwordField.getAttribute("value");
     }
 
-    public static WebElement ClikSubmit(WebDriver driver) {
+    public static boolean ClikSubmit(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        try {
         WebElement SubmitBut = wait.until(ExpectedConditions.visibilityOfElementLocated(SubmitButton));
-        return SubmitBut;
+        SubmitBut.click();
+        return true;
+        } catch (TimeoutException | NoSuchElementException e ){
+            return false;
+        }
     }
 
     public static boolean verifySignupAlert(WebDriver driver) {
