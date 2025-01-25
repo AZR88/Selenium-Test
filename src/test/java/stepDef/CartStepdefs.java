@@ -29,13 +29,11 @@ public class CartStepdefs {
     public void theUserHasAddedTheItemToTheCart(String arg0) {
         WebElement item = Item.selectItemByName(driver, arg0);
         item.click();
-        WebElement add = Product_Page.clickAdd(driver);
-        add.click();
+        boolean add = Product_Page.clickAdd(driver);
+        assertTrue("add button not displayed",add);
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-        assertTrue("No alert detected.", alert != null);
-        alert.accept();
+        boolean alert = Cart.verifyalert(driver);
+        assertTrue("no alert",alert);
 
     }
 
@@ -47,26 +45,21 @@ public class CartStepdefs {
     }
 
     @Then("user checks the title of the item and it should be {string}")
-    public void userChecksTheTitleOfTheItemAndItShouldBe(String arg0) {
-        WebElement title =  Cart.CheckTitle(driver);
-        String data = title.getText();
-        assertTrue(title.isDisplayed());
-        assertEquals(arg0,data);
+    public void userChecksTheTitleOfTheItemAndItShouldBe(String title) {
+        String text =  Cart.CheckTitle(driver);
+        assertEquals(text,title);
     }
 
     @Then("the displayed price should be {string}")
-    public void theDisplayedPriceShouldBe(String arg0) {
-        WebElement price = Cart.CheckPrice(driver);
-        String pr = price.getText();
-        assertTrue(price.isDisplayed());
-        assertEquals(arg0,pr);
+    public void theDisplayedPriceShouldBe(String price) {
+        String text = Cart.CheckPrice(driver);
+        assertEquals(price,text);
     }
 
     @When("the user deletes the item from the cart")
     public void theUserDeletesTheItemFromTheCart() {
-        WebElement del = Cart.Delete(driver);
-        assertTrue(del.isDisplayed() && del.isEnabled());
-        del.click();
+        boolean del = Cart.Delete(driver);
+        assertTrue("button not displayed",del);
     }
 
     @Then("the item {string} should no longer be displayed in the cart")
@@ -97,14 +90,11 @@ public class CartStepdefs {
             assertTrue(name.isDisplayed() && name.isEnabled());
             name.click();
 
-            WebElement add = Product_Page.clickAdd(driver);
-            assertTrue(add.isDisplayed() && add.isEnabled());
-            add.click();
+            boolean add = Product_Page.clickAdd(driver);
+            assertTrue("Add button not displayed",add);
 
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-            assertTrue("No alert detected.", alert != null);
-            alert.accept();
+
+
 
             WebElement button = Item.ClickHomebutton(driver);
             assertTrue(button.isDisplayed() && button.isEnabled());
@@ -134,11 +124,8 @@ public class CartStepdefs {
                 String value = row.get("Value");
 
                 if (value != null && !value.trim().isEmpty()) {
-                    WebElement fill = Cart.fillField(driver, fieldId);
-
-                    assertTrue("The field " + fieldId + " is not displayed or enabled", fill.isDisplayed() && fill.isEnabled());
-                    fill.clear();
-                    fill.sendKeys(value);
+                    boolean fill = Cart.fillField(driver, fieldId, value);
+                    assertTrue("Data not found",fill);
                 } else {
                     System.out.println("Field " + fieldId + " is left empty, skipping...");
                 }
@@ -147,29 +134,27 @@ public class CartStepdefs {
 
     @And("the user clicks the Purchase")
     public void theUserClicksThePurchase() {
-        WebElement buy = Cart.purchase(driver);
-        assertTrue(buy.isDisplayed() & buy.isEnabled());
-        buy.click();
+        boolean buy = Cart.purchase(driver);
+        assertTrue("button not displayed",buy);
+
     }
 
     @Then("the user click ok button to complete the purchase")
     public void theUserClickOkButtonToCompleteThePurchase() {
-        WebElement confirm = Cart.Confirmation(driver);
-        assertTrue(confirm.isDisplayed() && confirm.isEnabled());
-        confirm.click();
+        boolean confirm = Cart.Confirmation(driver);
+        assertTrue("button not displayed",confirm);
     }
 
     @Then("An alert Should be show up")
     public void anAlertShouldBeShowUp() {
         boolean isAlertPresent = Product_Page.isAlertPresent(driver);
-        assertTrue("No alert detected.", isAlertPresent);
+        assertTrue("No alert detected", isAlertPresent);
     }
 
     @Then("the user clicks the {string} button")
     public void theUserClicksTheButton(String arg0) {
-        WebElement button = Cart.Order(driver);
-        assertTrue(button.isDisplayed()&& button.isEnabled());
-        button.click();
+        boolean button = Cart.Order(driver);
+        assertTrue("button not displayed",button);
     }
 }
 
