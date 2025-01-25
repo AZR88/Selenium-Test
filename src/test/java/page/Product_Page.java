@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.w3c.dom.Text;
 
 import java.time.Duration;
 
@@ -14,47 +15,67 @@ public class Product_Page {
     public static By ProductPrice = By.xpath("//div[@id='tbodyid']/h3[@class='price-container']");
     public static By AddToCart= By.xpath("//a[@class='btn btn-success btn-lg' and text()='Add to cart']");
 
-    public static WebElement ProductDesc(WebDriver driver, String productdesc) {
+    public static boolean isProductDescriptionDisplayed(WebDriver driver, String productdesc) {
         By descLocator = By.xpath("//p[contains(text(),'" + productdesc + "')]");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(descLocator));
+        try {
+            WebElement productDescriptionElement = wait.until(ExpectedConditions.visibilityOfElementLocated(descLocator));
+            return productDescriptionElement.isDisplayed();
+        } catch (TimeoutException | NoSuchElementException e) {
+            System.out.println("Element with product description '" + productdesc + "' not found or not visible.");
+            return false;
+        }
     }
 
 
-    public static WebElement checkTitle(WebDriver driver) {
+    public static String  checkTitle(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement ItemTitle = wait.until(ExpectedConditions.visibilityOfElementLocated(ProductTitle));
-        return ItemTitle;
+        return ItemTitle.getText();
     }
 
-    public static WebElement checkPrice(WebDriver driver) {
+    public static String checkPrice(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement itemPrice = wait.until(ExpectedConditions.visibilityOfElementLocated(ProductPrice));
-        return  itemPrice;
+        String text = itemPrice.getText();
+        String actualPrice = text.split("\n")[0].replaceAll("[^\\d$.]", "").trim();
+        return  actualPrice;
     }
 
 
 
-    public static WebElement checkPic(WebDriver driver){
+    public static boolean checkPic(WebDriver driver){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement ItemPic = wait.until(ExpectedConditions.visibilityOfElementLocated(ProductPic));
-        return ItemPic;
+        try {
+            WebElement ItemPic = wait.until(ExpectedConditions.visibilityOfElementLocated(ProductPic));
+            return ItemPic.isDisplayed();
+        } catch ( TimeoutException | NoSuchElementException e){
+            return false;
+        }
     }
 
-    public static WebElement clickAdd (WebDriver driver){
+    public static Boolean clickAdd (WebDriver driver){
                 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-                WebElement Add = wait.until(ExpectedConditions.visibilityOfElementLocated(AddToCart));
-                return Add;
+                try {
+                    WebElement Add = wait.until(ExpectedConditions.visibilityOfElementLocated(AddToCart));
+                    Add.click();
+                    return true;
+                }catch (TimeoutException | NoSuchElementException e){
+                    return false;
+                }
             }
 
-            public static boolean isAlertPresent(WebDriver driver) {
-                try {
-                    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-                    wait.until(ExpectedConditions.alertIsPresent());
-                    return true;
-                } catch (TimeoutException e) {
-                    System.out.println("No alert detected within the timeout.");
-                    return false;
+
+
+    public static boolean isAlertPresent(WebDriver driver) {
+    try {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+        alert.accept();
+        return true;
+    } catch (TimeoutException e) {
+            System.out.println("No alert detected within the timeout.");
+            return false;
         }
     }
 }
