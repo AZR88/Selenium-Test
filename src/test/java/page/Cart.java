@@ -1,14 +1,13 @@
 package page;
 
-import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
+
+import static org.junit.Assert.assertTrue;
 
 public class Cart {
     public static By cartitem = By.xpath("//tbody[@id='tbodyid']//tr[@class='success']/td[2]");
@@ -19,48 +18,78 @@ public class Cart {
     public static By AllPrice = By.xpath("//tbody[@id='tbodyid']//tr/td[3]");
     public static By confirmPurchase = By.xpath("//div[@class='sa-confirm-button-container']");
 
-    public static WebElement Order (WebDriver driver){
+    public static boolean Order (WebDriver driver){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        WebElement order = wait.until(ExpectedConditions.visibilityOfElementLocated(OrderButton));
-        return order;
+        try {
+            WebElement order = wait.until(ExpectedConditions.visibilityOfElementLocated(OrderButton));
+            order.click();
+            return true;
+        }catch (TimeoutException | NoSuchElementException e){
+            return false;
+        }
+
     }
 
-    public static WebElement Confirmation (WebDriver driver){
+    public static boolean Confirmation (WebDriver driver){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        WebElement confirm = wait.until(ExpectedConditions.visibilityOfElementLocated(confirmPurchase));
-        return confirm;
+        try {
+            WebElement confirm = wait.until(ExpectedConditions.visibilityOfElementLocated(confirmPurchase));
+            confirm.click();
+            return true;
+        }catch (TimeoutException | NoSuchElementException e){
+            return false;
+        }
+
     }
 
-    public static WebElement CheckPrice(WebDriver driver){
+    public static String CheckPrice(WebDriver driver){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement price = wait.until(ExpectedConditions.visibilityOfElementLocated(AllPrice));
-        return price;
+        String text= price.getText();
+        return text;
     }
 
-    public static WebElement CheckTitle(WebDriver driver){
+    public static String CheckTitle(WebDriver driver){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement Title = wait.until(ExpectedConditions.visibilityOfElementLocated(cartitem));
-        return Title;
+        String text = Title.getText();
+        return text;
     }
 
-    public static WebElement Delete (WebDriver driver){
+    public static boolean Delete (WebDriver driver){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        WebElement del = wait.until(ExpectedConditions.visibilityOfElementLocated(DeleteItem));
-        return del;
-    }
-
-    public static WebElement purchase (WebDriver driver){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        WebElement buy = wait.until(ExpectedConditions.visibilityOfElementLocated(Purchasebutton));
-        return buy;
-    }
-
-
-        public static WebElement fillField(WebDriver driver, String fieldId) {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-            WebElement fieldElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(fieldId)));
-            return  fieldElement;
+        try {
+            WebElement del = wait.until(ExpectedConditions.visibilityOfElementLocated(DeleteItem));
+            del.click();
+            return true;
+        }catch (TimeoutException|NoSuchElementException e){
+            return false;
         }
+    }
+
+    public static boolean purchase (WebDriver driver){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        try {
+            WebElement buy = wait.until(ExpectedConditions.visibilityOfElementLocated(Purchasebutton));
+            buy.click();
+            return true;
+        } catch (TimeoutException| NoSuchElementException e){
+            return false;
+        }
+    }
+
+
+    public static boolean fillField(WebDriver driver, String fieldId, String fieldValue) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        try {
+            WebElement fieldElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(fieldId)));
+            fieldElement.clear();
+            fieldElement.sendKeys(fieldValue);
+            return true;
+        } catch (TimeoutException| NoSuchElementException e){
+            return false;
+        }}
+
 
 
 
@@ -104,10 +133,17 @@ public class Cart {
             return new int[] { totalPriceCalculated, totalPriceDisplayed };
         }
 
-
-
-
-
-    }
+        public static boolean verifyalert (WebDriver driver) {
+            try {
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+                Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+                alert.accept();
+                return true;
+            } catch (TimeoutException e) {
+                System.out.println("No alert detected within the timeout.");
+                return false;
+            }
+        }
+}
 
 
