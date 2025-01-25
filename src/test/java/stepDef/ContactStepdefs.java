@@ -20,7 +20,6 @@ public class ContactStepdefs {
     public void clickContact() {
         boolean ButtonCliked = Contact.clickContact(driver);
         assertTrue("Button not Cliked",ButtonCliked);
-
     }
 
     @Then("the user enters their email {string}")
