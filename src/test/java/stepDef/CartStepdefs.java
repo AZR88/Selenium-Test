@@ -5,15 +5,12 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.datatable.DataTable;
-import org.openqa.selenium.Alert;
+
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import page.Cart;
 import page.Item;
 import page.Product_Page;
 
-import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 
@@ -39,9 +36,8 @@ public class CartStepdefs {
 
     @When("Click Cart button")
     public void clickCartButton() {
-       WebElement button = Item.ClickCartbutton(driver);
-       assertTrue(button.isDisplayed()&& button.isEnabled());
-       button.click();
+       boolean button = Item.ClickCartbutton(driver);
+       assertTrue("Button not displayed",button);
     }
 
     @Then("user checks the title of the item and it should be {string}")
@@ -71,10 +67,9 @@ public class CartStepdefs {
 
 
     @And("total price should be {string}")
-    public void totalPriceShouldBe(String arg0) {
-    WebElement Totalprice = Cart.totalPrice(driver);
-    String price = Totalprice.getText();
-    assertEquals(arg0,price);
+    public void totalPriceShouldBe(String price) {
+    String Totalprice = Cart.totalPrice(driver);
+    assertEquals(price, Totalprice);
     }
 
 
@@ -96,9 +91,9 @@ public class CartStepdefs {
 
 
 
-            WebElement button = Item.ClickHomebutton(driver);
-            assertTrue(button.isDisplayed() && button.isEnabled());
-            button.click();
+            boolean button = Item.ClickHomebutton(driver);
+            assertTrue(button);
+
         }
     }
 
