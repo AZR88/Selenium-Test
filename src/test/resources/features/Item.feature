@@ -5,11 +5,11 @@ Feature: Validate HomepageText
   Scenario: Validate navbar Text
     Given  user is on homepage "https://www.demoblaze.com/"
     When check Navbar "Home" button
-    Then Check "About us" button
-    Then Chek "Contact" button
-    Then Check the "Cart" button
-    Then Check a "Log in" button
-    Then check "Sign up" buton
+    Then Check About us
+    Then Check Contact
+    Then Check Cart
+    Then Check Log in
+    Then check Sign up
   @Valid-Item
   Scenario: Validate multiple product titles in all category
     Given user is on homepage

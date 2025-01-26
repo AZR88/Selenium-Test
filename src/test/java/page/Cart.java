@@ -93,11 +93,12 @@ public class Cart {
 
 
 
-    public  static WebElement totalPrice (WebDriver driver)
+    public  static String  totalPrice (WebDriver driver)
     {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement TP = wait.until(ExpectedConditions.visibilityOfElementLocated(TotalPrice));
-        return TP;
+        String price = TP.getText();
+        return price;
     }
 
     public static boolean theItemShouldNoLongerBeDisplayedInTheCart(WebDriver driver, String itemName) {
