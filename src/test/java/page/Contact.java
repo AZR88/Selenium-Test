@@ -25,7 +25,7 @@ public class Contact {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement EmailField = wait.until(ExpectedConditions.visibilityOfElementLocated(SenderEmail));
         EmailField.sendKeys(email);
-        return EmailField.getAttribute("Value");
+        return EmailField.getAttribute("value");
     }
 
     public static String inputname(WebDriver driver, String name) {
