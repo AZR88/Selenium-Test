@@ -2,9 +2,7 @@ package page;
 
 import org.checkerframework.checker.units.qual.C;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -49,90 +47,136 @@ public class Item {
     }
 
 
-    public static WebElement ClickNext(WebDriver driver) {
+    public static boolean ClickNext(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement Next = wait.until(ExpectedConditions.visibilityOfElementLocated(nextbutton));
-        return Next;
+        try {
+            WebElement Next = wait.until(ExpectedConditions.visibilityOfElementLocated(nextbutton));
+            Next.click();
+            return true;
+        }catch (TimeoutException | NoSuchElementException e ){
+            return false;
+        }
     }
 
-    public static WebElement clickPhoneCategory(WebDriver driver)
+    public static boolean clickPhoneCategory(WebDriver driver)
     {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement PhonCat = wait.until(ExpectedConditions.visibilityOfElementLocated(PhoneCat));
-        return PhonCat;
+        try {
+            WebElement Category = wait.until(ExpectedConditions.visibilityOfElementLocated(PhoneCat));
+            Category.click();
+            return true;
+        }catch (TimeoutException | NoSuchElementException e ){
+            return false;
+        }
     }
-    public static WebElement clickLaptopCategory(WebDriver driver)
+    public static boolean clickLaptopCategory(WebDriver driver)
     {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement LapCat = wait.until(ExpectedConditions.visibilityOfElementLocated(LaptopCat));
-
-        return LapCat;
+        try {
+            WebElement Category = wait.until(ExpectedConditions.visibilityOfElementLocated(LaptopCat));
+            Category.click();
+            return true;
+        }catch (TimeoutException | NoSuchElementException e ){
+            return false;
+        }
     }
 
-    public static WebElement clickMonitorCategory(WebDriver driver)
-    {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement MonCat = wait.until(ExpectedConditions.visibilityOfElementLocated(MonitorCat));
-        return MonCat;
+    public static boolean clickMonitorCategory(WebDriver driver)
+    {WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        try {
+            WebElement Category = wait.until(ExpectedConditions.visibilityOfElementLocated(MonitorCat));
+            Category.click();
+            return true;
+        }catch (TimeoutException | NoSuchElementException e ){
+            return false;
+        }
     }
 
-    public static WebElement CheckHomebutton(WebDriver driver){
+    public static boolean CheckHomebutton(WebDriver driver){
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement Home = wait.until(ExpectedConditions.visibilityOfElementLocated(HomeButton));
-        return Home;
+        try {
+            WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(HomeButton));
+            element.click();
+            return true;
+        }catch (TimeoutException | NoSuchElementException e){
+            return false;
+        }
     }
 
 
 
-    public static WebElement CheckSignupbutton(WebDriver driver){
+    public static boolean CheckSignupbutton(WebDriver driver){
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement Sign = wait.until(ExpectedConditions.visibilityOfElementLocated(SignUpButton));
-        return  Sign;
+        try {
+            WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(SignUpButton));
+            return element.isDisplayed();
+        }catch (TimeoutException | NoSuchElementException e){
+            return false;
+        }
     }
 
-    public static WebElement CheckAboutbutton(WebDriver driver){
+    public static boolean CheckAboutbutton(WebDriver driver){
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement About = wait.until(ExpectedConditions.visibilityOfElementLocated(AboutUsButton));
-        return About;
+        try {
+            WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(AboutUsButton));
+            return element.isDisplayed();
+        }catch (TimeoutException | NoSuchElementException e){
+            return false;
+        }
     }
 
-    public static WebElement CheckCartbutton(WebDriver driver){
-
+    public static boolean CheckCartbutton(WebDriver driver){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement Cart = wait.until(ExpectedConditions.visibilityOfElementLocated(CartButton));
-
-        return Cart;
+        try {
+            WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(CartButton));
+            return element.isDisplayed();
+        }catch (TimeoutException | NoSuchElementException e){
+            return false;
+        }
     }
 
-    public static WebElement CheckLoginbutton(WebDriver driver){
-
+    public static boolean CheckLoginbutton(WebDriver driver){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement Log = wait.until(ExpectedConditions.visibilityOfElementLocated(LoginButton));
-        return Log;
+        try {
+            WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(LoginButton));
+            return element.isDisplayed();
+        }catch (TimeoutException | NoSuchElementException e){
+            return false;
+        }
     }
 
-    public static WebElement Checkcontactbutton(WebDriver driver){
-
+    public static boolean Checkcontactbutton(WebDriver driver){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement Cont = wait.until(ExpectedConditions.visibilityOfElementLocated(ContactButton));
-        return Cont;
+        try {
+            WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(ContactButton));
+            return element.isDisplayed();
+        }catch (TimeoutException | NoSuchElementException e){
+            return false;
+        }
     }
-    public static WebElement ClickCartbutton(WebDriver driver){
-
+    public static boolean ClickCartbutton(WebDriver driver){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement Cart = wait.until(ExpectedConditions.visibilityOfElementLocated(CartButton));
-
-        return  Cart;
+        try {
+            WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(CartButton));
+            element.click();
+            return true;
+        }catch (TimeoutException | NoSuchElementException e){
+            return false;
+        }
     }
 
-    public static WebElement ClickHomebutton(WebDriver driver){
-
+    public static boolean ClickHomebutton(WebDriver driver){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement Home = wait.until(ExpectedConditions.visibilityOfElementLocated(HomeButton));
-        return Home;
+        try {
+            WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(HomeButton));
+            element.click();
+            return true;
+        }catch (TimeoutException | NoSuchElementException e){
+            return false;
+        }
     }
 
 
