@@ -32,9 +32,6 @@ dependencies {
 test {
     useJUnitPlatform()
     systemProperty "cucumber.filter.tags", System.getProperty("cucumber.filter.tags")
-    useTestNG{
-        suites("src/test/resources/testng.xml")
-    }
 }
 
 configurations {
@@ -92,3 +89,29 @@ task cucumberEdge(type: JavaExec) {
 task runAllBrowsers {
     dependsOn cucumberChrome,  cucumberEdge
 }
+
+
+task runApiTests(type: Test) {
+    group = "verification"
+    description = "Run API tests using TestNG"
+
+    useTestNG {
+        suites("src/test/resources/testng.xml")
+    }
+
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+        exceptionFormat "full"
+        showStandardStreams = true
+    }
+
+    reports {
+        html.required.set(true)
+        html.outputLocation.set(file("reports/api-tests"))
+        junitXml.required.set(true)
+        junitXml.outputLocation.set(file("reports/api-tests/xml"))
+    }
+}
+
+
+
