@@ -65,7 +65,7 @@ public class APITest {
                     .body(jsonObject.toString())
                     .post("/api/users")
                     .then()
-                    .assertThat().statusCode(400); // Status code untuk negative test
+                    .assertThat().statusCode(400);
         }
     }
 
@@ -102,7 +102,7 @@ public class APITest {
                     .body(jsonObject.toString())
                     .post("/api/users")
                     .then()
-                    .assertThat().statusCode(400); // Status code untuk negative test}
+                    .assertThat().statusCode(400);
         }
     }
 
@@ -139,7 +139,7 @@ public class APITest {
                     .body(jsonObject.toString())
                     .post("/api/users")
                     .then()
-                    .assertThat().statusCode(400); // Status code untuk negative test}
+                    .assertThat().statusCode(400);
         }
     }
 
@@ -152,6 +152,28 @@ public class APITest {
                 .log().all()
                 .assertThat().statusCode(expectedStatusCode);
     }
+
+    public void GetTagsList(boolean shouldPass) {
+        RestAssured.baseURI = "https://reqres.in/";
+
+        if (shouldPass) {
+            given().log().all()
+                    .when().get("/api/tags")
+                    .then()
+                    .log().all()
+                    .assertThat().statusCode(200)
+                    .assertThat().body("data", Matchers.notNullValue())
+                    .assertThat().body("data", Matchers.hasSize(Matchers.greaterThan(0)))
+                    .assertThat().body("data.id", Matchers.hasItem(Matchers.anything()));
+        } else {
+            given().log().all()
+                    .when().get("/api/tags")
+                    .then()
+                    .log().all()
+                    .assertThat().statusCode(404);
+        }
+    }
+
 
 
 }
