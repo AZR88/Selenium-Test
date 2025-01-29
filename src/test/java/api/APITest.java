@@ -10,27 +10,32 @@ public class APITest {
 
 
     public static void GetUserById(Integer ID, boolean shouldPass) {
-
         RestAssured.baseURI = "https://reqres.in/";
 
         if (shouldPass) {
             given()
-                    .pathParam("id",ID)
+                    .pathParam("id", ID)
+                    .log().all()
                     .when()
-                    .get("api/users?page=2")
+                    .get("api/users/{id}")
                     .then()
                     .log().all()
                     .assertThat().statusCode(200)
-                    .assertThat().body("data.id", Matchers.equalTo(ID));
+                    .assertThat().body("data.id", Matchers.equalTo(ID))
+                    .assertThat().body("data.first_name", Matchers.notNullValue())
+                    .assertThat().body("data.email", Matchers.endsWith("@reqres.in"));
         } else {
             given()
+                    .pathParam("id", ID)
+                    .log().all()
                     .when()
-                    .get("api/users/" + ID)
+                    .get("api/users/{id}") // Path parameter tetap digunakan
                     .then()
                     .log().all()
                     .assertThat().statusCode(404);
         }
     }
+
 
 
 
@@ -138,19 +143,16 @@ public class APITest {
         }
     }
 
-    @Test
-    public void DeleteUser(){
+    public void DeleteUser(int expectedStatusCode) {
         RestAssured.baseURI = "https://reqres.in/";
 
-        int userToDelete = 2;
-
         given().log().all()
-                .when().delete("/api/users/2"+userToDelete)
+                .when().delete("/api/users/2")
                 .then()
                 .log().all()
-                .assertThat().statusCode(204);
+                .assertThat().statusCode(expectedStatusCode);
     }
 
 
-
 }
+
