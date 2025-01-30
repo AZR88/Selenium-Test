@@ -4,7 +4,7 @@ Feature: Validate HomepageText
   @Valid-navbar
   Scenario: Validate navbar Text
     Given  user is on homepage "https://www.demoblaze.com/"
-    When check Navbar "Home" button
+    When check Navbar Home button
     Then Check About us
     Then Check Contact
     Then Check Cart

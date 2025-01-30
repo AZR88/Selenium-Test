@@ -99,7 +99,7 @@ public class ItemStepDef {
         assertTrue("Title or Price does not match for product with ID: " + id, isMatch);
     }
 
-    @When("check Navbar {string} button")
+    @When("check Navbar Home button")
     public void checkNavbarButton() {
         boolean isDisplayed = CheckHomebutton(driver);
         assertTrue("button Not seen in this page!", isDisplayed);
