@@ -9,7 +9,6 @@ on:
 
 jobs:
   RunTest-UI:
-
     runs-on: ubuntu-latest
     permissions:
       contents: read
