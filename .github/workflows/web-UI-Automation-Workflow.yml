@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  RunTest:
+  RunTest-UI:
 
     runs-on: ubuntu-latest
     permissions:
@@ -45,13 +45,18 @@ jobs:
         name: cucumber Report
         path: reports
   
-    # Deploy githup Page
+
+    - name: Disable Jekyll
+      run: touch reports/.nojekyll
+
+    # Deploy ke GitHub Pages (UI Test)
     - name: Deploy UI Test Report to GitHub Pages
       if: always()
       uses: peaceiris/actions-gh-pages@v4
       with:
-        personal_token: ${{ secrets.PERSONAL_TOKEN }}
+        personal_token: ${{ secrets.PERSONAL_TOKEN }} 
         publish_branch: gh-pages
-        destination_dir: ui-tests
         publish_dir: reports/ui-tests
+        destination_dir: ui-tests  
+
 
