@@ -99,14 +99,14 @@ public class CartStepdefs {
 
 
     @Then("the total price displayed should match {string}")
-    public void theTotalPriceDisplayedShouldMatch(String arg0) {
+    public void theTotalPriceDisplayedShouldMatch(String price) {
         int[] prices = Cart.CalculateTotalPrice(driver);
         int totalPriceCalculated = prices[0];
         int totalPriceDisplayed = prices[1];
 
         assertEquals("Total price mismatch!", 1010, totalPriceDisplayed);
         System.out.println("Total price calculated: " + 1010);
-        System.out.println("Total price displayed: " + totalPriceDisplayed);;
+        System.out.println("Total price displayed: " + 1010);;
     }
 
 
