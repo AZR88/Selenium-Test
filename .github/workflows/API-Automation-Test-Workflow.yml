@@ -14,26 +14,24 @@ jobs:
       contents: read
 
     steps:
-    # Checkout repository
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    #  Setup Java 17
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
         java-version: '17'
         distribution: 'temurin'
 
-    #  Grant execute permission for Gradle
-    - name: Setup Gradlew
+    - name: Setup Chrome
+      uses: browser-actions/setup-chrome@v1.7.2
+
+    - name: Grant execute permission for Gradle
       run: chmod +x gradlew
 
-    #  Run API tests
     - name: Execute API tests
       run: ./gradlew clean runApiTests
 
-    # Archive Allure Report (Pastikan Allure sudah terinstal dan digunakan)
     - name: Archive Allure Report
       uses: actions/upload-artifact@v4.6.0
       if: always()
@@ -41,10 +39,16 @@ jobs:
         name: Allure Report
         path: reports/api-tests
 
-    # Deploy Allure Report to GitHub Pages
-    - name: GitHub Pages action
+    # Tambahkan .nojekyll agar GitHub Pages tidak mengabaikan file statis
+    - name: Disable Jekyll
+      run: touch reports/api-tests/.nojekyll
+
+    # Deploy ke GitHub Pages
+    - name: Deploy Allure Report to GitHub Pages
       if: always()
-      uses: peaceiris/actions-gh-pages@v4.0.0
+      uses: peaceiris/actions-gh-pages@v4
       with:
-       personal_token: ${{ secrets.PERSONAL_TOKEN }}
-       publish_dir: reports
+
+       personal_token: ${{ secrets.PERSONAL_TOKEN }}        
+       publish_branch: gh-pages
+       publish_dir: reports/api-tests
