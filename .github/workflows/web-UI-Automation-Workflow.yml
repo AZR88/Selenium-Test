@@ -1,17 +1,16 @@
 name: Selenium Web UI Test
 
 on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-  workflow_dispatch:
+  workflow_run:
+    workflows: ["API Test"]
+    types:
+      - completed
 
 jobs:
   RunTest-UI:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
 
     steps:
     # download repo
