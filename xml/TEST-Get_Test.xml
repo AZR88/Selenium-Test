@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Get_Test" tests="3" skipped="0" failures="0" errors="0" timestamp="2025-01-30T14:45:15" hostname="AZR" time="5.318">
+<testsuite name="Get_Test" tests="3" skipped="0" failures="0" errors="0" timestamp="2025-01-30T17:49:58" hostname="fv-az1335-855" time="4.964">
   <properties/>
-  <testcase name="GetUser[0](9, true)" classname="Get_Test" time="4.274"/>
-  <testcase name="GetUser[1](999, false)" classname="Get_Test" time="0.535"/>
-  <testcase name="GetUser[2](0, false)" classname="Get_Test" time="0.509"/>
+  <testcase name="GetUser[0](9, true)" classname="Get_Test" time="4.116"/>
+  <testcase name="GetUser[1](999, false)" classname="Get_Test" time="0.387"/>
+  <testcase name="GetUser[2](0, false)" classname="Get_Test" time="0.381"/>
   <system-out><![CDATA[Request method:	GET
 Request URI:	https://reqres.in/api/users/9
 Proxy:			<none>
@@ -16,24 +16,24 @@ Cookies:		<none>
 Multiparts:		<none>
 Body:			<none>
 HTTP/1.1 200 OK
-Date: Thu, 30 Jan 2025 14:45:21 GMT
+Date: Thu, 30 Jan 2025 17:50:01 GMT
 Content-Type: application/json; charset=utf-8
 Transfer-Encoding: chunked
 Connection: keep-alive
-Report-To: {"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1738248321&sid=c4c9725f-1ab0-44d8-820f-430df2718e11&s=RrFLva%2BORSnVn%2B4yJoSeX1rRJ06VmIxqHJ0TLI%2FNdhk%3D"}]}
-Reporting-Endpoints: heroku-nel=https://nel.heroku.com/reports?ts=1738248321&sid=c4c9725f-1ab0-44d8-820f-430df2718e11&s=RrFLva%2BORSnVn%2B4yJoSeX1rRJ06VmIxqHJ0TLI%2FNdhk%3D
+Report-To: {"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1738250824&sid=c4c9725f-1ab0-44d8-820f-430df2718e11&s=HMzm5OlAsJ41YQPa2AMDR2mvAXUARbC3JTkvHgsFg2M%3D"}]}
+Reporting-Endpoints: heroku-nel=https://nel.heroku.com/reports?ts=1738250824&sid=c4c9725f-1ab0-44d8-820f-430df2718e11&s=HMzm5OlAsJ41YQPa2AMDR2mvAXUARbC3JTkvHgsFg2M%3D
 Nel: {"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}
 X-Powered-By: Express
 Access-Control-Allow-Origin: *
 Etag: W/"152-FpYvp70F61UHmjz1MpAbXegc4Hc"
 Via: 1.1 vegur
 Cache-Control: max-age=14400
-CF-Cache-Status: MISS
+CF-Cache-Status: REVALIDATED
 Vary: Accept-Encoding
 Server: cloudflare
-CF-RAY: 90a23ec8e955cdfd-SIN
+CF-RAY: 90a34d491abbf7d9-LAX
 Content-Encoding: gzip
-server-timing: cfL4;desc="?proto=TCP&rtt=31193&min_rtt=28957&rtt_var=12581&sent=7&recv=7&lost=0&retrans=0&sent_bytes=3106&recv_bytes=747&delivery_rate=98274&cwnd=252&unsent_bytes=0&cid=e4a7ceadd671e2ee&ts=522&x=0"
+server-timing: cfL4;desc="?proto=TCP&rtt=11506&min_rtt=11480&rtt_var=4323&sent=7&recv=7&lost=0&retrans=0&sent_bytes=3106&recv_bytes=759&delivery_rate=373170&cwnd=148&unsent_bytes=0&cid=63d1d912e2523d38&ts=491&x=0"
 
 {
     "data": {
@@ -60,23 +60,23 @@ Cookies:		<none>
 Multiparts:		<none>
 Body:			<none>
 HTTP/1.1 404 Not Found
-Date: Thu, 30 Jan 2025 14:45:23 GMT
+Date: Thu, 30 Jan 2025 17:50:03 GMT
 Content-Type: application/json; charset=utf-8
 Content-Length: 2
 Connection: keep-alive
-Report-To: {"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1738248323&sid=c4c9725f-1ab0-44d8-820f-430df2718e11&s=uRyxO9IaEd3lUGK5Rjauvt%2BLveUhyMR0LPiylteEOW0%3D"}]}
-Reporting-Endpoints: heroku-nel=https://nel.heroku.com/reports?ts=1738248323&sid=c4c9725f-1ab0-44d8-820f-430df2718e11&s=uRyxO9IaEd3lUGK5Rjauvt%2BLveUhyMR0LPiylteEOW0%3D
+Report-To: {"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1738259403&sid=c4c9725f-1ab0-44d8-820f-430df2718e11&s=zyOkiJBrDrrYO8K4ld%2FZTIjp8soDGCHDJMXIHTFAyRc%3D"}]}
+Reporting-Endpoints: heroku-nel=https://nel.heroku.com/reports?ts=1738259403&sid=c4c9725f-1ab0-44d8-820f-430df2718e11&s=zyOkiJBrDrrYO8K4ld%2FZTIjp8soDGCHDJMXIHTFAyRc%3D
 Nel: {"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}
 X-Powered-By: Express
 Access-Control-Allow-Origin: *
 Etag: W/"2-vyGp6PvFo4RvsFtPoIWeCReyIC8"
 Via: 1.1 vegur
 Cache-Control: max-age=14400
-CF-Cache-Status: MISS
+CF-Cache-Status: EXPIRED
 Vary: Accept-Encoding
 Server: cloudflare
-CF-RAY: 90a23ed3ab4adf28-SIN
-server-timing: cfL4;desc="?proto=TCP&rtt=29421&min_rtt=28865&rtt_var=9117&sent=5&recv=6&lost=0&retrans=0&sent_bytes=3105&recv_bytes=749&delivery_rate=137352&cwnd=228&unsent_bytes=0&cid=1518b891cb8687bd&ts=449&x=0"
+CF-RAY: 90a34d561b76e9e5-LAX
+server-timing: cfL4;desc="?proto=TCP&rtt=11687&min_rtt=11600&rtt_var=4524&sent=6&recv=7&lost=0&retrans=0&sent_bytes=3105&recv_bytes=761&delivery_rate=348405&cwnd=113&unsent_bytes=0&cid=07b9a8c0d302555e&ts=339&x=0"
 
 {
     
@@ -93,24 +93,23 @@ Cookies:		<none>
 Multiparts:		<none>
 Body:			<none>
 HTTP/1.1 404 Not Found
-Date: Thu, 30 Jan 2025 14:45:24 GMT
+Date: Thu, 30 Jan 2025 17:50:03 GMT
 Content-Type: application/json; charset=utf-8
-Transfer-Encoding: chunked
+Content-Length: 2
 Connection: keep-alive
-Cf-Ray: 90a23ed6df5c4a11-SIN
-Server: cloudflare
-Report-To: {"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1738248323&sid=c4c9725f-1ab0-44d8-820f-430df2718e11&s=uRyxO9IaEd3lUGK5Rjauvt%2BLveUhyMR0LPiylteEOW0%3D"}]}
-Reporting-Endpoints: heroku-nel=https://nel.heroku.com/reports?ts=1738248323&sid=c4c9725f-1ab0-44d8-820f-430df2718e11&s=uRyxO9IaEd3lUGK5Rjauvt%2BLveUhyMR0LPiylteEOW0%3D
+Report-To: {"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1738259403&sid=c4c9725f-1ab0-44d8-820f-430df2718e11&s=zyOkiJBrDrrYO8K4ld%2FZTIjp8soDGCHDJMXIHTFAyRc%3D"}]}
+Reporting-Endpoints: heroku-nel=https://nel.heroku.com/reports?ts=1738259403&sid=c4c9725f-1ab0-44d8-820f-430df2718e11&s=zyOkiJBrDrrYO8K4ld%2FZTIjp8soDGCHDJMXIHTFAyRc%3D
 Nel: {"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}
 X-Powered-By: Express
 Access-Control-Allow-Origin: *
 Etag: W/"2-vyGp6PvFo4RvsFtPoIWeCReyIC8"
 Via: 1.1 vegur
 Cache-Control: max-age=14400
-Cf-Cache-Status: MISS
+CF-Cache-Status: EXPIRED
 Vary: Accept-Encoding
-Content-Encoding: gzip
-server-timing: cfL4;desc="?proto=TCP&rtt=29622&min_rtt=28863&rtt_var=7291&sent=5&recv=7&lost=0&retrans=0&sent_bytes=3106&recv_bytes=747&delivery_rate=137119&cwnd=252&unsent_bytes=0&cid=21ca3e58f10ab150&ts=430&x=0"
+Server: cloudflare
+CF-RAY: 90a34d588dd4e9e5-LAX
+server-timing: cfL4;desc="?proto=TCP&rtt=11381&min_rtt=11258&rtt_var=4310&sent=6&recv=7&lost=0&retrans=0&sent_bytes=3107&recv_bytes=759&delivery_rate=380529&cwnd=113&unsent_bytes=0&cid=01c47a1ee8854cb0&ts=329&x=0"
 
 {
     
