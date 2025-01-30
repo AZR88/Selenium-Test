@@ -51,7 +51,7 @@ jobs:
       if: always()
       uses: peaceiris/actions-gh-pages@v4
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        personal_token: ${{ secrets.PERSONAL_TOKEN }}
         publish_branch: gh-pages
         publish_dir: reports/api-tests
         destination_dir: api-tests
