@@ -49,8 +49,8 @@ jobs:
     - name: Disable Jekyll
       run: touch reports/.nojekyll
 
-    - name: Copy index.html
-      run: cp reports/index.html reports/ui-tests/index.html
+   # - name: Copy index.html
+    #  run: cp reports/index.html reports/ui-tests/index.html
    
     # Deploy ke GitHub Pages (UI Test)
     - name: Deploy UI Test Report to GitHub Pages
