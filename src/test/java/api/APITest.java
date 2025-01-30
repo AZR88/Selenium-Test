@@ -3,7 +3,6 @@ import io.restassured.RestAssured;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import org.hamcrest.Matchers;
 import org.json.JSONObject;
-import org.junit.jupiter.api.Test;
 
 import java.io.File;
 
@@ -35,7 +34,7 @@ public class APITest {
                     .pathParam("id", ID)
                     .log().all()
                     .when()
-                    .get("api/users/{id}") // Path parameter tetap digunakan
+                    .get("api/users/{id}")
                     .then()
                     .log().all()
                     .assertThat().statusCode(404);
@@ -47,6 +46,9 @@ public class APITest {
 
     public void PostUser(String name, String job, boolean shouldPass) {
         RestAssured.baseURI = "https://reqres.in/";
+
+        File JsonSchema = new File("src/test/resources/JsonSchema/Post_Schema.json");
+
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("name", name);
@@ -63,7 +65,8 @@ public class APITest {
                     .assertThat().body("name", Matchers.equalTo(name))
                     .assertThat().body("job", Matchers.equalTo(job))
                     .assertThat().body("$", Matchers.hasKey("id"))
-                    .assertThat().body("$", Matchers.hasKey("createdAt"));
+                    .assertThat().body("$", Matchers.hasKey("createdAt"))
+                    .assertThat().body(JsonSchemaValidator.matchesJsonSchema(JsonSchema));
         } else {
             given().log().all()
                     .header("Content-Type", "application/json")
@@ -80,6 +83,10 @@ public class APITest {
     public static void  PutUser(Integer ID, String name, String job, boolean shouldPass){
         RestAssured.baseURI = "https://reqres.in/";
 
+
+        File JsonSchema = new File("src/test/resources/JsonSchema/Put_Schema.json");
+
+
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("userID", ID);
         jsonObject.put("name", name);
@@ -91,15 +98,17 @@ public class APITest {
 
 
 
-        if (shouldPass){
+        if (shouldPass) {
             given().log().all()
-                    .header("Content-Type","application/json")
+                    .header("Content-Type", "application/json")
                     .body(jsonObject.toString())
-                    .put("api/users/2"+ID)
+                    .put("api/users/2" + ID)
                     .then().log().all()
                     .assertThat().statusCode(200)
                     .assertThat().body("name", Matchers.equalTo(name))
-                    .assertThat().body("job", Matchers.equalTo(job));}
+                    .assertThat().body("job", Matchers.equalTo(job))
+                    .assertThat().body(JsonSchemaValidator.matchesJsonSchema(JsonSchema));
+        }
 
         else {
             given().log().all()
@@ -113,41 +122,6 @@ public class APITest {
     }
 
 
-    public static void  PatchUser(Integer ID, String name, String job, boolean shouldPass){
-        RestAssured.baseURI = "https://reqres.in/";
-
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("userID", ID);
-        jsonObject.put("name", name);
-        jsonObject.put("job", job);
-
-
-        String fname = given().when().get("api/users/2"+ID).getBody().jsonPath().get("data.name");
-        String ljob = given().when().get("api/users/2"+ID).getBody().jsonPath().get("data.job");
-        System.out.println("name before ="+fname);
-
-
-
-        if (shouldPass){
-            given().log().all()
-                    .header("Content-Type","application/json")
-                    .body(jsonObject.toString())
-                    .put("api/users/2"+ID)
-                    .then().log().all()
-                    .assertThat().statusCode(200)
-                    .assertThat().body("name", Matchers.equalTo(name))
-                    .assertThat().body("job", Matchers.equalTo(job));}
-
-        else {
-            given().log().all()
-                    .header("Content-Type", "application/json")
-                    .header("Accept", "application/json")
-                    .body(jsonObject.toString())
-                    .post("/api/users")
-                    .then()
-                    .assertThat().statusCode(400);
-        }
-    }
 
     public void DeleteUser(int expectedStatusCode) {
         RestAssured.baseURI = "https://reqres.in/";
@@ -162,6 +136,10 @@ public class APITest {
     public void GetTagsList(boolean shouldPass) {
         RestAssured.baseURI = "https://reqres.in/";
 
+
+        File JsonSchema = new File("src/test/resources/JsonSchema/GetTags_Scheme.json");
+
+
         if (shouldPass) {
             given().log().all()
                     .when().get("/api/tags")
@@ -170,7 +148,8 @@ public class APITest {
                     .assertThat().statusCode(200)
                     .assertThat().body("data", Matchers.notNullValue())
                     .assertThat().body("data", Matchers.hasSize(Matchers.greaterThan(0)))
-                    .assertThat().body("data.id", Matchers.hasItem(Matchers.anything()));
+                    .assertThat().body("data.id", Matchers.hasItem(Matchers.anything()))
+                    .assertThat().body(JsonSchemaValidator.matchesJsonSchema(JsonSchema));
         } else {
             given().log().all()
                     .when().get("/api/tags")
