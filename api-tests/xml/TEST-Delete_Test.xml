@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Delete_Test" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-01-30T17:20:39" hostname="fv-az1288-882" time="0.311">
+<testsuite name="Delete_Test" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-01-30T14:45:34" hostname="AZR" time="0.497">
   <properties/>
-  <testcase name="DeleteUser[0](204)" classname="Delete_Test" time="0.311"/>
+  <testcase name="DeleteUser[0](204)" classname="Delete_Test" time="0.497"/>
   <system-out><![CDATA[Request method:	DELETE
 Request URI:	https://reqres.in/api/users/2
 Proxy:			<none>
@@ -14,11 +14,11 @@ Cookies:		<none>
 Multiparts:		<none>
 Body:			<none>
 HTTP/1.1 204 No Content
-Date: Thu, 30 Jan 2025 17:20:39 GMT
+Date: Thu, 30 Jan 2025 14:45:38 GMT
 Content-Length: 0
 Connection: keep-alive
-Report-To: {"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1738257639&sid=c4c9725f-1ab0-44d8-820f-430df2718e11&s=pCWhD462tPNCYfx9XefMUh%2BsSgHdnKF5MCfa4zT7dUA%3D"}]}
-Reporting-Endpoints: heroku-nel=https://nel.heroku.com/reports?ts=1738257639&sid=c4c9725f-1ab0-44d8-820f-430df2718e11&s=pCWhD462tPNCYfx9XefMUh%2BsSgHdnKF5MCfa4zT7dUA%3D
+Report-To: {"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1738248338&sid=c4c9725f-1ab0-44d8-820f-430df2718e11&s=b%2FZ4cixHskRSDrC5oslfAxHRk9BFqBZELvtdVxdnUto%3D"}]}
+Reporting-Endpoints: heroku-nel=https://nel.heroku.com/reports?ts=1738248338&sid=c4c9725f-1ab0-44d8-820f-430df2718e11&s=b%2FZ4cixHskRSDrC5oslfAxHRk9BFqBZELvtdVxdnUto%3D
 Nel: {"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}
 X-Powered-By: Express
 Access-Control-Allow-Origin: *
@@ -26,8 +26,8 @@ Etag: W/"2-vyGp6PvFo4RvsFtPoIWeCReyIC8"
 Via: 1.1 vegur
 cf-cache-status: DYNAMIC
 Server: cloudflare
-CF-RAY: 90a322452e091643-SJC
-server-timing: cfL4;desc="?proto=TCP&rtt=1630&min_rtt=1550&rtt_var=638&sent=6&recv=7&lost=0&retrans=0&sent_bytes=3107&recv_bytes=762&delivery_rate=2763870&cwnd=252&unsent_bytes=0&cid=7512f3f1a6af88e8&ts=293&x=0"
+CF-RAY: 90a23f322a67f8ff-SIN
+server-timing: cfL4;desc="?proto=TCP&rtt=29569&min_rtt=28910&rtt_var=7188&sent=5&recv=7&lost=0&retrans=0&sent_bytes=3106&recv_bytes=750&delivery_rate=138558&cwnd=252&unsent_bytes=0&cid=8c4a3ed94a8edc5a&ts=424&x=0"
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
