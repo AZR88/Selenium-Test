@@ -49,14 +49,18 @@ jobs:
     - name: Disable Jekyll
       run: touch reports/.nojekyll
 
+    - name: Copy index.html
+      run: cp reports/index.html reports/ui-tests/index.html
+   
     # Deploy ke GitHub Pages (UI Test)
     - name: Deploy UI Test Report to GitHub Pages
       if: always()
       uses: peaceiris/actions-gh-pages@v4
       with:
-        personal_token: ${{ secrets.PERSONAL_TOKEN }} 
+        github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: gh-pages
         publish_dir: reports/ui-tests
-        destination_dir: ui-tests  
+        destination_dir: ui-tests
+
 
 
