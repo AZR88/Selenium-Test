@@ -46,10 +46,12 @@ jobs:
         path: reports
   
     # Deploy githup Page
-    - name: GitHub Pages action
+    - name: Deploy UI Test Report to GitHub Pages
       if: always()
-      uses: peaceiris/actions-gh-pages@v4.0.0
+      uses: peaceiris/actions-gh-pages@v4
       with:
-       personal_token: ${{ secrets.PERSONAL_TOKEN }}
-       publish_dir: reports
+        personal_token: ${{ secrets.PERSONAL_TOKEN }}
+        publish_branch: gh-pages
+        destination_dir: ui-tests
+        publish_dir: reports/ui-tests
 
