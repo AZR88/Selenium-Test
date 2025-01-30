@@ -23,8 +23,8 @@ import static Helper.WebHelper.driver;
 
 public class CartStepdefs {
     @Given("the user has added the item {string} to the cart")
-    public void theUserHasAddedTheItemToTheCart(String arg0) {
-        boolean item = Item.selectItemByName(driver, arg0);
+    public void theUserHasAddedTheItemToTheCart(String title) {
+        boolean item = Item.selectItemByName(driver, title);
         boolean add = Product_Page.clickAdd(driver);
         assertTrue("add button not displayed",add);
 

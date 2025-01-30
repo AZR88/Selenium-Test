@@ -105,7 +105,7 @@ public class ItemStepDef {
     }
 
     @When("check Navbar {string} button")
-    public void checkNavbarButton(String arg0) {
+    public void checkNavbarButton() {
         boolean isDisplayed = CheckHomebutton(driver);
         assertTrue("button Not seen in this page!", isDisplayed);
     }
