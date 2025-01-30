@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class Get_Test</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class Get_Test</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/default-package.html">default-package</a> &gt; Get_Test</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">3</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">4.910s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">GetUser[0](9, true)</td>
+<td class="success">4.119s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">GetUser[1](999, false)</td>
+<td class="success">0.388s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">GetUser[2](0, false)</td>
+<td class="success">0.403s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>Request method:	GET
+Request URI:	https://reqres.in/api/users/9
+Proxy:			&lt;none&gt;
+Request params:	&lt;none&gt;
+Query params:	&lt;none&gt;
+Form params:	&lt;none&gt;
+Path params:	id=9
+Headers:		Accept=*/*
+Cookies:		&lt;none&gt;
+Multiparts:		&lt;none&gt;
+Body:			&lt;none&gt;
+HTTP/1.1 200 OK
+Date: Thu, 30 Jan 2025 15:27:04 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Report-To: {&quot;group&quot;:&quot;heroku-nel&quot;,&quot;max_age&quot;:3600,&quot;endpoints&quot;:[{&quot;url&quot;:&quot;https://nel.heroku.com/reports?ts=1738250824&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=HMzm5OlAsJ41YQPa2AMDR2mvAXUARbC3JTkvHgsFg2M%3D&quot;}]}
+Reporting-Endpoints: heroku-nel=https://nel.heroku.com/reports?ts=1738250824&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=HMzm5OlAsJ41YQPa2AMDR2mvAXUARbC3JTkvHgsFg2M%3D
+Nel: {&quot;report_to&quot;:&quot;heroku-nel&quot;,&quot;max_age&quot;:3600,&quot;success_fraction&quot;:0.005,&quot;failure_fraction&quot;:0.05,&quot;response_headers&quot;:[&quot;Via&quot;]}
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Etag: W/&quot;152-FpYvp70F61UHmjz1MpAbXegc4Hc&quot;
+Via: 1.1 vegur
+Cache-Control: max-age=14400
+CF-Cache-Status: MISS
+Vary: Accept-Encoding
+Server: cloudflare
+CF-RAY: 90a27be26f6a08a6-LAX
+Content-Encoding: gzip
+server-timing: cfL4;desc=&quot;?proto=TCP&amp;rtt=10973&amp;min_rtt=10965&amp;rtt_var=4129&amp;sent=7&amp;recv=7&amp;lost=0&amp;retrans=0&amp;sent_bytes=3105&amp;recv_bytes=759&amp;delivery_rate=388219&amp;cwnd=250&amp;unsent_bytes=0&amp;cid=fa94b5e14506e371&amp;ts=463&amp;x=0&quot;
+
+{
+    &quot;data&quot;: {
+        &quot;id&quot;: 9,
+        &quot;email&quot;: &quot;tobias.funke@reqres.in&quot;,
+        &quot;first_name&quot;: &quot;Tobias&quot;,
+        &quot;last_name&quot;: &quot;Funke&quot;,
+        &quot;avatar&quot;: &quot;https://reqres.in/img/faces/9-image.jpg&quot;
+    },
+    &quot;support&quot;: {
+        &quot;url&quot;: &quot;https://contentcaddy.io?utm_source=reqres&amp;utm_medium=json&amp;utm_campaign=referral&quot;,
+        &quot;text&quot;: &quot;Tired of writing endless social media content? Let Content Caddy generate it for you.&quot;
+    }
+}
+Request method:	GET
+Request URI:	https://reqres.in/api/users/999
+Proxy:			&lt;none&gt;
+Request params:	&lt;none&gt;
+Query params:	&lt;none&gt;
+Form params:	&lt;none&gt;
+Path params:	id=999
+Headers:		Accept=*/*
+Cookies:		&lt;none&gt;
+Multiparts:		&lt;none&gt;
+Body:			&lt;none&gt;
+HTTP/1.1 404 Not Found
+Date: Thu, 30 Jan 2025 15:27:06 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 2
+Connection: keep-alive
+Report-To: {&quot;group&quot;:&quot;heroku-nel&quot;,&quot;max_age&quot;:3600,&quot;endpoints&quot;:[{&quot;url&quot;:&quot;https://nel.heroku.com/reports?ts=1738250826&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=8aiZD0NdkhmArvVdIAYySZhCDiOgEjUgcK4UYX8NZS0%3D&quot;}]}
+Reporting-Endpoints: heroku-nel=https://nel.heroku.com/reports?ts=1738250826&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=8aiZD0NdkhmArvVdIAYySZhCDiOgEjUgcK4UYX8NZS0%3D
+Nel: {&quot;report_to&quot;:&quot;heroku-nel&quot;,&quot;max_age&quot;:3600,&quot;success_fraction&quot;:0.005,&quot;failure_fraction&quot;:0.05,&quot;response_headers&quot;:[&quot;Via&quot;]}
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Etag: W/&quot;2-vyGp6PvFo4RvsFtPoIWeCReyIC8&quot;
+Via: 1.1 vegur
+Cache-Control: max-age=14400
+CF-Cache-Status: MISS
+Vary: Accept-Encoding
+Server: cloudflare
+CF-RAY: 90a27befcc277d0d-LAX
+server-timing: cfL4;desc=&quot;?proto=TCP&amp;rtt=11260&amp;min_rtt=11179&amp;rtt_var=4250&amp;sent=6&amp;recv=7&amp;lost=0&amp;retrans=0&amp;sent_bytes=3107&amp;recv_bytes=761&amp;delivery_rate=383218&amp;cwnd=252&amp;unsent_bytes=0&amp;cid=0589438d443604f7&amp;ts=342&amp;x=0&quot;
+
+{
+    
+}
+Request method:	GET
+Request URI:	https://reqres.in/api/users/0
+Proxy:			&lt;none&gt;
+Request params:	&lt;none&gt;
+Query params:	&lt;none&gt;
+Form params:	&lt;none&gt;
+Path params:	id=0
+Headers:		Accept=*/*
+Cookies:		&lt;none&gt;
+Multiparts:		&lt;none&gt;
+Body:			&lt;none&gt;
+HTTP/1.1 404 Not Found
+Date: Thu, 30 Jan 2025 15:27:06 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 2
+Connection: keep-alive
+Report-To: {&quot;group&quot;:&quot;heroku-nel&quot;,&quot;max_age&quot;:3600,&quot;endpoints&quot;:[{&quot;url&quot;:&quot;https://nel.heroku.com/reports?ts=1738250826&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=8aiZD0NdkhmArvVdIAYySZhCDiOgEjUgcK4UYX8NZS0%3D&quot;}]}
+Reporting-Endpoints: heroku-nel=https://nel.heroku.com/reports?ts=1738250826&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=8aiZD0NdkhmArvVdIAYySZhCDiOgEjUgcK4UYX8NZS0%3D
+Nel: {&quot;report_to&quot;:&quot;heroku-nel&quot;,&quot;max_age&quot;:3600,&quot;success_fraction&quot;:0.005,&quot;failure_fraction&quot;:0.05,&quot;response_headers&quot;:[&quot;Via&quot;]}
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Etag: W/&quot;2-vyGp6PvFo4RvsFtPoIWeCReyIC8&quot;
+Via: 1.1 vegur
+Cache-Control: max-age=14400
+CF-Cache-Status: MISS
+Vary: Accept-Encoding
+Server: cloudflare
+CF-RAY: 90a27bf26d6c2f35-LAX
+server-timing: cfL4;desc=&quot;?proto=TCP&amp;rtt=11134&amp;min_rtt=11099&amp;rtt_var=4233&amp;sent=5&amp;recv=7&amp;lost=0&amp;retrans=0&amp;sent_bytes=3106&amp;recv_bytes=759&amp;delivery_rate=376284&amp;cwnd=250&amp;unsent_bytes=0&amp;cid=44c9a4ac2c1b69d7&amp;ts=346&amp;x=0&quot;
+
+{
+    
+}
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 8.5</a> at Jan 30, 2025, 3:27:14 PM</p>
+</div>
+</div>
+</body>
+</html>
