@@ -43,12 +43,16 @@ jobs:
     - name: Disable Jekyll
       run: touch reports/api-tests/.nojekyll
 
-    # Deploy ke GitHub Pages
+    - name: Copy index.html
+      run: cp reports/index.html reports/api-tests/index.html
+    
+    #Deploy
     - name: Deploy Allure Report to GitHub Pages
       if: always()
       uses: peaceiris/actions-gh-pages@v4
       with:
-
-       personal_token: ${{ secrets.PERSONAL_TOKEN }}        
-       publish_branch: gh-pages
-       publish_dir: reports/api-tests
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: gh-pages
+        publish_dir: reports/api-tests
+        destination_dir: api-tests
+  
