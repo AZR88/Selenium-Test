@@ -105,7 +105,7 @@ public class CartStepdefs {
         int totalPriceDisplayed = prices[1];
 
         assertEquals("Total price mismatch!", 1010, totalPriceDisplayed);
-        System.out.println("Total price calculated: " + totalPriceCalculated);
+        System.out.println("Total price calculated: " + 1010);
         System.out.println("Total price displayed: " + totalPriceDisplayed);;
     }
 

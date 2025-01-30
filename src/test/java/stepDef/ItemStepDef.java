@@ -24,11 +24,6 @@ public class ItemStepDef {
 
     }
 
-
-
-
-
-
     @When("check multiple titles and ids")
     public void checkMultipleTitlesAndIds(DataTable dataTable) {
         List<Map<String, String>> data = dataTable.asMaps(String.class, String.class);
