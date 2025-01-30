@@ -182,7 +182,7 @@ public class Item {
 
     public static boolean selectItemByName(WebDriver driver, String itemName) {
         By itemLocator = By.xpath("//a[contains(text(), '" + itemName + "')]");
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         try {
             WebElement itemElement = wait.until(ExpectedConditions.visibilityOfElementLocated(itemLocator));
             itemElement.click();

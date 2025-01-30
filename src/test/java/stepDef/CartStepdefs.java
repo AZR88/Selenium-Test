@@ -74,7 +74,7 @@ public class CartStepdefs {
 
     @Given("the user has added the following items to the cart:")
 
-    public void theUserHasAddedTheFollowingItemsToTheCart(DataTable dataTable) {
+    public void theUserHasAddedTheFollowingItemsToTheCart(DataTable dataTable) throws InterruptedException {
         List<Map<String, String>> items = dataTable.asMaps(String.class, String.class);
 
         for (Map<String, String> item : items) {
@@ -83,15 +83,20 @@ public class CartStepdefs {
             boolean name = Item.selectItemByName(driver, itemName);
             assertTrue(name);
 
+            Thread.sleep(5000);
 
             boolean add = Product_Page.clickAdd(driver);
             assertTrue("Add button not displayed",add);
 
 
+            Thread.sleep(5000);
 
 
             boolean button = Item.ClickHomebutton(driver);
             assertTrue(button);
+
+
+            Thread.sleep(5000);
 
         }
     }

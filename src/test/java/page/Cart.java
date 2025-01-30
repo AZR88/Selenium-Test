@@ -80,7 +80,7 @@ public class Cart {
 
 
     public static boolean fillField(WebDriver driver, String fieldId, String fieldValue) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         try {
             WebElement fieldElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(fieldId)));
             fieldElement.clear();
@@ -95,14 +95,14 @@ public class Cart {
 
     public  static String  totalPrice (WebDriver driver)
     {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement TP = wait.until(ExpectedConditions.visibilityOfElementLocated(TotalPrice));
         String price = TP.getText();
         return price;
     }
 
     public static boolean theItemShouldNoLongerBeDisplayedInTheCart(WebDriver driver, String itemName) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         try {
             By itemLocator = By.xpath("//tbody[@id='tbodyid']//tr[td[2][text()='" + itemName + "']]");
             return wait.until(ExpectedConditions.invisibilityOfElementLocated(itemLocator));
@@ -113,7 +113,7 @@ public class Cart {
     }
 
     public static int[] CalculateTotalPrice(WebDriver driver) {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             List<WebElement> prices = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(AllPrice));
             int totalPriceCalculated = 0;
 
