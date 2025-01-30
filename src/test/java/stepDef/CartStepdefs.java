@@ -24,8 +24,7 @@ import static Helper.WebHelper.driver;
 public class CartStepdefs {
     @Given("the user has added the item {string} to the cart")
     public void theUserHasAddedTheItemToTheCart(String arg0) {
-        WebElement item = Item.selectItemByName(driver, arg0);
-        item.click();
+        boolean item = Item.selectItemByName(driver, arg0);
         boolean add = Product_Page.clickAdd(driver);
         assertTrue("add button not displayed",add);
 
@@ -81,9 +80,9 @@ public class CartStepdefs {
         for (Map<String, String> item : items) {
 
             String itemName = item.get("Item Name");
-            WebElement name = Item.selectItemByName(driver, itemName);
-            assertTrue(name.isDisplayed() && name.isEnabled());
-            name.click();
+            boolean name = Item.selectItemByName(driver, itemName);
+            assertTrue(name);
+
 
             boolean add = Product_Page.clickAdd(driver);
             assertTrue("Add button not displayed",add);

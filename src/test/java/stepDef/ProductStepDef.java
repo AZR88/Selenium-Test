@@ -16,9 +16,8 @@ import static Helper.WebHelper.driver;
 public class ProductStepDef {
     @When("the user click the product title {string}")
     public void theUserClickTheProductTitle(String title) {
-        WebElement select = Item.selectItemByName(driver, title);
-        assertTrue("Item selected",select.isEnabled() && select.isDisplayed());
-        select.click();
+        boolean select = Item.selectItemByName(driver, title);
+        assertTrue("Item not selected",select);
     }
 
     @Then("the product title should be {string}")

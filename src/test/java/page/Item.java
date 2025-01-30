@@ -180,11 +180,16 @@ public class Item {
     }
 
 
-    public static WebElement selectItemByName(WebDriver driver, String itemName) {
+    public static boolean selectItemByName(WebDriver driver, String itemName) {
         By itemLocator = By.xpath("//a[contains(text(), '" + itemName + "')]");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement itemElement = wait.until(ExpectedConditions.visibilityOfElementLocated(itemLocator));
-        return itemElement;
+        try {
+            WebElement itemElement = wait.until(ExpectedConditions.visibilityOfElementLocated(itemLocator));
+            itemElement.click();
+            return true;
+        } catch (TimeoutException|NoSuchElementException e ){
+            return false;
+        }
     }
 
 
