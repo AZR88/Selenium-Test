@@ -1,8 +1,11 @@
 package api;
 import io.restassured.RestAssured;
+import io.restassured.module.jsv.JsonSchemaValidator;
 import org.hamcrest.Matchers;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
+
+import java.io.File;
 
 import static io.restassured.RestAssured.given;
 
@@ -11,6 +14,8 @@ public class APITest {
 
     public static void GetUserById(Integer ID, boolean shouldPass) {
         RestAssured.baseURI = "https://reqres.in/";
+
+        File JsonSchema = new File("src/test/resources/JsonSchema/Get_Scema.json");
 
         if (shouldPass) {
             given()
@@ -23,7 +28,8 @@ public class APITest {
                     .assertThat().statusCode(200)
                     .assertThat().body("data.id", Matchers.equalTo(ID))
                     .assertThat().body("data.first_name", Matchers.notNullValue())
-                    .assertThat().body("data.email", Matchers.endsWith("@reqres.in"));
+                    .assertThat().body("data.email", Matchers.endsWith("@reqres.in"))
+                    .assertThat().body(JsonSchemaValidator.matchesJsonSchema(JsonSchema));
         } else {
             given()
                     .pathParam("id", ID)
