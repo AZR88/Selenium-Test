@@ -11,7 +11,7 @@ jobs:
   RunTest:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
 
     steps:
     - name: Checkout repository
@@ -32,27 +32,28 @@ jobs:
     - name: Execute API tests
       run: ./gradlew clean runApiTests
 
-    - name: Archive Allure Report
-      uses: actions/upload-artifact@v4.6.0
-      if: always()
-      with:
-        name: Allure Report
-        path: reports/api-tests
+    # Debugging untuk memastikan laporan dibuat
+    - name: Debug report directory
+      run: ls -R reports || true
+
+    # Pastikan index.html ada sebelum menyalinnya
+    - name: Ensure index.html exists
+      run: |
+        if [ ! -f reports/api-tests/index.html ]; then
+          echo "index.html not found! Listing reports/api-tests directory:"
+          ls -l reports/api-tests
+          exit 1
+        fi
 
     # Tambahkan .nojekyll agar GitHub Pages tidak mengabaikan file statis
     - name: Disable Jekyll
-      run: touch reports/api-tests/.nojekyll
+      run: touch reports/.nojekyll
 
-    - name: Copy index.html
-      run: cp reports/index.html reports/api-tests/index.html
-    
-    #Deploy
+    # Deploy ke GitHub Pages
     - name: Deploy Allure Report to GitHub Pages
       if: always()
       uses: peaceiris/actions-gh-pages@v4
       with:
         personal_token: ${{ secrets.PERSONAL_TOKEN }}
         publish_branch: gh-pages
-        publish_dir: reports/api-tests
-        destination_dir: api-tests
-  
+        publish_dir: reports
