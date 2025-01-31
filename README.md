@@ -1,24 +1,34 @@
-# Selenium-Test
+# NOTE
+## API Testing with Regress.in
 
- Selenium-Test is a test automation project designed to identify UI defects in web applications. The project leverages Selenium WebDriver to perform functional and regression testing, with a focus on verifying the correctness of UI elements like buttons, images, titles, and prices on a web page.
+Due to the unavailability of the DummyAPI (https://dummyapi.io/docs/user), I have opted to use Regress.in for API testing. Regress.in provides a reliable environment to test the functionality and performance of APIs. This alternative allows for effective validation of API responses, ensuring the correct behavior of web services in the project. 
+
+
+
+# Final Project
+
+In this project, I conduct UI testing on the Demoblaze.com website using Selenium WebDriver to identify defects by verifying elements such as buttons, images, titles, and prices. Additionally, I perform API testing on Regress.in using REST Assured to validate the functionality, reliability, and performance of web services.
 
 ## Features
 
-- **Automated UI Testing**: Validates the visual and functional integrity of web elements.
-- **Page Object Model (POM)**: Follows the Page Object Model design pattern for better maintainability and scalability of tests.
-- **Data-Driven Testing**: Supports running tests with different sets of data, such as product IDs and titles.
-- **Cross-Browser Support**: Can be configured to run tests on different browsers like Chrome and Edge using WebDriver.
-- **Test Reporting**: Generates detailed reports of test execution with passed/failed test results.
+- **Automated UI Testing**: Ensures the correctness of UI elements on Demoblaze.com, including buttons, images, titles, and prices, using Selenium WebDriver.
+- **API Testing with REST Assured**: Validates the functionality and reliability of APIs on Regress.in through automated test scenarios.
+- **Page Object Model (POM)**: Implements the Page Object Model design pattern for better test maintainability and scalability.
+- **Data-Driven Testing**: Supports executing tests with multiple data sets, such as product IDs and titles, to enhance test coverage.
+- **Cross-Browser Support**: Configurable to run tests on various browsers like Chrome and Edge using WebDriver.
+- **Comprehensive Test Reporting**: Generates detailed test execution reports with pass/fail results for better analysis and debugging.
 
 ## Prerequisites
 
 Before running the tests, make sure you have the following installed on your machine:
 
 - **Java 17 or higher**: The project is built using Java and requires Java 17 or later.
-- **Maven or Gradle**: The project uses Maven or Gradle as the build automation tool for managing dependencies and running tests.
-- **Selenium WebDriver**: WebDriver for browser automation.
-- **ChromeDriver or GeckoDriver**: Required for Chrome or Firefox automation respectively.
+- **Maven or Gradle**: The project uses Maven or Gradle as the build automation tool to manage dependencies and run tests for both UI (using Selenium WebDriver) and API (using REST Assured).
+- **Selenium WebDriver**: Required for browser automation to test UI elements on Demoblaze.com.
+- **ChromeDriver or GeckoDriver**: Needed for automating tests on Chrome or Firefox browsers, respectively.
+- **REST Assured**: For automating API tests on Regress.in to validate web service functionality.
 - **IDE (Optional)**: You can use any Java IDE such as IntelliJ IDEA or Eclipse for development and debugging.
+
 
 ## Installation
 
@@ -64,6 +74,13 @@ with Gradle:
 ./gradlew cucumberChrome -Ptags="@Login"
 
 ```
+**To run API Test**
+with Gradle:
+
+```bash
+./gradlew runApiTests
+```
+
 Test Reporting
 Test results are generated in the target (Maven) or build (Gradle) directories. You can view detailed reports in the following format:
 
