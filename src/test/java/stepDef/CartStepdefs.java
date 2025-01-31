@@ -6,7 +6,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.datatable.DataTable;
 
-import org.openqa.selenium.WebElement;
 import page.Cart;
 import page.Item;
 import page.Product_Page;
@@ -91,6 +90,8 @@ public class CartStepdefs {
 
             Thread.sleep(5000);
 
+            boolean alert = Product_Page.isAlertPresent(driver);
+            assertTrue(alert);
 
             boolean button = Item.ClickHomebutton(driver);
             assertTrue(button);
@@ -98,8 +99,6 @@ public class CartStepdefs {
 
             Thread.sleep(5000);
 
-            boolean alert = Product_Page.isAlertPresent(driver);
-            assertTrue(alert);
 
         }
     }
