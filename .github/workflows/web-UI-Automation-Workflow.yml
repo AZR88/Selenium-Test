@@ -13,43 +13,48 @@ jobs:
       contents: write
 
     steps:
-    # download repo
+    # Download repo
     - uses: actions/checkout@v4
 
-    # setup java
+    # Setup Java
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
         java-version: '17'
         distribution: 'temurin'
 
-    # instal browser
+    # Install browser
     - name: Setup Chrome
       uses: browser-actions/setup-chrome@v1.7.2
 
-    # setup gradlew
-    - name : Setup Gradlew
-      run : chmod +x gradlew
+    # Setup Gradlew
+    - name: Setup Gradlew
+      run: chmod +x gradlew
 
-    #  execute gradle Command for running cucumber test
-    - name : Execute test
+    # Execute Gradle command for running Cucumber test
+    - name: Execute UI tests
       run: ./gradlew cucumberChrome
-          
+
+    # Pastikan folder laporan UI tests sudah ada
+    - name: Ensure UI test reports directory exists
+      run: mkdir -p reports/ui-tests
+
     # Archive Test Result
-    - name : Archive Test Result
+    - name: Archive Test Result
       uses: actions/upload-artifact@v4.6.0
       if: always()
       with:
-        name: cucumber Report
-        path: reports
-  
+        name: UI Test Report
+        path: reports/ui-tests
 
+    # Disable Jekyll to allow GitHub Pages to serve all files
     - name: Disable Jekyll
-      run: touch reports/.nojekyll
+      run: touch reports/ui-tests/.nojekyll
 
-   # - name: Copy index.html
-    #  run: cp reports/index.html reports/ui-tests/index.html
-   
+    # Pastikan index.html ada di folder ui-tests
+    - name: Copy index.html
+      run: cp reports/index.html reports/ui-tests/index.html || echo "index.html not found, skipping copy"
+
     # Deploy ke GitHub Pages (UI Test)
     - name: Deploy UI Test Report to GitHub Pages
       if: always()
@@ -59,6 +64,3 @@ jobs:
         publish_branch: gh-pages
         publish_dir: reports/ui-tests
         destination_dir: ui-tests
-
-
-
