@@ -153,7 +153,7 @@ public class CartStepdefs {
     }
 
     @Then("the user clicks the {string} button")
-    public void theUserClicksTheButton(String arg0) {
+    public void theUserClicksTheButton(String name) {
         boolean button = Cart.Order(driver);
         assertTrue("button not displayed",button);
     }
