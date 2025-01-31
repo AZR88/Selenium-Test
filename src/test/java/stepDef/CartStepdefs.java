@@ -98,6 +98,9 @@ public class CartStepdefs {
 
             Thread.sleep(5000);
 
+            boolean alert = Product_Page.isAlertPresent(driver);
+            assertTrue(alert);
+
         }
     }
 
