@@ -15,7 +15,8 @@ jobs:
 
     steps:
     # Download repo
-    - uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
     # Setup Java
     - name: Set up JDK 17
@@ -40,6 +41,16 @@ jobs:
     - name: Ensure API test reports directory exists
       run: mkdir -p reports/api-tests
 
+    # Cek apakah laporan API benar-benar dihasilkan
+    - name: Check if API Test Report Exists
+      run: |
+        if [ -f "reports/api-tests/index.html" ]; then
+          echo "API Test Report found!"
+        else
+          echo "ERROR: API Test Report not found!"
+          exit 1
+        fi
+
     # Archive Test Result
     - name: Archive Allure Report
       uses: actions/upload-artifact@v4.6.0
@@ -51,10 +62,6 @@ jobs:
     # Disable Jekyll agar GitHub Pages dapat membaca semua file statis
     - name: Disable Jekyll
       run: touch reports/api-tests/.nojekyll
-
-    # Pastikan index.html ada di folder api-tests
-    - name: Copy index.html
-      run: cp reports/index.html reports/api-tests/index.html || echo "index.html not found, skipping copy"
 
     # Deploy ke GitHub Pages (API Test)
     - name: Deploy API Test Report to GitHub Pages
