@@ -8,30 +8,50 @@ on:
   workflow_dispatch:
 
 jobs:
-  RunTest:
+  RunTest-API:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
 
     steps:
+    # Download repo
     - name: Checkout repository
       uses: actions/checkout@v4
 
+    # Setup Java
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
         java-version: '17'
         distribution: 'temurin'
 
+    # Install Chrome browser
     - name: Setup Chrome
       uses: browser-actions/setup-chrome@v1.7.2
 
-    - name: Grant execute permission for Gradle
+    # Setup Gradlew
+    - name: Setup Gradlew
       run: chmod +x gradlew
 
+    # Execute API tests
     - name: Execute API tests
       run: ./gradlew clean runApiTests
 
+    # Pastikan folder laporan API tests sudah ada
+    - name: Ensure API test reports directory exists
+      run: mkdir -p reports/api-tests
+
+    # Cek apakah laporan API benar-benar dihasilkan
+    - name: Check if API Test Report Exists
+      run: |
+        if [ -f "reports/api-tests/index.html" ]; then
+          echo "API Test Report found!"
+        else
+          echo "ERROR: API Test Report not found!"
+          exit 1
+        fi
+
+    # Archive Test Result
     - name: Archive Allure Report
       uses: actions/upload-artifact@v4.6.0
       if: always()
@@ -39,15 +59,12 @@ jobs:
         name: Allure Report
         path: reports/api-tests
 
-    # Tambahkan .nojekyll agar GitHub Pages tidak mengabaikan file statis
+    # Disable Jekyll agar GitHub Pages dapat membaca semua file statis
     - name: Disable Jekyll
       run: touch reports/api-tests/.nojekyll
 
-    - name: Copy index.html
-      run: cp reports/index.html reports/api-tests/index.html
-    
-    #Deploy
-    - name: Deploy Allure Report to GitHub Pages
+    # Deploy ke GitHub Pages (API Test)
+    - name: Deploy API Test Report to GitHub Pages
       if: always()
       uses: peaceiris/actions-gh-pages@v4
       with:
@@ -55,4 +72,3 @@ jobs:
         publish_branch: gh-pages
         publish_dir: reports/api-tests
         destination_dir: api-tests
-  
