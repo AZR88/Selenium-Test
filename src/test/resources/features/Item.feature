@@ -6,10 +6,11 @@ Feature: Validate HomepageText
     Given  user is on homepage "https://www.demoblaze.com/"
     When check Navbar Home button
     Then Check About us
-    Then Check Contact
-    Then Check Cart
-    Then Check Log in
-    Then check Sign up
+    And Check Contact
+    And Check Cart
+    And Check Log in
+    And check Sign up
+
   @Valid-Item
   Scenario: Validate multiple product titles in all category
     Given user is on homepage
@@ -20,7 +21,7 @@ Feature: Validate HomepageText
       | 5   | Iphone 6 32gb       | $790     |
       | 7   | HTC One M9          | $700     |
 
-    Then click next to show next product where id = "10" and title = "Apple monitor 24" and price = "$400"
+    And click next to show next product where id = "10" and title = "Apple monitor 24" and price = "$400"
     Then check multiple titles and ids on next page
       | id  | title               | price   |
       | 10  | Apple monitor 24    | $400    |

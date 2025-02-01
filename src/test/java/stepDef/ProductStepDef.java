@@ -64,4 +64,5 @@ public class ProductStepDef {
         boolean isAlertPresent = Product_Page.isAlertPresent(driver);
         Assert.assertTrue("No alert detected.", isAlertPresent);
     }
+
 }

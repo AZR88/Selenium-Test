@@ -53,4 +53,10 @@ public class ContactStepdefs {
         boolean isAlertPresent = Login_Page.isLoginAlertPresent(driver);
         Assert.assertTrue("Notifikasi login tidak valid tidak terdeteksi!", isAlertPresent);
     }
+
+    @Then("Submit The form")
+    public void submitTheForm() {
+        boolean button = Contact.clickSubmit(driver);
+        assertTrue("Button dont displayed",button);
+    }
 }

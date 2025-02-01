@@ -1,5 +1,6 @@
 @Login
 Feature: Automation Login
+
   @valid-Login
   Scenario: Login with valid username and password
     Given user is on homepage "https://www.demoblaze.com/"

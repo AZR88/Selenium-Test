@@ -7,7 +7,7 @@ Feature: Contact
     Then the user enters their email "Agus@example.com"
     And the user enters their name "Agus"
     And the user enters their message " this is Test message"
-    Then the user click Submit
+    Then Submit The form
 
 
   Scenario: User submits the form with invalid email

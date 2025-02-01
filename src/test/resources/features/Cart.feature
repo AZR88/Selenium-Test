@@ -6,14 +6,14 @@ Feature: Shopping Cart Functionality
     Given the user has added the item "Samsung galaxy s6" to the cart
     When Click Cart button
     Then user checks the title of the item and it should be "Samsung galaxy s6"
-    Then the displayed price should be "360"
+    And the displayed price should be "360"
 
   @Valid-Cart
   Scenario: Delete an item from the cart
     Given the user has added the item "Samsung galaxy s6" to the cart
     When Click Cart button
     Then the user deletes the item from the cart
-    Then the item "Samsung galaxy s6" should no longer be displayed in the cart
+    And the item "Samsung galaxy s6" should no longer be displayed in the cart
 
 
   @Valid-Cart
@@ -31,7 +31,7 @@ Feature: Shopping Cart Functionality
     Given  the user has added the item "Samsung galaxy s6" to the cart
     When Click Cart button
     Then the user clicks the "Place Order" button
-    Then the user fills in the following order details:
+    And the user fills in the following order details:
       | Field      | Value           |
       | name       | Agus            |
       | country    | USA             |
@@ -47,7 +47,7 @@ Feature: Shopping Cart Functionality
     Given  the user has added the item "Samsung galaxy s6" to the cart
     When Click Cart button
     Then the user clicks the "Place Order" button
-    Then the user fills in the following order details:
+    And the user fills in the following order details:
       | Field      | Value           |
       | name       |                 |
       | country    | USA             |
