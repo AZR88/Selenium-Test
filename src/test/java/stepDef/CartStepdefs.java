@@ -8,7 +8,7 @@ import io.cucumber.datatable.DataTable;
 
 import page.Cart;
 import page.Item;
-import page.Product_Page;
+import page.ProductPage;
 
 import java.util.List;
 import java.util.Map;
@@ -24,7 +24,7 @@ public class CartStepdefs {
     @Given("the user has added the item {string} to the cart")
     public void theUserHasAddedTheItemToTheCart(String title) {
         boolean item = Item.selectItemByName(driver, title);
-        boolean add = Product_Page.clickAdd(driver);
+        boolean add = ProductPage.clickAdd(driver);
         assertTrue("add button not displayed",add);
 
         boolean alert = Cart.verifyalert(driver);
@@ -84,13 +84,13 @@ public class CartStepdefs {
 
             Thread.sleep(5000);
 
-            boolean add = Product_Page.clickAdd(driver);
+            boolean add = ProductPage.clickAdd(driver);
             assertTrue("Add button not displayed",add);
 
 
             Thread.sleep(5000);
 
-            boolean alert = Product_Page.isAlertPresent(driver);
+            boolean alert = ProductPage.isAlertPresent(driver);
             assertTrue(alert);
 
             boolean button = Item.ClickHomebutton(driver);
@@ -148,7 +148,7 @@ public class CartStepdefs {
 
     @Then("An alert Should be show up")
     public void anAlertShouldBeShowUp() {
-        boolean isAlertPresent = Product_Page.isAlertPresent(driver);
+        boolean isAlertPresent = ProductPage.isAlertPresent(driver);
         assertTrue("No alert detected", isAlertPresent);
     }
 

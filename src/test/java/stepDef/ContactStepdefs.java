@@ -1,13 +1,11 @@
 package stepDef;
 
-import io.cucumber.core.cli.Main;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.WebElement;
 import page.Contact;
-import page.Login_Page;
+import page.LoginPage;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
@@ -50,7 +48,7 @@ public class ContactStepdefs {
 
     @Then("an error message should be displayed for emtpy field")
     public void anErrorMessageShouldBeDisplayedForEmtpyField() {
-        boolean isAlertPresent = Login_Page.isLoginAlertPresent(driver);
+        boolean isAlertPresent = LoginPage.isLoginAlertPresent(driver);
         Assert.assertTrue("Notifikasi login tidak valid tidak terdeteksi!", isAlertPresent);
     }
 

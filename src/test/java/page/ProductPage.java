@@ -1,14 +1,12 @@
 package page;
 
-import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.w3c.dom.Text;
 
 import java.time.Duration;
 
-public class Product_Page {
+public class ProductPage {
 
     public static By ProductPic = By.xpath("//div[@id='imgp']//img");
     public static By ProductTitle = By.xpath("//h2[@class='name']");

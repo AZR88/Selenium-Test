@@ -3,10 +3,9 @@ package stepDef;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.WebElement;
 import page.Cart;
 import page.Item;
-import page.Product_Page;
+import page.ProductPage;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
@@ -22,25 +21,25 @@ public class ProductStepDef {
 
     @Then("the product title should be {string}")
     public void theProductTitleShouldBe(String Title) {
-        String Text =  Product_Page.checkTitle(driver);
+        String Text =  ProductPage.checkTitle(driver);
         assertEquals("The tilte is not match, expected ="+Title+"",Text, Title);
     }
 
     @Then("the product price should be {string}")
     public void theProductPriceShouldBe(String price) {
-        String Text = Product_Page.checkPrice(driver);
+        String Text = ProductPage.checkPrice(driver);
         assertEquals("Price mismatch! Expected: " + price + ", but Actual: " + Text, price, Text);
 
     }
 
     @Then("the product image should be displayed")
     public void theProductImageShouldBeDisplayed() {
-        boolean isDisplayed = Product_Page.checkPic(driver);
+        boolean isDisplayed = ProductPage.checkPic(driver);
         assertTrue("picture is not Displayed", isDisplayed);
     }
     @Then("the product description should contain {string}")
     public void theProductDescriptionShouldContain(String productdesc) {
-        boolean isDisplayed = Product_Page.isProductDescriptionDisplayed(driver, productdesc);
+        boolean isDisplayed = ProductPage.isProductDescriptionDisplayed(driver, productdesc);
         assertTrue("Product with desc '" + productdesc + "' Not seen in this page!", isDisplayed);
     }
 
@@ -55,13 +54,13 @@ public class ProductStepDef {
 
     @Then("the user clicks the Add to cart button")
     public void theUserClicksTheAddToCartButton() {
-        boolean button = Product_Page.clickAdd(driver);
+        boolean button = ProductPage.clickAdd(driver);
        assertTrue("button not displayed",button);
     }
 
     @Then("Show Alert Product Added")
     public void showAlertProductAdded() {
-        boolean isAlertPresent = Product_Page.isAlertPresent(driver);
+        boolean isAlertPresent = ProductPage.isAlertPresent(driver);
         Assert.assertTrue("No alert detected.", isAlertPresent);
     }
 

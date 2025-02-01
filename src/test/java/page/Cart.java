@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
-import static org.junit.Assert.assertTrue;
+
 
 public class Cart {
     public static By cartitem = By.xpath("//tbody[@id='tbodyid']//tr[@class='success']/td[2]");

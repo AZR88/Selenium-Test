@@ -2,7 +2,7 @@ import api.APITest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class Delete_Test {
+public class DeleteTest {
     
     @DataProvider(name = "userDeleteData")
     public Object[][] createDeleteUserData() {

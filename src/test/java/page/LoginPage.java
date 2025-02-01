@@ -5,7 +5,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
-public class Login_Page {
+public class LoginPage {
 
     // Locators
     public static By loginButton = By.id("login2");

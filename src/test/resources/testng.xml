@@ -2,10 +2,10 @@
 <suite name="API automation suite">
     <test name="API Test">
         <classes>
-            <class name="Get_Test"/>
-            <class name="Post_Test"/>
-            <class name="Put_Test"/>
-            <class name="Delete_Test"/>
+            <class name="GetTest"/>
+            <class name="PostTest"/>
+            <class name="PutTest"/>
+            <class name="DeleteTest"/>
             </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->

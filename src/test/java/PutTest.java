@@ -2,7 +2,7 @@ import api.APITest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class Put_Test {
+public class PutTest {
 
     @DataProvider(name = "userData")
     public Object[][] createUserData() {

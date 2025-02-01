@@ -2,7 +2,7 @@ import api.APITest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class GetTags_Test {
+public class GetTagsTest {
 
     @DataProvider(name = "tagsData")
     public Object[][] createTagsData() {

@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class SignUp_Page {
+public class SignUpPage {
     public static By SignUpButton = By.id("signin2");
     public static By SignUpusernameInput = By.id("sign-username");
     public static By SignUppasswordInput = By.id("sign-password");
