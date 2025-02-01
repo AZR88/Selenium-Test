@@ -1,6 +1,8 @@
+@Contact
 Feature: Contact
   As a user, I want to send a message through the contact form.
 
+  @Valid-Contact
   Scenario: User successfully fills the contact form
     Given user is on homepage "https://www.demoblaze.com/"
     When Click Contact
@@ -9,7 +11,7 @@ Feature: Contact
     And the user enters their message " this is Test message"
     Then Submit The form
 
-
+  @Invalid-Contact
   Scenario: User submits the form with invalid email
     Given user is on homepage "https://www.demoblaze.com/"
     When Click Contact
@@ -19,7 +21,7 @@ Feature: Contact
     And the user click Submit
     Then an error message should be displayed for emtpy field
 
-
+  @Invalid-Contact
   Scenario: User submits the form with emtpy email & name
     Given user is on homepage "https://www.demoblaze.com/"
     When Click Contact
@@ -29,7 +31,7 @@ Feature: Contact
     And the user click Submit
     Then an error message should be displayed for emtpy field
 
-
+  @Invalid-Contact
   Scenario: User submits the form with emtpy message
     Given user is on homepage "https://www.demoblaze.com/"
     When Click Contact
