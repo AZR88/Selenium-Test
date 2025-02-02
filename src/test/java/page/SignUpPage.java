@@ -1,5 +1,6 @@
 package page;
 
+import Helper.WaitElement;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -15,9 +16,9 @@ public class SignUpPage {
 
 
     public static boolean openSignupPage(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         try {
-            WebElement SignBut = wait.until(ExpectedConditions.visibilityOfElementLocated(SignUpButton));
+            WaitElement.waitForElement(SignUpButton);
+            WebElement SignBut = driver.findElement(SignUpButton);
             SignBut.click();
             return true ;
         }catch ( TimeoutException | NoSuchElementException e) {
@@ -26,23 +27,23 @@ public class SignUpPage {
     }
 
     public static String SignUpusernameInput(WebDriver driver, String name) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(SignUpusernameInput));
+        WaitElement.waitForElement(SignUpusernameInput);
+        WebElement usernameField = driver.findElement(SignUpusernameInput);
         usernameField.sendKeys(name);
         return usernameField.getAttribute("value");
     }
 
     public static String SignUppasswordInput(WebDriver driver, String password) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(SignUppasswordInput));
+        WaitElement.waitForElement(SignUpButton);
+        WebElement passwordField = driver.findElement(SignUppasswordInput);
         passwordField.sendKeys(password);
         return passwordField.getAttribute("value");
     }
 
     public static boolean ClikSubmit(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         try {
-        WebElement SubmitBut = wait.until(ExpectedConditions.visibilityOfElementLocated(SubmitButton));
+            WaitElement.waitForElement(SubmitButton);
+            WebElement SubmitBut = driver.findElement(SubmitButton);
         SubmitBut.click();
         return true;
         } catch (TimeoutException | NoSuchElementException e ){

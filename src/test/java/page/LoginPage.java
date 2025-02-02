@@ -1,5 +1,6 @@
 package page;
 
+import Helper.WaitElement;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -27,9 +28,9 @@ public class LoginPage {
 
     // Click Login Button
     public static boolean clickLoginButton(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         try {
-            WebElement loginButtonElement = wait.until(ExpectedConditions.elementToBeClickable(loginButton));
+            WaitElement.waitForElement(loginButton);
+            WebElement loginButtonElement = driver.findElement(loginButton);
             loginButtonElement.click();
             return true;
         } catch (TimeoutException | NoSuchElementException e) {
@@ -39,8 +40,8 @@ public class LoginPage {
 
     // Input Username
     public static String inputUsername(WebDriver driver, String username) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(usernameInputText));
+        WaitElement.waitForElement(usernameInputText);
+        WebElement usernameField = driver.findElement(usernameInputText);
         usernameField.clear();
         usernameField.sendKeys(username);
         return usernameField.getAttribute("value");
@@ -48,8 +49,8 @@ public class LoginPage {
 
     // Input Password
     public static String inputPassword(WebDriver driver, String password) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(passwordInputText));
+        WaitElement.waitForElement(passwordInputText);
+        WebElement passwordField = driver.findElement(passwordInputText);
         passwordField.clear();
         passwordField.sendKeys(password);
         return passwordField.getAttribute("value");
@@ -57,9 +58,9 @@ public class LoginPage {
 
     // Click Submit Button
     public static boolean clickSubmitButton(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         try {
-            WebElement submitButtonElement = wait.until(ExpectedConditions.elementToBeClickable(submitButton));
+            WaitElement.waitForElement(submitButton);
+            WebElement submitButtonElement = driver.findElement(submitButton);
             submitButtonElement.click();
             return true;
         } catch (TimeoutException | NoSuchElementException e) {
@@ -69,8 +70,8 @@ public class LoginPage {
 
     // Get Displayed Username
     public static String getDisplayedUsername(WebDriver driver) {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        WebElement userIDElement = wait.until(ExpectedConditions.visibilityOfElementLocated(userID));
+        WaitElement.waitForElement(userID);
+        WebElement userIDElement = driver.findElement(userID);
         String rawText = userIDElement.getText().trim();
         if (rawText.startsWith("Welcome ")) {
             rawText = rawText.replace("Welcome ", "");

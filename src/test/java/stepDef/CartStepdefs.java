@@ -140,11 +140,6 @@ public class CartStepdefs {
 
     }
 
-    @Then("the user click ok button to complete the purchase")
-    public void theUserClickOkButtonToCompleteThePurchase() {
-        boolean confirm = Cart.Confirmation(driver);
-        assertTrue("button not displayed",confirm);
-    }
 
     @Then("An alert Should be show up")
     public void anAlertShouldBeShowUp() {
@@ -156,6 +151,13 @@ public class CartStepdefs {
     public void theUserClicksTheButton(String name) {
         boolean button = Cart.Order(driver);
         assertTrue("button not displayed",button);
+    }
+
+    @Then("the user confirms the purchase by clicking OK")
+    public void theUserConfirmsThePurchaseByClickingOK() {
+
+        boolean confirm = Cart.Confirmation(driver);
+        assertTrue("button not displayed",confirm);
     }
 }
 

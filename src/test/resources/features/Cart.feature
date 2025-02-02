@@ -30,7 +30,7 @@ Feature: Shopping Cart Functionality
   Scenario: Complete a purchase
     Given  the user has added the item "Samsung galaxy s6" to the cart
     When Click Cart button
-    Then the user clicks the "Place Order" button
+    And the user clicks the "Place Order" button
     And the user fills in the following order details:
       | Field      | Value           |
       | name       | Agus            |
@@ -40,7 +40,7 @@ Feature: Shopping Cart Functionality
       | month      | December        |
       | year       | 2025            |
     And the user clicks the Purchase
-    Then the user click ok button to complete the purchase
+    Then the user confirms the purchase by clicking OK
 
   @inValid-Cart
   Scenario: Complete a purchase

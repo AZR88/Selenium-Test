@@ -1,4 +1,5 @@
 package page;
+import Helper.WaitElement;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -12,40 +13,40 @@ public class Contact {
     public static By submit = By.xpath("//button[.='Send message']");
 
     public static boolean clickContact (WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         try {
-        WebElement Con = wait.until(ExpectedConditions.visibilityOfElementLocated(ContactButton));
-        Con.click();
-        return true;
+            WaitElement.waitForElement(ContactButton);
+            WebElement Con = driver.findElement(ContactButton);
+            Con.click();
+            return true;
         }catch (TimeoutException | NoSuchElementException e){
             return false;
         }
     }
     public static String inputemail(WebDriver driver, String email) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        WebElement EmailField = wait.until(ExpectedConditions.visibilityOfElementLocated(SenderEmail));
+        WaitElement.waitForElement(SenderEmail);
+        WebElement EmailField = driver.findElement(SenderEmail);
         EmailField.sendKeys(email);
         return EmailField.getAttribute("value");
     }
 
     public static String inputname(WebDriver driver, String name) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        WebElement namefield = wait.until(ExpectedConditions.visibilityOfElementLocated(SenderName));
+        WaitElement.waitForElement(SenderName);
+        WebElement namefield = driver.findElement(SenderName);
         namefield.sendKeys(name);
         return namefield.getAttribute("value");
     }
 
     public static String inputmassage(WebDriver driver, String  massage) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        WebElement massagefield = wait.until(ExpectedConditions.visibilityOfElementLocated(Message));
+        WaitElement.waitForElement(Message);
+        WebElement massagefield = driver.findElement(Message);
         massagefield.sendKeys(massage);
         return massagefield.getAttribute("value");
     }
 
     public static boolean clickSubmit(WebDriver driver){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         try {
-            WebElement Submt = wait.until(ExpectedConditions.visibilityOfElementLocated(submit));
+            WaitElement.waitForElement(submit);
+            WebElement Submt = driver.findElement(submit);
             Submt.click();
             return true;
         }catch (TimeoutException | NoSuchElementException e){

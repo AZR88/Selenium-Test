@@ -1,5 +1,6 @@
 package page;
 
+import Helper.WaitElement;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -19,9 +20,11 @@ public class Cart {
     public static By confirmPurchase = By.xpath("//div[@class='sa-confirm-button-container']");
 
     public static boolean Order (WebDriver driver){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         try {
-            WebElement order = wait.until(ExpectedConditions.visibilityOfElementLocated(OrderButton));
+
+            WaitElement.waitForElement(OrderButton);
+
+            WebElement order = driver.findElement(OrderButton);
             order.click();
             return true;
         }catch (TimeoutException | NoSuchElementException e){
@@ -31,9 +34,10 @@ public class Cart {
     }
 
     public static boolean Confirmation (WebDriver driver){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         try {
-            WebElement confirm = wait.until(ExpectedConditions.visibilityOfElementLocated(confirmPurchase));
+            WaitElement.waitForElement(confirmPurchase);
+
+            WebElement confirm = driver.findElement(confirmPurchase);
             confirm.click();
             return true;
         }catch (TimeoutException | NoSuchElementException e){
@@ -43,23 +47,25 @@ public class Cart {
     }
 
     public static String CheckPrice(WebDriver driver){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        WebElement price = wait.until(ExpectedConditions.visibilityOfElementLocated(AllPrice));
+
+        WaitElement.waitForElement(AllPrice);
+        WebElement price = driver.findElement(AllPrice);
         String text= price.getText();
         return text;
     }
 
     public static String CheckTitle(WebDriver driver){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        WebElement Title = wait.until(ExpectedConditions.visibilityOfElementLocated(cartitem));
+        WaitElement.waitForElement(cartitem);
+        WebElement Title = driver.findElement(cartitem);
         String text = Title.getText();
         return text;
     }
 
     public static boolean Delete (WebDriver driver){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         try {
-            WebElement del = wait.until(ExpectedConditions.visibilityOfElementLocated(DeleteItem));
+
+            WaitElement.waitForElement(DeleteItem);
+            WebElement del = driver.findElement(DeleteItem);
             del.click();
             return true;
         }catch (TimeoutException|NoSuchElementException e){
@@ -68,21 +74,22 @@ public class Cart {
     }
 
     public static boolean purchase (WebDriver driver){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        try {
-            WebElement buy = wait.until(ExpectedConditions.visibilityOfElementLocated(Purchasebutton));
-            buy.click();
-            return true;
-        } catch (TimeoutException| NoSuchElementException e){
-            return false;
-        }
+            try {
+                WaitElement.waitForElement(Purchasebutton);
+
+                WebElement buy = driver.findElement(Purchasebutton);
+                buy.click();
+                return true;
+            } catch (TimeoutException| NoSuchElementException e){
+                return false;
+            }
     }
 
 
     public static boolean fillField(WebDriver driver, String fieldId, String fieldValue) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         try {
-            WebElement fieldElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(fieldId)));
+            WaitElement.waitForElement(By.id(fieldId));
+            WebElement fieldElement = driver.findElement(By.id(fieldId));
             fieldElement.clear();
             fieldElement.sendKeys(fieldValue);
             return true;
@@ -95,8 +102,9 @@ public class Cart {
 
     public  static String  totalPrice (WebDriver driver)
     {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement TP = wait.until(ExpectedConditions.visibilityOfElementLocated(TotalPrice));
+
+        WaitElement.waitForElement(TotalPrice);
+        WebElement TP = driver.findElement(TotalPrice);
         String price = TP.getText();
         return price;
     }
@@ -113,8 +121,8 @@ public class Cart {
     }
 
     public static int[] CalculateTotalPrice(WebDriver driver) {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            List<WebElement> prices = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(AllPrice));
+            WaitElement.waitForElement(AllPrice);
+            List<WebElement> prices = driver.findElements(AllPrice);
             int totalPriceCalculated = 0;
 
             for (WebElement priceElement : prices) {
@@ -127,7 +135,7 @@ public class Cart {
             }
             System.out.println("Total Price Calculated: " + totalPriceCalculated);
 
-            WebElement totalPriceElement = wait.until(ExpectedConditions.visibilityOfElementLocated(TotalPrice));
+            WebElement totalPriceElement = driver.findElement(TotalPrice);
             String totalPriceText = totalPriceElement.getText().trim();
             int totalPriceDisplayed = Integer.parseInt(totalPriceText.replaceAll("[^0-9]", ""));
 
