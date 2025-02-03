@@ -53,7 +53,7 @@ jobs:
 
     # Pastikan index.html ada di folder ui-tests
     - name: Copy index.html
-      run: cp reports/index.html reports/ui-tests/index.html || echo "index.html not found, skipping copy"
+      run: cp reports/web-UI/index.html reports/ui-tests/index.html || echo "index.html not found, skipping copy"
 
     # Deploy ke GitHub Pages (UI Test)
     - name: Deploy UI Test Report to GitHub Pages
