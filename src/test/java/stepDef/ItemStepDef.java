@@ -10,7 +10,7 @@ import java.util.Map;
 import static Helper.WebHelper.driver;
 import static org.junit.Assert.assertTrue;
 import static page.Item.*;
-import static page.Item.CheckHomebutton;
+import static page.Item.checkHomebutton;
 
 import static org.junit.Assert.assertEquals;
 
@@ -92,7 +92,7 @@ public class ItemStepDef {
 
     @Then("click next to show next product where id = {string} and title = {string} and price = {string}")
     public void clickNextToShowNextProductWhereIdAndTitleAndPrice(String id, String title, String price) {
-        boolean nextButton = page.Item.ClickNext(driver);
+        boolean nextButton = page.Item.clickNext(driver);
         boolean isMatch = page.Item.isTitleAndPriceTextEqual(driver, id, title, price);
 
         assertTrue("button not displayed",nextButton);
@@ -101,38 +101,38 @@ public class ItemStepDef {
 
     @When("check Navbar Home button")
     public void checkNavbarButton() {
-        boolean isDisplayed = CheckHomebutton(driver);
+        boolean isDisplayed = checkHomebutton(driver);
         assertTrue("button Not seen in this page!", isDisplayed);
     }
     @Then("Check About us")
     public void checkAboutUs() {
-        boolean isDisplayed = CheckAboutbutton(driver);
+        boolean isDisplayed = checkAboutbutton(driver);
         assertTrue("button Not seen in this page!", isDisplayed);
     }
 
     @Then("Check Contact")
     public void checkContact() {
-        boolean isDisplayed = Checkcontactbutton(driver);
+        boolean isDisplayed = checkContactButton(driver);
         assertTrue("button Not seen in this page!", isDisplayed);
 
     }
 
     @Then("Check Cart")
     public void checkCart() {
-        boolean isDisplayed = CheckCartbutton(driver);
+        boolean isDisplayed = checkCartbutton(driver);
         assertTrue("button Not seen in this page!", isDisplayed);
 
     }
 
     @Then("Check Log in")
     public void checkLogIn() {
-        boolean isDisplayed = CheckLoginbutton(driver);
+        boolean isDisplayed = checkLoginbutton(driver);
         assertTrue("button Not seen in this page!", isDisplayed);
     }
 
     @Then("check Sign up")
     public void checkSignUp() {
-        boolean isDisplayed = CheckSignupbutton(driver);
+        boolean isDisplayed = checkSignupbutton(driver);
         assertTrue("button Not seen in this page!", isDisplayed);
     }
 }

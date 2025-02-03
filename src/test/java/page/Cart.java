@@ -12,19 +12,19 @@ import java.util.List;
 
 public class Cart {
     public static By cartitem = By.xpath("//tbody[@id='tbodyid']//tr[@class='success']/td[2]");
-    public static By DeleteItem = By.xpath("//tbody[@id='tbodyid']//tr[@class='success']//a[contains(text(),'Delete')]");
+    public static By deleteItem = By.xpath("//tbody[@id='tbodyid']//tr[@class='success']//a[contains(text(),'Delete')]");
     public static By TotalPrice = By.id("totalp");
-    public static By OrderButton =  By.xpath("//button[text()='Place Order']");
-    public static By Purchasebutton = By.xpath("//button[text()='Purchase']");
-    public static By AllPrice = By.xpath("//tbody[@id='tbodyid']//tr/td[3]");
+    public static By orderButton =  By.xpath("//button[text()='Place Order']");
+    public static By purchasebutton = By.xpath("//button[text()='Purchase']");
+    public static By allPrice = By.xpath("//tbody[@id='tbodyid']//tr/td[3]");
     public static By confirmPurchase = By.xpath("//div[@class='sa-confirm-button-container']");
 
-    public static boolean Order (WebDriver driver){
+    public static boolean order(WebDriver driver){
         try {
 
-            WaitElement.waitForElement(OrderButton);
+            WaitElement.waitForElement(orderButton);
 
-            WebElement order = driver.findElement(OrderButton);
+            WebElement order = driver.findElement(orderButton);
             order.click();
             return true;
         }catch (TimeoutException | NoSuchElementException e){
@@ -33,7 +33,7 @@ public class Cart {
 
     }
 
-    public static boolean Confirmation (WebDriver driver){
+    public static boolean confirmation(WebDriver driver){
         try {
             WaitElement.waitForElement(confirmPurchase);
 
@@ -46,26 +46,26 @@ public class Cart {
 
     }
 
-    public static String CheckPrice(WebDriver driver){
+    public static String checkPrice(WebDriver driver){
 
-        WaitElement.waitForElement(AllPrice);
-        WebElement price = driver.findElement(AllPrice);
+        WaitElement.waitForElement(allPrice);
+        WebElement price = driver.findElement(allPrice);
         String text= price.getText();
         return text;
     }
 
-    public static String CheckTitle(WebDriver driver){
+    public static String checkTitle(WebDriver driver){
         WaitElement.waitForElement(cartitem);
         WebElement Title = driver.findElement(cartitem);
         String text = Title.getText();
         return text;
     }
 
-    public static boolean Delete (WebDriver driver){
+    public static boolean delete(WebDriver driver){
         try {
 
-            WaitElement.waitForElement(DeleteItem);
-            WebElement del = driver.findElement(DeleteItem);
+            WaitElement.waitForElement(deleteItem);
+            WebElement del = driver.findElement(deleteItem);
             del.click();
             return true;
         }catch (TimeoutException|NoSuchElementException e){
@@ -75,9 +75,9 @@ public class Cart {
 
     public static boolean purchase (WebDriver driver){
             try {
-                WaitElement.waitForElement(Purchasebutton);
+                WaitElement.waitForElement(purchasebutton);
 
-                WebElement buy = driver.findElement(Purchasebutton);
+                WebElement buy = driver.findElement(purchasebutton);
                 buy.click();
                 return true;
             } catch (TimeoutException| NoSuchElementException e){
@@ -120,9 +120,9 @@ public class Cart {
         }
     }
 
-    public static int[] CalculateTotalPrice(WebDriver driver) {
-            WaitElement.waitForElement(AllPrice);
-            List<WebElement> prices = driver.findElements(AllPrice);
+    public static int[] calculateTotalPrice(WebDriver driver) {
+            WaitElement.waitForElement(allPrice);
+            List<WebElement> prices = driver.findElements(allPrice);
             int totalPriceCalculated = 0;
 
             for (WebElement priceElement : prices) {

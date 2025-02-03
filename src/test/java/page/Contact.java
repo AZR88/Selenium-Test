@@ -6,39 +6,39 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 public class Contact {
 
-    public static  By ContactButton = By.xpath("//a[normalize-space()='Contact']");
-    public static By SenderEmail = By.id("recipient-email");
-    public static By SenderName = By.id("recipient-name");
-    public static By Message = By.id("message-text");
+    public static  By contactButton = By.xpath("//a[normalize-space()='Contact']");
+    public static By senderEmail = By.id("recipient-email");
+    public static By senderName = By.id("recipient-name");
+    public static By message = By.id("message-text");
     public static By submit = By.xpath("//button[.='Send message']");
 
     public static boolean clickContact (WebDriver driver) {
         try {
-            WaitElement.waitForElement(ContactButton);
-            WebElement Con = driver.findElement(ContactButton);
+            WaitElement.waitForElement(contactButton);
+            WebElement Con = driver.findElement(contactButton);
             Con.click();
             return true;
         }catch (TimeoutException | NoSuchElementException e){
             return false;
         }
     }
-    public static String inputemail(WebDriver driver, String email) {
-        WaitElement.waitForElement(SenderEmail);
-        WebElement EmailField = driver.findElement(SenderEmail);
+    public static String inputEmail(WebDriver driver, String email) {
+        WaitElement.waitForElement(senderEmail);
+        WebElement EmailField = driver.findElement(senderEmail);
         EmailField.sendKeys(email);
         return EmailField.getAttribute("value");
     }
 
-    public static String inputname(WebDriver driver, String name) {
-        WaitElement.waitForElement(SenderName);
-        WebElement namefield = driver.findElement(SenderName);
+    public static String inputName(WebDriver driver, String name) {
+        WaitElement.waitForElement(senderName);
+        WebElement namefield = driver.findElement(senderName);
         namefield.sendKeys(name);
         return namefield.getAttribute("value");
     }
 
-    public static String inputmassage(WebDriver driver, String  massage) {
-        WaitElement.waitForElement(Message);
-        WebElement massagefield = driver.findElement(Message);
+    public static String inputMassage(WebDriver driver, String  massage) {
+        WaitElement.waitForElement(message);
+        WebElement massagefield = driver.findElement(message);
         massagefield.sendKeys(massage);
         return massagefield.getAttribute("value");
     }

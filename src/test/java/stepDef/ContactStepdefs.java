@@ -5,7 +5,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import page.Contact;
-import page.LoginPage;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
@@ -22,19 +21,19 @@ public class ContactStepdefs {
 
     @Then("the user enters their email {string}")
     public void theUserEntersTheirEmail(String email) {
-       String input =  Contact.inputemail(driver, email);
+       String input =  Contact.inputEmail(driver, email);
        assertEquals("invalid input",input,email);
     }
 
     @And("the user enters their name {string}")
     public void theUserEntersTheirName(String name) {
-       String input =  Contact.inputname(driver, name);
+       String input =  Contact.inputName(driver, name);
         assertEquals("invalid input",name, input);
     }
 
     @And("the user enters their message {string}")
     public void theUserEntersTheirMessage(String message) {
-        String input =  Contact.inputmassage(driver,message);
+        String input =  Contact.inputMassage(driver,message);
         assertEquals("invalid input",message,input);
     }
 

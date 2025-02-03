@@ -8,18 +8,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class Item {
-    private static By HomeButton = By.xpath("//li[@class='nav-item active']//a[@class='nav-link']");
-    private static By ContactButton = By.xpath("//a[normalize-space()='Contact']");
-    private static By AboutUsButton = By.xpath("//a[normalize-space()='About us']");
-    private static By CartButton = By.xpath("(//a[normalize-space()='Cart'])");
-    private static By LoginButton = By.id("login2");
-    private static By SignUpButton = By.id("signin2");
+    private static By homeButton = By.xpath("//li[@class='nav-item active']//a[@class='nav-link']");
+    private static By contactButton = By.xpath("//a[normalize-space()='Contact']");
+    private static By aboutUsButton = By.xpath("//a[normalize-space()='About us']");
+    private static By cartButton = By.xpath("(//a[normalize-space()='Cart'])");
+    private static By loginButton = By.id("login2");
+    private static By signUpButton = By.id("signin2");
 
 
     private  static By nextbutton = By.id("next2");
-    private  static By PhoneCat = By.xpath("//a[@onclick=\"byCat('phone')\"]");
-    private  static By LaptopCat = By.xpath("//a[@onclick=\"byCat('notebook')\"]");
-    private  static By MonitorCat = By.xpath("//a[@onclick=\"byCat('monitor')\"]");
+    private  static By phoneCat = By.xpath("//a[@onclick=\"byCat('phone')\"]");
+    private  static By laptopCat = By.xpath("//a[@onclick=\"byCat('notebook')\"]");
+    private  static By monitorCat = By.xpath("//a[@onclick=\"byCat('monitor')\"]");
 
     public static By getProductTitleLocatorById(String productId, String expectedTitle) {
         return By.xpath("//a[contains(@href, 'prod.html?idp_=" + productId + "') and contains(text(), '" + expectedTitle + "')]");
@@ -46,7 +46,7 @@ public class Item {
     }
 
 
-    public static boolean ClickNext(WebDriver driver) {
+    public static boolean clickNext(WebDriver driver) {
         try {
             WaitElement.waitForElement(nextbutton);
             WebElement Next = driver.findElement(nextbutton);
@@ -59,8 +59,8 @@ public class Item {
 
     public static boolean clickPhoneCategory(WebDriver driver) {
         try {
-            WaitElement.waitForElement(PhoneCat);
-            WebElement Category = driver.findElement(PhoneCat);
+            WaitElement.waitForElement(phoneCat);
+            WebElement Category = driver.findElement(phoneCat);
             Category.click();
             return true;
         }catch (TimeoutException | NoSuchElementException e ){
@@ -69,8 +69,8 @@ public class Item {
     }
     public static boolean clickLaptopCategory(WebDriver driver) {
         try {
-            WaitElement.waitForElement(LaptopCat);
-            WebElement Category = driver.findElement(LaptopCat);
+            WaitElement.waitForElement(laptopCat);
+            WebElement Category = driver.findElement(laptopCat);
             Category.click();
             return true;
         }catch (TimeoutException | NoSuchElementException e ){
@@ -80,8 +80,8 @@ public class Item {
 
     public static boolean clickMonitorCategory(WebDriver driver) {
         try {
-            WaitElement.waitForElement(MonitorCat);
-            WebElement Category = driver.findElement(MonitorCat);
+            WaitElement.waitForElement(monitorCat);
+            WebElement Category = driver.findElement(monitorCat);
             Category.click();
             return true;
         }catch (TimeoutException | NoSuchElementException e ){
@@ -89,10 +89,10 @@ public class Item {
         }
     }
 
-    public static boolean CheckHomebutton(WebDriver driver){
+    public static boolean checkHomebutton(WebDriver driver){
         try {
-            WaitElement.waitForElement(HomeButton);
-            WebElement element = driver.findElement(HomeButton);
+            WaitElement.waitForElement(homeButton);
+            WebElement element = driver.findElement(homeButton);
             element.click();
             return true;
         }catch (TimeoutException | NoSuchElementException e){
@@ -102,59 +102,59 @@ public class Item {
 
 
 
-    public static boolean CheckSignupbutton(WebDriver driver){
+    public static boolean checkSignupbutton(WebDriver driver){
         try {
-            WaitElement.waitForElement(SignUpButton);
-            WebElement element = driver.findElement(SignUpButton);
+            WaitElement.waitForElement(signUpButton);
+            WebElement element = driver.findElement(signUpButton);
             return element.isDisplayed();
         }catch (TimeoutException | NoSuchElementException e){
             return false;
         }
     }
 
-    public static boolean CheckAboutbutton(WebDriver driver){
+    public static boolean checkAboutbutton(WebDriver driver){
         try {
-            WaitElement.waitForElement(AboutUsButton);
-            WebElement element = driver.findElement(AboutUsButton);
+            WaitElement.waitForElement(aboutUsButton);
+            WebElement element = driver.findElement(aboutUsButton);
             return element.isDisplayed();
         }catch (TimeoutException | NoSuchElementException e){
             return false;
         }
     }
 
-    public static boolean CheckCartbutton(WebDriver driver){
+    public static boolean checkCartbutton(WebDriver driver){
         try {
-            WaitElement.waitForElement(CartButton);
-            WebElement element = driver.findElement(CartButton);
+            WaitElement.waitForElement(cartButton);
+            WebElement element = driver.findElement(cartButton);
             return element.isDisplayed();
         }catch (TimeoutException | NoSuchElementException e){
             return false;
         }
     }
 
-    public static boolean CheckLoginbutton(WebDriver driver){
+    public static boolean checkLoginbutton(WebDriver driver){
         try {
-            WaitElement.waitForElement(LoginButton);
-            WebElement element = driver.findElement(LoginButton);
+            WaitElement.waitForElement(loginButton);
+            WebElement element = driver.findElement(loginButton);
             return element.isDisplayed();
         }catch (TimeoutException | NoSuchElementException e){
             return false;
         }
     }
 
-    public static boolean Checkcontactbutton(WebDriver driver){
+    public static boolean checkContactButton(WebDriver driver){
         try {
-            WaitElement.waitForElement(ContactButton);
-            WebElement element = driver.findElement(ContactButton);
+            WaitElement.waitForElement(contactButton);
+            WebElement element = driver.findElement(contactButton);
             return element.isDisplayed();
         }catch (TimeoutException | NoSuchElementException e){
             return false;
         }
     }
-    public static boolean ClickCartbutton(WebDriver driver){
+    public static boolean clickCartButton(WebDriver driver){
         try {
-            WaitElement.waitForElement(CartButton);
-            WebElement element = driver.findElement(CartButton);
+            WaitElement.waitForElement(cartButton);
+            WebElement element = driver.findElement(cartButton);
             element.click();
             return true;
         }catch (TimeoutException | NoSuchElementException e){
@@ -162,10 +162,10 @@ public class Item {
         }
     }
 
-    public static boolean ClickHomebutton(WebDriver driver){
+    public static boolean clickHomebutton(WebDriver driver){
         try {
-            WaitElement.waitForElement(CartButton);
-            WebElement element = driver.findElement(HomeButton);
+            WaitElement.waitForElement(cartButton);
+            WebElement element = driver.findElement(homeButton);
             element.click();
             return true;
         }catch (TimeoutException | NoSuchElementException e){

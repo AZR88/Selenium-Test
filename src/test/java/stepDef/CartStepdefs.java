@@ -34,25 +34,25 @@ public class CartStepdefs {
 
     @When("Click Cart button")
     public void clickCartButton() {
-       boolean button = Item.ClickCartbutton(driver);
+       boolean button = Item.clickCartButton(driver);
        assertTrue("Button not displayed",button);
     }
 
     @Then("user checks the title of the item and it should be {string}")
     public void userChecksTheTitleOfTheItemAndItShouldBe(String title) {
-        String text =  Cart.CheckTitle(driver);
+        String text =  Cart.checkTitle(driver);
         assertEquals(text,title);
     }
 
     @Then("the displayed price should be {string}")
     public void theDisplayedPriceShouldBe(String price) {
-        String text = Cart.CheckPrice(driver);
+        String text = Cart.checkPrice(driver);
         assertEquals(price,text);
     }
 
     @When("the user deletes the item from the cart")
     public void theUserDeletesTheItemFromTheCart() {
-        boolean del = Cart.Delete(driver);
+        boolean del = Cart.delete(driver);
         assertTrue("button not displayed",del);
     }
 
@@ -93,7 +93,7 @@ public class CartStepdefs {
             boolean alert = ProductPage.isAlertPresent(driver);
             assertTrue(alert);
 
-            boolean button = Item.ClickHomebutton(driver);
+            boolean button = Item.clickHomebutton(driver);
             assertTrue(button);
 
 
@@ -107,7 +107,7 @@ public class CartStepdefs {
 
     @Then("the total price displayed should match {string}")
     public void theTotalPriceDisplayedShouldMatch(String price) {
-        int[] prices = Cart.CalculateTotalPrice(driver);
+        int[] prices = Cart.calculateTotalPrice(driver);
         int totalPriceCalculated = prices[0];
         int totalPriceDisplayed = prices[1];
 
@@ -149,14 +149,14 @@ public class CartStepdefs {
 
     @Then("the user clicks the {string} button")
     public void theUserClicksTheButton(String name) {
-        boolean button = Cart.Order(driver);
+        boolean button = Cart.order(driver);
         assertTrue("button not displayed",button);
     }
 
     @Then("the user confirms the purchase by clicking OK")
     public void theUserConfirmsThePurchaseByClickingOK() {
 
-        boolean confirm = Cart.Confirmation(driver);
+        boolean confirm = Cart.confirmation(driver);
         assertTrue("button not displayed",confirm);
     }
 }

@@ -47,7 +47,7 @@ public class ProductStepDef {
 
     @Then("the product {string} should be added to the cart successfully")
     public void theProductShouldBeAddedToTheCartSuccessfully(String title) {
-       String text = Cart.CheckTitle(driver);
+       String text = Cart.checkTitle(driver);
        assertEquals(title,text);
     }
 

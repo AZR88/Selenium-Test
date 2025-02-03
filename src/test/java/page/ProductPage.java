@@ -9,10 +9,10 @@ import java.time.Duration;
 
 public class ProductPage {
 
-    public static By ProductPic = By.xpath("//div[@id='imgp']//img");
-    public static By ProductTitle = By.xpath("//h2[@class='name']");
-    public static By ProductPrice = By.xpath("//div[@id='tbodyid']/h3[@class='price-container']");
-    public static By AddToCart= By.xpath("//a[@class='btn btn-success btn-lg' and text()='Add to cart']");
+    public static By productPic = By.xpath("//div[@id='imgp']//img");
+    public static By productTitle = By.xpath("//h2[@class='name']");
+    public static By productPrice = By.xpath("//div[@id='tbodyid']/h3[@class='price-container']");
+    public static By addToCart = By.xpath("//a[@class='btn btn-success btn-lg' and text()='Add to cart']");
 
     public static boolean isProductDescriptionDisplayed(WebDriver driver, String productdesc) {
         By descLocator = By.xpath("//p[contains(text(),'" + productdesc + "')]");
@@ -28,14 +28,14 @@ public class ProductPage {
 
 
     public static String  checkTitle(WebDriver driver) {
-        WaitElement.waitForElement(ProductTitle);
-        WebElement ItemTitle = driver.findElement(ProductTitle);
+        WaitElement.waitForElement(productTitle);
+        WebElement ItemTitle = driver.findElement(productTitle);
         return ItemTitle.getText();
     }
 
     public static String checkPrice(WebDriver driver) {
-        WaitElement.waitForElement(ProductPrice);
-        WebElement itemPrice = driver.findElement(ProductPrice);
+        WaitElement.waitForElement(productPrice);
+        WebElement itemPrice = driver.findElement(productPrice);
         String text = itemPrice.getText();
         String actualPrice = text.split("\n")[0].replaceAll("[^\\d$.]", "").trim();
         return  actualPrice;
@@ -45,8 +45,8 @@ public class ProductPage {
 
     public static boolean checkPic(WebDriver driver){
         try {
-            WaitElement.waitForElement(ProductPic);
-            WebElement ItemPic = driver.findElement(ProductPic);
+            WaitElement.waitForElement(productPic);
+            WebElement ItemPic = driver.findElement(productPic);
             return ItemPic.isDisplayed();
         } catch ( TimeoutException | NoSuchElementException e){
             return false;
@@ -55,8 +55,8 @@ public class ProductPage {
 
     public static Boolean clickAdd (WebDriver driver){
                 try {
-                    WaitElement.waitForElement(AddToCart);
-                    WebElement Add = driver.findElement(AddToCart);
+                    WaitElement.waitForElement(addToCart);
+                    WebElement Add = driver.findElement(addToCart);
                     Add.click();
                     return true;
                 }catch (TimeoutException | NoSuchElementException e){

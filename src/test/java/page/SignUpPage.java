@@ -8,17 +8,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class SignUpPage {
-    public static By SignUpButton = By.id("signin2");
-    public static By SignUpusernameInput = By.id("sign-username");
-    public static By SignUppasswordInput = By.id("sign-password");
+    public static By signUpButton = By.id("signin2");
+    public static By signUpUsernameInput = By.id("sign-username");
+    public static By signUpPasswordInput = By.id("sign-password");
     public static By SubmitButton = By.cssSelector("button[onclick='register()']");
 
 
 
     public static boolean openSignupPage(WebDriver driver) {
         try {
-            WaitElement.waitForElement(SignUpButton);
-            WebElement SignBut = driver.findElement(SignUpButton);
+            WaitElement.waitForElement(signUpButton);
+            WebElement SignBut = driver.findElement(signUpButton);
             SignBut.click();
             return true ;
         }catch ( TimeoutException | NoSuchElementException e) {
@@ -26,21 +26,21 @@ public class SignUpPage {
         }
     }
 
-    public static String SignUpusernameInput(WebDriver driver, String name) {
-        WaitElement.waitForElement(SignUpusernameInput);
-        WebElement usernameField = driver.findElement(SignUpusernameInput);
+    public static String signUpusernameInput(WebDriver driver, String name) {
+        WaitElement.waitForElement(signUpUsernameInput);
+        WebElement usernameField = driver.findElement(signUpUsernameInput);
         usernameField.sendKeys(name);
         return usernameField.getAttribute("value");
     }
 
-    public static String SignUppasswordInput(WebDriver driver, String password) {
-        WaitElement.waitForElement(SignUpButton);
-        WebElement passwordField = driver.findElement(SignUppasswordInput);
+    public static String signUppasswordInput(WebDriver driver, String password) {
+        WaitElement.waitForElement(signUpButton);
+        WebElement passwordField = driver.findElement(signUpPasswordInput);
         passwordField.sendKeys(password);
         return passwordField.getAttribute("value");
     }
 
-    public static boolean ClikSubmit(WebDriver driver) {
+    public static boolean clikSubmit (WebDriver driver) {
         try {
             WaitElement.waitForElement(SubmitButton);
             WebElement SubmitBut = driver.findElement(SubmitButton);

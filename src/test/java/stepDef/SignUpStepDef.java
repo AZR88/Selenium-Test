@@ -18,19 +18,19 @@ public class SignUpStepDef {
 
     @And("user input username  with {string}")
     public void userInputUsernameWith(String username) {
-        String Value = SignUpPage.SignUpusernameInput(driver,username);
+        String Value = SignUpPage.signUpusernameInput(driver,username);
         assertEquals(username, Value);
     }
 
     @And("user input password  with {string}")
     public void userInputPasswordWith(String password) {
-        String inputpass = SignUpPage.SignUppasswordInput(driver, password);
+        String inputpass = SignUpPage.signUppasswordInput(driver, password);
         assertEquals(inputpass, password);
         }
 
     @And("user click submit button")
     public void userClickSubmitButton() {
-        boolean isButtonCliked = SignUpPage.ClikSubmit(driver);
+        boolean isButtonCliked = SignUpPage.clikSubmit(driver);
         assertTrue("Button Cliked",isButtonCliked);
     }
 
