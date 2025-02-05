@@ -56,8 +56,8 @@ public class Cart {
 
     public static String checkTitle(WebDriver driver){
         WaitElement.waitForElement(cartitem);
-        WebElement Title = driver.findElement(cartitem);
-        String text = Title.getText();
+        WebElement title = driver.findElement(cartitem);
+        String text = title.getText();
         return text;
     }
 
@@ -104,8 +104,8 @@ public class Cart {
     {
 
         WaitElement.waitForElement(TotalPrice);
-        WebElement TP = driver.findElement(TotalPrice);
-        String price = TP.getText();
+        WebElement tp = driver.findElement(TotalPrice);
+        String price = tp.getText();
         return price;
     }
 

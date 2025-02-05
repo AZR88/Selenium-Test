@@ -15,8 +15,8 @@ import static Helper.WebHelper.driver;
 public class ContactStepdefs {
     @When("Click Contact")
     public void clickContact() {
-        boolean ButtonCliked = Contact.clickContact(driver);
-        assertTrue("Button not Cliked",ButtonCliked);
+        boolean buttonCliked = Contact.clickContact(driver);
+        assertTrue("Button not Cliked",buttonCliked);
     }
 
     @Then("the user enters their email {string}")

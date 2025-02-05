@@ -18,8 +18,8 @@ public class SignUpStepDef {
 
     @And("user input username  with {string}")
     public void userInputUsernameWith(String username) {
-        String Value = SignUpPage.signUpusernameInput(driver,username);
-        assertEquals(username, Value);
+        String value = SignUpPage.signUpusernameInput(driver,username);
+        assertEquals(username, value);
     }
 
     @And("user input password  with {string}")

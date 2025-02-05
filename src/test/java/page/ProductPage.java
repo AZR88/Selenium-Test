@@ -29,8 +29,8 @@ public class ProductPage {
 
     public static String  checkTitle(WebDriver driver) {
         WaitElement.waitForElement(productTitle);
-        WebElement ItemTitle = driver.findElement(productTitle);
-        return ItemTitle.getText();
+        WebElement itemTitle = driver.findElement(productTitle);
+        return itemTitle.getText();
     }
 
     public static String checkPrice(WebDriver driver) {
@@ -46,8 +46,8 @@ public class ProductPage {
     public static boolean checkPic(WebDriver driver){
         try {
             WaitElement.waitForElement(productPic);
-            WebElement ItemPic = driver.findElement(productPic);
-            return ItemPic.isDisplayed();
+            WebElement itemPic = driver.findElement(productPic);
+            return itemPic.isDisplayed();
         } catch ( TimeoutException | NoSuchElementException e){
             return false;
         }
@@ -56,8 +56,8 @@ public class ProductPage {
     public static Boolean clickAdd (WebDriver driver){
                 try {
                     WaitElement.waitForElement(addToCart);
-                    WebElement Add = driver.findElement(addToCart);
-                    Add.click();
+                    WebElement add = driver.findElement(addToCart);
+                    add.click();
                     return true;
                 }catch (TimeoutException | NoSuchElementException e){
                     return false;

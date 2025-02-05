@@ -49,8 +49,8 @@ public class Item {
     public static boolean clickNext(WebDriver driver) {
         try {
             WaitElement.waitForElement(nextbutton);
-            WebElement Next = driver.findElement(nextbutton);
-            Next.click();
+            WebElement next = driver.findElement(nextbutton);
+            next.click();
             return true;
         }catch (TimeoutException | NoSuchElementException e ){
             return false;
@@ -60,8 +60,8 @@ public class Item {
     public static boolean clickPhoneCategory(WebDriver driver) {
         try {
             WaitElement.waitForElement(phoneCat);
-            WebElement Category = driver.findElement(phoneCat);
-            Category.click();
+            WebElement category = driver.findElement(phoneCat);
+            category.click();
             return true;
         }catch (TimeoutException | NoSuchElementException e ){
             return false;
@@ -70,8 +70,8 @@ public class Item {
     public static boolean clickLaptopCategory(WebDriver driver) {
         try {
             WaitElement.waitForElement(laptopCat);
-            WebElement Category = driver.findElement(laptopCat);
-            Category.click();
+            WebElement category = driver.findElement(laptopCat);
+            category.click();
             return true;
         }catch (TimeoutException | NoSuchElementException e ){
             return false;
@@ -81,8 +81,8 @@ public class Item {
     public static boolean clickMonitorCategory(WebDriver driver) {
         try {
             WaitElement.waitForElement(monitorCat);
-            WebElement Category = driver.findElement(monitorCat);
-            Category.click();
+            WebElement category = driver.findElement(monitorCat);
+            category.click();
             return true;
         }catch (TimeoutException | NoSuchElementException e ){
             return false;

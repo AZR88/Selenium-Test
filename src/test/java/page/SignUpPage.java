@@ -18,8 +18,8 @@ public class SignUpPage {
     public static boolean openSignupPage(WebDriver driver) {
         try {
             WaitElement.waitForElement(signUpButton);
-            WebElement SignBut = driver.findElement(signUpButton);
-            SignBut.click();
+            WebElement signBut = driver.findElement(signUpButton);
+            signBut.click();
             return true ;
         }catch ( TimeoutException | NoSuchElementException e) {
             return false ;
@@ -43,8 +43,8 @@ public class SignUpPage {
     public static boolean clikSubmit (WebDriver driver) {
         try {
             WaitElement.waitForElement(SubmitButton);
-            WebElement SubmitBut = driver.findElement(SubmitButton);
-        SubmitBut.click();
+            WebElement submitBut = driver.findElement(SubmitButton);
+        submitBut.click();
         return true;
         } catch (TimeoutException | NoSuchElementException e ){
             return false;

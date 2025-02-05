@@ -66,8 +66,8 @@ public class CartStepdefs {
 
     @And("total price should be {string}")
     public void totalPriceShouldBe(String price) {
-    String Totalprice = Cart.totalPrice(driver);
-    assertEquals(price, Totalprice);
+    String totalPrice = Cart.totalPrice(driver);
+    assertEquals(price, totalPrice);
     }
 
 

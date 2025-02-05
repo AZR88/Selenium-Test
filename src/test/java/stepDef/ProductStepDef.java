@@ -20,15 +20,15 @@ public class ProductStepDef {
     }
 
     @Then("the product title should be {string}")
-    public void theProductTitleShouldBe(String Title) {
-        String Text =  ProductPage.checkTitle(driver);
-        assertEquals("The tilte is not match, expected ="+Title+"",Text, Title);
+    public void theProductTitleShouldBe(String title) {
+        String text =  ProductPage.checkTitle(driver);
+        assertEquals("The tilte is not match, expected ="+title+"",text, title);
     }
 
     @Then("the product price should be {string}")
     public void theProductPriceShouldBe(String price) {
-        String Text = ProductPage.checkPrice(driver);
-        assertEquals("Price mismatch! Expected: " + price + ", but Actual: " + Text, price, Text);
+        String text = ProductPage.checkPrice(driver);
+        assertEquals("Price mismatch! Expected: " + price + ", but Actual: " + text, price, text);
 
     }
 

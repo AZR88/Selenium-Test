@@ -15,8 +15,8 @@ public class Contact {
     public static boolean clickContact (WebDriver driver) {
         try {
             WaitElement.waitForElement(contactButton);
-            WebElement Con = driver.findElement(contactButton);
-            Con.click();
+            WebElement con = driver.findElement(contactButton);
+            con.click();
             return true;
         }catch (TimeoutException | NoSuchElementException e){
             return false;
@@ -24,9 +24,9 @@ public class Contact {
     }
     public static String inputEmail(WebDriver driver, String email) {
         WaitElement.waitForElement(senderEmail);
-        WebElement EmailField = driver.findElement(senderEmail);
-        EmailField.sendKeys(email);
-        return EmailField.getAttribute("value");
+        WebElement emailField = driver.findElement(senderEmail);
+        emailField.sendKeys(email);
+        return emailField.getAttribute("value");
     }
 
     public static String inputName(WebDriver driver, String name) {
@@ -46,8 +46,8 @@ public class Contact {
     public static boolean clickSubmit(WebDriver driver){
         try {
             WaitElement.waitForElement(submit);
-            WebElement Submt = driver.findElement(submit);
-            Submt.click();
+            WebElement submt = driver.findElement(submit);
+            submt.click();
             return true;
         }catch (TimeoutException | NoSuchElementException e){
             return false;
