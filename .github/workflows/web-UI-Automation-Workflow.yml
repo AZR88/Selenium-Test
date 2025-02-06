@@ -39,13 +39,13 @@ jobs:
     - name: Ensure UI test reports directory exists
       run: mkdir -p reports/ui-tests
 
-    # Archive Test Result
-    - name: Archive Test Result
+    # Archive UI Test Result as Artifact
+    - name: Archive UI Test Result as Artifact
       uses: actions/upload-artifact@v4.6.0
       if: always()
       with:
-        name: UI Test Report
-        path: reports/ui-tests
+        name: ui-test-report-artifact  # Menyebutkan nama artifact dengan jelas
+        path: reports/ui-tests        # Folder laporan UI test
 
     # Disable Jekyll to allow GitHub Pages to serve all files
     - name: Disable Jekyll
@@ -62,5 +62,5 @@ jobs:
       with:
         personal_token: ${{ secrets.PERSONAL_TOKEN }}
         publish_branch: gh-pages
-        publish_dir: reports/web-UI
-        destination_dir: ui-tests
+        publish_dir: reports/web-UI  # Sumber laporan di branch master
+        destination_dir: ui-tests    # Tujuan di branch gh-pages
