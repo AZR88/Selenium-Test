@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="GetTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2025-02-06T09:14:47" hostname="fv-az1344-521" time="4.686">
+<testsuite name="GetTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2025-02-06T10:04:20" hostname="fv-az1770-17" time="4.164">
   <properties/>
-  <testcase name="GetUser[0](9, true)" classname="GetTest" time="3.99"/>
-  <testcase name="GetUser[1](999, false)" classname="GetTest" time="0.309"/>
-  <testcase name="GetUser[2](0, false)" classname="GetTest" time="0.32"/>
+  <testcase name="GetUser[0](9, true)" classname="GetTest" time="3.411"/>
+  <testcase name="GetUser[1](999, false)" classname="GetTest" time="0.329"/>
+  <testcase name="GetUser[2](0, false)" classname="GetTest" time="0.328"/>
   <system-out><![CDATA[Request method:	GET
 Request URI:	https://reqres.in/api/users/9
 Proxy:			<none>
@@ -16,7 +16,7 @@ Cookies:		<none>
 Multiparts:		<none>
 Body:			<none>
 HTTP/1.1 200 OK
-Date: Thu, 06 Feb 2025 09:14:49 GMT
+Date: Thu, 06 Feb 2025 10:04:22 GMT
 Content-Type: application/json; charset=utf-8
 Transfer-Encoding: chunked
 Connection: keep-alive
@@ -28,12 +28,13 @@ Access-Control-Allow-Origin: *
 Etag: W/"152-FpYvp70F61UHmjz1MpAbXegc4Hc"
 Via: 1.1 vegur
 Cache-Control: max-age=14400
-CF-Cache-Status: MISS
+CF-Cache-Status: HIT
+Age: 2973
 Vary: Accept-Encoding
 Server: cloudflare
-CF-RAY: 90da083b5f29faca-SJC
+CF-RAY: 90da50d0dc09cf2b-SJC
 Content-Encoding: gzip
-server-timing: cfL4;desc="?proto=TCP&rtt=1690&min_rtt=1650&rtt_var=647&sent=7&recv=7&lost=0&retrans=0&sent_bytes=3108&recv_bytes=759&delivery_rate=2596363&cwnd=252&unsent_bytes=0&cid=b4ae07f68a81a72a&ts=464&x=0"
+server-timing: cfL4;desc="?proto=TCP&rtt=1884&min_rtt=1326&rtt_var=896&sent=7&recv=7&lost=0&retrans=0&sent_bytes=3108&recv_bytes=759&delivery_rate=3230769&cwnd=252&unsent_bytes=0&cid=bd81e06427d3b074&ts=161&x=0"
 
 {
     "data": {
@@ -60,23 +61,23 @@ Cookies:		<none>
 Multiparts:		<none>
 Body:			<none>
 HTTP/1.1 404 Not Found
-Date: Thu, 06 Feb 2025 09:14:51 GMT
+Date: Thu, 06 Feb 2025 10:04:24 GMT
 Content-Type: application/json; charset=utf-8
 Content-Length: 2
 Connection: keep-alive
-Report-To: {"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1738833291&sid=c4c9725f-1ab0-44d8-820f-430df2718e11&s=iK%2FEgk2WT1QpLj4QbZz6MdgJay6WKPBO7NtLN07mpQk%3D"}]}
-Reporting-Endpoints: heroku-nel=https://nel.heroku.com/reports?ts=1738833291&sid=c4c9725f-1ab0-44d8-820f-430df2718e11&s=iK%2FEgk2WT1QpLj4QbZz6MdgJay6WKPBO7NtLN07mpQk%3D
+Report-To: {"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1738836264&sid=c4c9725f-1ab0-44d8-820f-430df2718e11&s=N7otSdEwv0YLW6MYtthS8v59UdaMtPtZxAr3IFvB4XA%3D"}]}
+Reporting-Endpoints: heroku-nel=https://nel.heroku.com/reports?ts=1738836264&sid=c4c9725f-1ab0-44d8-820f-430df2718e11&s=N7otSdEwv0YLW6MYtthS8v59UdaMtPtZxAr3IFvB4XA%3D
 Nel: {"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}
 X-Powered-By: Express
 Access-Control-Allow-Origin: *
 Etag: W/"2-vyGp6PvFo4RvsFtPoIWeCReyIC8"
 Via: 1.1 vegur
 Cache-Control: max-age=14400
-CF-Cache-Status: MISS
+CF-Cache-Status: EXPIRED
 Vary: Accept-Encoding
 Server: cloudflare
-CF-RAY: 90da0847f8251749-SJC
-server-timing: cfL4;desc="?proto=TCP&rtt=1686&min_rtt=1540&rtt_var=682&sent=6&recv=7&lost=0&retrans=0&sent_bytes=3109&recv_bytes=761&delivery_rate=2781818&cwnd=252&unsent_bytes=0&cid=b74fefbba50b8900&ts=281&x=0"
+CF-RAY: 90da50db8b2867cd-SJC
+server-timing: cfL4;desc="?proto=TCP&rtt=1817&min_rtt=1809&rtt_var=684&sent=6&recv=7&lost=0&retrans=0&sent_bytes=3108&recv_bytes=761&delivery_rate=2368159&cwnd=251&unsent_bytes=0&cid=68642b470914bc97&ts=303&x=0"
 
 {
     
@@ -93,23 +94,23 @@ Cookies:		<none>
 Multiparts:		<none>
 Body:			<none>
 HTTP/1.1 404 Not Found
-Date: Thu, 06 Feb 2025 09:14:52 GMT
+Date: Thu, 06 Feb 2025 10:04:24 GMT
 Content-Type: application/json; charset=utf-8
 Content-Length: 2
 Connection: keep-alive
-Report-To: {"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1738833292&sid=c4c9725f-1ab0-44d8-820f-430df2718e11&s=StciJVQhddavz9xJ15GqKXF3TdF6LSqv6TY8s7YQQYE%3D"}]}
-Reporting-Endpoints: heroku-nel=https://nel.heroku.com/reports?ts=1738833292&sid=c4c9725f-1ab0-44d8-820f-430df2718e11&s=StciJVQhddavz9xJ15GqKXF3TdF6LSqv6TY8s7YQQYE%3D
+Report-To: {"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1738836264&sid=c4c9725f-1ab0-44d8-820f-430df2718e11&s=N7otSdEwv0YLW6MYtthS8v59UdaMtPtZxAr3IFvB4XA%3D"}]}
+Reporting-Endpoints: heroku-nel=https://nel.heroku.com/reports?ts=1738836264&sid=c4c9725f-1ab0-44d8-820f-430df2718e11&s=N7otSdEwv0YLW6MYtthS8v59UdaMtPtZxAr3IFvB4XA%3D
 Nel: {"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}
 X-Powered-By: Express
 Access-Control-Allow-Origin: *
 Etag: W/"2-vyGp6PvFo4RvsFtPoIWeCReyIC8"
 Via: 1.1 vegur
 Cache-Control: max-age=14400
-CF-Cache-Status: MISS
+CF-Cache-Status: EXPIRED
 Vary: Accept-Encoding
 Server: cloudflare
-CF-RAY: 90da084a0cda2519-SJC
-server-timing: cfL4;desc="?proto=TCP&rtt=1619&min_rtt=1605&rtt_var=612&sent=6&recv=7&lost=0&retrans=0&sent_bytes=3108&recv_bytes=759&delivery_rate=2669158&cwnd=252&unsent_bytes=0&cid=6679b42270629692&ts=291&x=0"
+CF-RAY: 90da50dd9d20eb32-SJC
+server-timing: cfL4;desc="?proto=TCP&rtt=1403&min_rtt=1385&rtt_var=556&sent=6&recv=7&lost=0&retrans=0&sent_bytes=3108&recv_bytes=759&delivery_rate=2792698&cwnd=252&unsent_bytes=0&cid=362f11a2b4a978fd&ts=296&x=0"
 
 {
     
