@@ -61,6 +61,4 @@ jobs:
       uses: peaceiris/actions-gh-pages@v4
       with:
         personal_token: ${{ secrets.PERSONAL_TOKEN }}
-        publish_branch: gh-pages
         publish_dir: reports/web-UI    
-        destination_dir: ui-tests       
