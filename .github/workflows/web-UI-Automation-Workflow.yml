@@ -51,7 +51,6 @@ jobs:
     - name: Disable Jekyll
       run: touch reports/ui-tests/.nojekyll
 
-    # Pastikan index.html ada di folder ui-tests
     - name: Copy index.html
       run: cp reports/web-UI/index.html reports/ui-tests/index.html || echo "index.html not found, skipping copy"
 
