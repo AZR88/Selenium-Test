@@ -20,6 +20,6 @@ public class PostTest {
     @Test(dataProvider = "userData")
     public void testPostUser(String name, String job, boolean shouldPass) {
         APITest test = new APITest();
-        test.PostUser(name, job, shouldPass);
+        test.postUser(name, job, shouldPass);
     }
 }

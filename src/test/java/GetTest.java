@@ -15,7 +15,7 @@ public class GetTest {
     @Test(dataProvider = "userData")
     public void GetUser(Integer ID, boolean shouldPass) {
         APITest test = new APITest();
-        test.GetUserById(ID, shouldPass);
+        test.getUserById(ID, shouldPass);
     }
 
 }

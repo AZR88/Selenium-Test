@@ -11,7 +11,7 @@ import static io.restassured.RestAssured.given;
 public class APITest {
 
 
-    public static void GetUserById(Integer ID, boolean shouldPass) {
+    public static void getUserById(Integer ID, boolean shouldPass) {
         RestAssured.baseURI = "https://reqres.in/";
 
         File JsonSchema = new File("src/test/resources/JsonSchema/Get_Scema.json");
@@ -44,7 +44,7 @@ public class APITest {
 
 
 
-    public void PostUser(String name, String job, boolean shouldPass) {
+    public void postUser(String name, String job, boolean shouldPass) {
         RestAssured.baseURI = "https://reqres.in/";
 
         File JsonSchema = new File("src/test/resources/JsonSchema/Post_Schema.json");
@@ -80,7 +80,7 @@ public class APITest {
 
 
 
-    public static void  PutUser(Integer ID, String name, String job, boolean shouldPass){
+    public static void putUser(Integer ID, String name, String job, boolean shouldPass){
         RestAssured.baseURI = "https://reqres.in/";
 
 
@@ -93,7 +93,6 @@ public class APITest {
         jsonObject.put("job", job);
 
         String fname = given().when().get("api/users/2"+ID).getBody().jsonPath().get("data.name");
-        String ljob = given().when().get("api/users/2"+ID).getBody().jsonPath().get("data.job");
         System.out.println("name before ="+fname);
 
 
@@ -123,7 +122,7 @@ public class APITest {
 
 
 
-    public void DeleteUser(int expectedStatusCode) {
+    public void deleteUser(int expectedStatusCode) {
         RestAssured.baseURI = "https://reqres.in/";
 
         given().log().all()
@@ -133,7 +132,7 @@ public class APITest {
                 .assertThat().statusCode(expectedStatusCode);
     }
 
-    public void GetTagsList(boolean shouldPass) {
+    public void getTagsList(boolean shouldPass) {
         RestAssured.baseURI = "https://reqres.in/";
 
 

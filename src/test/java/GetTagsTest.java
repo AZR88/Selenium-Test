@@ -14,6 +14,6 @@ public class GetTagsTest {
     @Test(dataProvider = "tagsData")
     public void GetTags(boolean shouldPass) {
         APITest test = new APITest();
-        test.GetTagsList(shouldPass);
+        test.getTagsList(shouldPass);
     }
 }

@@ -14,6 +14,6 @@ public class DeleteTest {
     @Test(dataProvider = "userDeleteData")
     public void DeleteUser(int expectedStatusCode) {
         APITest test = new APITest();
-        test.DeleteUser(expectedStatusCode);
+        test.deleteUser(expectedStatusCode);
     }
 }

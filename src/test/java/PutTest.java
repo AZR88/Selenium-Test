@@ -20,6 +20,6 @@ public class PutTest {
     @Test(dataProvider = "userData")
     public void testPutUser(Integer ID,String name, String job, boolean shouldPass) {
         APITest test = new APITest();
-        test.PutUser(ID,name, job, shouldPass);
+        test.putUser(ID,name, job, shouldPass);
     }
 }
