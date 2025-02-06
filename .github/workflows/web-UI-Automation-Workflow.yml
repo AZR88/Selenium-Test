@@ -62,5 +62,5 @@ jobs:
       with:
         personal_token: ${{ secrets.PERSONAL_TOKEN }}
         publish_branch: gh-pages
-        publish_dir: reports/ui-tests
+        publish_dir: reports/web-UI
         destination_dir: ui-tests
