@@ -73,7 +73,7 @@ public class ProductPage {
         alert.accept();
         return true;
     } catch (TimeoutException e) {
-            System.out.println("No alert detected within the timeout.");
+            System.out.println("No alert detected within the timeout");
             return false;
         }
     }
