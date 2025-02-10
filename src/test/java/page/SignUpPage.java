@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.UUID;
 
 public class SignUpPage {
     public static By signUpButton = By.id("signin2");
@@ -51,19 +52,20 @@ public class SignUpPage {
         }
     }
 
-    public static boolean verifySignupAlert(WebDriver driver) {
+    public static String getAlertText(WebDriver driver) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            wait.until(ExpectedConditions.alertIsPresent());
-            return true;
+            Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+            String alertText = alert.getText();
+            alert.accept();
+            return alertText;
         } catch (TimeoutException e) {
-            System.out.println("No alert detected within the timeout.");
-            return false;
+            System.out.println("No alert detected within the timeout");
+            return null;
         }
-        }
-
     }
 
+}
 
 
 

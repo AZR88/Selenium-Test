@@ -9,7 +9,8 @@ Feature: Contact
     Then the user enters their email "Agus@example.com"
     And the user enters their name "Agus"
     And the user enters their message " this is Test message"
-    Then Submit The form
+    And the user click Submit
+    Then An alert Should be show up with a message "Thanks for the message!!"
 
   @Invalid-Contact
   Scenario: User submits the form with invalid email

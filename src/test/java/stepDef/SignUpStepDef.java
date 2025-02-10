@@ -34,15 +34,18 @@ public class SignUpStepDef {
         assertTrue("Button Cliked",isButtonCliked);
     }
 
-    @Then("show account succes created alert")
-    public void showAccountSuccesCreatedAlert() {
-        boolean isAlertPresent = SignUpPage.verifySignupAlert(driver);
-        Assert.assertTrue("No alert detected.", isAlertPresent);
+
+
+
+    @Then("show account succes created alert {string}")
+    public void showAccountSuccesCreatedAlert(String message) {
+        String text = SignUpPage.getAlertText(driver);
+        assertEquals(text,message);
     }
 
-    @Then("show invalid SignUP notification")
-    public void showInvalidSignUPNotification() {
-        boolean isAlertPresent = SignUpPage.verifySignupAlert(driver);
-        Assert.assertTrue("No alert detected.", isAlertPresent);
+    @Then("show invalid SignUP notification {string}")
+    public void showInvalidSignUPNotification(String message) {
+        String text = SignUpPage.getAlertText(driver);
+        assertEquals(message,text);
     }
 }

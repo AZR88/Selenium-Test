@@ -90,8 +90,9 @@ public class CartStepdefs {
 
             Thread.sleep(5000);
 
-            boolean alert = ProductPage.isAlertPresent(driver);
+            boolean alert = Cart.verifyalert(driver);
             assertTrue(alert);
+
 
             boolean button = Item.clickHomebutton(driver);
             assertTrue(button);
@@ -141,11 +142,7 @@ public class CartStepdefs {
     }
 
 
-    @Then("An alert Should be show up")
-    public void anAlertShouldBeShowUp() {
-        boolean isAlertPresent = ProductPage.isAlertPresent(driver);
-        assertTrue("No alert detected", isAlertPresent);
-    }
+
 
     @Then("the user clicks the {string} button")
     public void theUserClicksTheButton(String name) {
@@ -158,6 +155,12 @@ public class CartStepdefs {
 
         boolean confirm = Cart.confirmation(driver);
         assertTrue("button not displayed",confirm);
+    }
+
+    @Then("An alert Should be show up with a message {string}")
+    public void anAlertShouldBeShowUpWithAMessage(String message) {
+        String text = Cart.getAlertText(driver);
+        assertEquals(message,text);
     }
 }
 

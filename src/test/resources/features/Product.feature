@@ -15,4 +15,4 @@ Feature: Product Page Functionality
     Given user is on homepage "https://www.demoblaze.com/"
     When the user click the product title "Samsung galaxy s6"
     And the user clicks the Add to cart button
-    Then Show Alert Product Added
+    Then Show Alert message "Product added"

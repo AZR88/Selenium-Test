@@ -80,13 +80,17 @@ public class LoginPage {
     }
 
     // Check if Login Alert is Present
-    public static boolean isLoginAlertPresent(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    public static String getAlertText(WebDriver driver) {
         try {
-            wait.until(ExpectedConditions.alertIsPresent());
-            return true;
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+            String alertText = alert.getText();
+            alert.accept();
+            return alertText;
         } catch (TimeoutException e) {
-            return false;
+            System.out.println("No alert detected within the timeout");
+            return null;
         }
     }
+
 }

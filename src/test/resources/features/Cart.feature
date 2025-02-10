@@ -12,8 +12,8 @@ Feature: Shopping Cart Functionality
   Scenario: Delete an item from the cart
     Given the user has added the item "Samsung galaxy s6" to the cart
     When Click Cart button
-    Then the user deletes the item from the cart
-    And the item "Samsung galaxy s6" should no longer be displayed in the cart
+    And the user deletes the item from the cart
+    Then the item "Samsung galaxy s6" should no longer be displayed in the cart
 
 
   @Valid-Cart
@@ -27,7 +27,7 @@ Feature: Shopping Cart Functionality
 
 
   @Valid-Cart
-  Scenario: Complete a purchase
+  Scenario: Complete a purchase with valid order details
     Given  the user has added the item "Samsung galaxy s6" to the cart
     When Click Cart button
     And the user clicks the "Place Order" button
@@ -40,20 +40,20 @@ Feature: Shopping Cart Functionality
       | month      | December        |
       | year       | 2025            |
     And the user clicks the Purchase
-    Then the user confirms the purchase by clicking OK
+    And the user confirms the purchase by clicking OK
 
   @inValid-Cart
-  Scenario: Complete a purchase
+  Scenario: Complete a purchase with invalid order details
     Given  the user has added the item "Samsung galaxy s6" to the cart
     When Click Cart button
-    Then the user clicks the "Place Order" button
+    And the user clicks the "Place Order" button
     And the user fills in the following order details:
       | Field      | Value           |
       | name       |                 |
       | country    | USA             |
       | city       |                 |
-      | card       | 1234567890123456|
+      | card       |                 |
       | month      | December        |
       | year       | 2025            |
     And the user clicks the Purchase
-    Then An alert Should be show up
+    Then An alert Should be show up with a message "Please fill out Name and Creditcard."

@@ -47,9 +47,11 @@ public class LoginStepDef {
         Assert.assertEquals("Username is not equals to account !", expectedUsername, actualUsername);
     }
 
-    @Then("show invalid login notification")
-    public void showInvalidLoginNotification() {
-        boolean isAlertPresent = LoginPage.isLoginAlertPresent(driver);
-        Assert.assertTrue("invalid login notification detected!", isAlertPresent);
+
+
+    @Then("show invalid login notification {string}")
+    public void showInvalidLoginNotification(String message) {
+        String text = LoginPage.getAlertText(driver);
+        Assert.assertEquals(message,text);
     }
 }

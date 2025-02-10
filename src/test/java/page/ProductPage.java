@@ -66,17 +66,19 @@ public class ProductPage {
 
 
 
-    public static boolean isAlertPresent(WebDriver driver) {
-    try {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-        alert.accept();
-        return true;
-    } catch (TimeoutException e) {
+    public static String getAlertText(WebDriver driver) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+            String alertText = alert.getText();
+            alert.accept();
+            return alertText;
+        } catch (TimeoutException e) {
             System.out.println("No alert detected within the timeout");
-            return false;
+            return null;
         }
     }
+
 }
 
 

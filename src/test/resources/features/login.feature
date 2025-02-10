@@ -11,13 +11,23 @@ Feature: Automation Login
     Then user redirect to home page with "Beta123" username displayed
 
   @invalid-Login
-  Scenario: Login with invalid username and password
+  Scenario: Login with invalid username
     Given user is on homepage "https://www.demoblaze.com/"
     When user click Login button
     And user input username with "adawqrsd"
     And user input password with "222"
     And user click submit
-    Then show invalid login notification
+    Then show invalid login notification "User does not exist."
+
+
+  @invalid-Login
+  Scenario: Login with invalid password
+    Given user is on homepage "https://www.demoblaze.com/"
+    When user click Login button
+    And user input username with "Beta123"
+    And user input password with "222"
+    And user click submit
+    Then show invalid login notification "Wrong password."
 
   @invalid-Login
   Scenario: Login with empty username and password
@@ -26,4 +36,4 @@ Feature: Automation Login
     And user input username with ""
     And user input password with ""
     And user click submit
-    Then show invalid login notification
+    Then show invalid login notification "Please fill out Username and Password."

@@ -58,10 +58,10 @@ public class ProductStepDef {
        assertTrue("button not displayed",button);
     }
 
-    @Then("Show Alert Product Added")
-    public void showAlertProductAdded() {
-        boolean isAlertPresent = ProductPage.isAlertPresent(driver);
-        Assert.assertTrue("No alert detected.", isAlertPresent);
-    }
 
+    @Then("Show Alert message {string}")
+    public void showAlertMessage(String massage) {
+        String text = ProductPage.getAlertText(driver);
+        assertEquals(text,massage);
+    }
 }
