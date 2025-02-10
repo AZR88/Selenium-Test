@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="PostTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2025-02-08T11:06:17" hostname="fv-az1308-518" time="1.612">
+<testsuite name="PostTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2025-02-10T14:10:15" hostname="fv-az1316-159" time="1.744">
   <properties/>
-  <testcase name="testPostUser[0](John Doe, Software Developer, true)" classname="PostTest" time="0.252"/>
-  <testcase name="testPostUser[1](, QA Engineer, true)" classname="PostTest" time="0.251"/>
-  <testcase name="testPostUser[2](Alice, , true)" classname="PostTest" time="0.225"/>
-  <testcase name="testPostUser[3](VeryLongNameThatExceedsNormalLengthaldhiuhisabdkauhiugfKJKASJHFKSJH, Dev, true)" classname="PostTest" time="0.23"/>
-  <testcase name="testPostUser[4](Bob, Business Analyst, true)" classname="PostTest" time="0.219"/>
-  <testcase name="testPostUser[5](!@#$%^&amp;*(), Engineer, true)" classname="PostTest" time="0.212"/>
-  <testcase name="testPostUser[6](Jane Doe, Tester, true)" classname="PostTest" time="0.215"/>
+  <testcase name="testPostUser[0](John Doe, Software Developer, true)" classname="PostTest" time="0.292"/>
+  <testcase name="testPostUser[1](, QA Engineer, true)" classname="PostTest" time="0.252"/>
+  <testcase name="testPostUser[2](Alice, , true)" classname="PostTest" time="0.239"/>
+  <testcase name="testPostUser[3](VeryLongNameThatExceedsNormalLengthaldhiuhisabdkauhiugfKJKASJHFKSJH, Dev, true)" classname="PostTest" time="0.237"/>
+  <testcase name="testPostUser[4](Bob, Business Analyst, true)" classname="PostTest" time="0.248"/>
+  <testcase name="testPostUser[5](!@#$%^&amp;*(), Engineer, true)" classname="PostTest" time="0.229"/>
+  <testcase name="testPostUser[6](Jane Doe, Tester, true)" classname="PostTest" time="0.24"/>
   <system-out><![CDATA[Request method:	POST
 Request URI:	https://reqres.in/api/users
 Proxy:			<none>
